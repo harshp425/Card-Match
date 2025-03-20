@@ -2,7 +2,6 @@ import json
 import os
 from flask import Flask, render_template, request
 from flask_cors import CORS
-from helpers.MySQLDatabaseHandler import MySQLDatabaseHandler
 import pandas as pd
 
 # ROOT_PATH for linking with all your files. 
