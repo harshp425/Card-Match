@@ -23,6 +23,7 @@ def csv_to_json(csv_file_path, json_file_path):
 
 # Example usage
 if __name__ == "__main__":
-    csv_file_path = "/Users/harshpatel/Downloads/cs4300/4300-Flask-Template-JSON/CreditCardCardRaw - Main (1).csv"  # Replace with your CSV file path
-    json_file_path = "/Users/harshpatel/Downloads/cs4300/4300-Flask-Template-JSON/backend/dataset/dataset.json"  # Replace with your desired JSON file path
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_file_path = os.path.join(base_dir, "/Users/harshpatel/Downloads/cs4300/4300-Flask-Template-JSON/CreditCardCardRaw - Main (1).csv")  # Replace with your CSV file path
+    json_file_path = os.path.join(base_dir, "/Users/harshpatel/Downloads/cs4300/4300-Flask-Template-JSON/backend/dataset/dataset.json")  # Replace with your desired JSON file path
     csv_to_json(csv_file_path, json_file_path)
