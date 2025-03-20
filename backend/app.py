@@ -13,34 +13,53 @@ os.environ['ROOT_PATH'] = os.path.abspath(os.path.join("..",os.curdir))
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Specify the path to the JSON file relative to the current script
-json_file_path = os.path.join(current_directory, 'init.json')
-
-# Assuming your JSON data is stored in a file named 'init.json'
-with open(json_file_path, 'r') as file:
-    data = json.load(file)
-    episodes_df = pd.DataFrame(data['episodes'])
-    reviews_df = pd.DataFrame(data['reviews'])
+json_file_path = os.path.join(current_directory, 'backend/dataset/dataset.json')
 
 app = Flask(__name__)
 CORS(app)
 
-# Sample search using json with pandas
-def json_search(query):
-    matches = []
-    merged_df = pd.merge(episodes_df, reviews_df, left_on='id', right_on='id', how='inner')
-    matches = merged_df[merged_df['title'].str.lower().str.contains(query.lower())]
-    matches_filtered = matches[['title', 'descr', 'imdb_rating']]
-    matches_filtered_json = matches_filtered.to_json(orient='records')
-    return matches_filtered_json
+# Assuming your JSON data is stored in a file named 'init.json'
+with open(json_file_path, 'r') as file:
+    data = json.load(file)
 
-@app.route("/")
-def home():
-    return render_template('base.html',title="sample html")
+card_names = []
+for entry in data:
+    card_names.append(entry["card_name"])
 
-@app.route("/episodes")
-def episodes_search():
-    text = request.args.get("title")
-    return json_search(text)
+reviews = []
+for entry in data:
+    reviews.append(entry.get("user_reviews", ""))
 
-if 'DB_NAME' not in os.environ:
+# Vectorize text for cosine similarity
+vectorizer = TfidfVectorizer(stop_words="english")
+tfidf_matrix = vectorizer.fit_transform(reviews)
+
+def get_recommendations(user_input):
+    """Compute cosine similarity between user input and stored credit card reviews."""
+    user_vec = vectorizer.transform([user_input])
+    cosine_similarities = cosine_similarity(user_vec, tfidf_matrix).flatten()
+    
+    sorted_indices = np.argsort(-cosine_similarities)  # Sort descending
+    
+    top_matches = []
+    for i in sorted_indices[:3]:
+        top_matches.append((card_names[i], cosine_similarities[i]))
+
+    return top_matches
+
+@app.route("/recommend")
+def recommend():
+    """API endpoint to return credit card recommendations."""
+    data = request.json
+    user_query = data.get("query", "")
+    
+    if not user_query:
+        return jsonify({"error": "No query provided"}), 400
+    
+    recommendations = get_recommendations(user_query)
+    
+    return jsonify({"recommendations": recommendations})
+
+
+if 'DB_NAME' not in os.environ: #should this be if __name__ == "__main__" ?
     app.run(debug=True,host="0.0.0.0",port=5000)
