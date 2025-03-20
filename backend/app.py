@@ -1,9 +1,11 @@
 import json
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
+
 
 # ROOT_PATH for linking with all your files. 
 # Feel free to use a config.py or settings.py with a global export variable
@@ -13,7 +15,7 @@ os.environ['ROOT_PATH'] = os.path.abspath(os.path.join("..",os.curdir))
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Specify the path to the JSON file relative to the current script
-json_file_path = os.path.join(current_directory, 'backend/dataset/dataset.json')
+json_file_path = os.path.join(current_directory, 'dataset/dataset.json')
 
 app = Flask(__name__)
 CORS(app)
@@ -24,7 +26,7 @@ with open(json_file_path, 'r') as file:
 
 card_names = []
 for entry in data:
-    card_names.append(entry["card_name"])
+    card_names.append(entry["name"])
 
 reviews = []
 for entry in data:
@@ -47,6 +49,10 @@ def get_recommendations(user_input):
 
     return top_matches
 
+@app.route("/")
+def home():
+    return render_template('base.html',title="sample html")
+
 @app.route("/recommend")
 def recommend():
     """API endpoint to return credit card recommendations."""
@@ -61,5 +67,9 @@ def recommend():
     return jsonify({"recommendations": recommendations})
 
 
+# if 'DB_NAME' not in os.environ: #should this be if __name__ == "__main__" ?
+#     app.run(debug=True,host="0.0.0.0",port=5000)
+
 if 'DB_NAME' not in os.environ: #should this be if __name__ == "__main__" ?
     app.run(debug=True,host="0.0.0.0",port=5000)
+
