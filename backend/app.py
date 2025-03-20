@@ -28,7 +28,7 @@ for entry in data:
 
 reviews = []
 for entry in data:
-    reviews.append(entry.get("user_reviews", ""))
+    reviews.append(entry.get("our_take_value", ""))
 
 # Vectorize text for cosine similarity
 vectorizer = TfidfVectorizer(stop_words="english")
