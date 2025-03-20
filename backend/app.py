@@ -2,7 +2,8 @@ import json
 import os
 from flask import Flask, render_template, request
 from flask_cors import CORS
-import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # ROOT_PATH for linking with all your files. 
 # Feel free to use a config.py or settings.py with a global export variable
