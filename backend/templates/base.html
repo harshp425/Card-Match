@@ -41,17 +41,39 @@
         }
 
         function filterText() {
-            document.getElementById("answer-box").innerHTML = ""
-            console.log(document.getElementById("filter-text-val").value)
-            fetch("/episodes?" + new URLSearchParams({ title: document.getElementById("filter-text-val").value }).toString())
+            document.getElementById("answer-box").innerHTML = "";
+            console.log(document.getElementById("filter-text-val").value);
+
+            fetch("/recommend", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    query: document.getElementById("filter-text-val").value
+                })
+            })
                 .then((response) => response.json())
-                .then((data) => data.forEach(row => {
-
-                    let tempDiv = document.createElement("div")
-                    tempDiv.innerHTML = answerBoxTemplate(row.title, row.descr, row.imdb_rating)
-                    document.getElementById("answer-box").appendChild(tempDiv)
-                }));
-
+                .then((data) => {
+                    if (data.recommendations) {
+                        data.recommendations.forEach(row => {
+                            let tempDiv = document.createElement("div");
+                            tempDiv.innerHTML = answerBoxTemplate(row.title, row.descr, row.imdb_rating);
+                            document.getElementById("answer-box").appendChild(tempDiv);
+                        });
+                    } else if (data.error) {
+                        // Display error message if there's an error
+                        let errorDiv = document.createElement("div");
+                        errorDiv.textContent = "Error: " + data.error;
+                        document.getElementById("answer-box").appendChild(errorDiv);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching recommendations:", error);
+                    let errorDiv = document.createElement("div");
+                    errorDiv.textContent = "Error fetching recommendations. Please try again.";
+                    document.getElementById("answer-box").appendChild(errorDiv);
+                });
         }
 
     </script>

@@ -53,22 +53,35 @@ def get_recommendations(user_input):
 def home():
     return render_template('base.html',title="sample html")
 
-@app.route("/recommend")
+
+@app.route("/recommend", methods=["POST", "GET"])
 def recommend():
     """API endpoint to return credit card recommendations."""
-    data = request.json
-    user_query = data.get("query", "")
+    print("got to recommend")
+    
+    # Handle both GET and POST requests
+    if request.method == "POST":
+        data = request.json
+        user_query = data.get("query", "")
+    else:  # GET request
+        user_query = request.args.get("title", "")
     
     if not user_query:
         return jsonify({"error": "No query provided"}), 400
     
     recommendations = get_recommendations(user_query)
     
-    return jsonify({"recommendations": recommendations})
+    # Format recommendations to match the expected frontend structure
+    formatted_recommendations = []
+    for card_name, similarity in recommendations:
+        formatted_recommendations.append({
+            "title": card_name,
+            "descr": f"Similarity score: {similarity:.2f}",
+            "imdb_rating": f"{similarity:.2f}"  # Using similarity as rating for display
+        })
+    
+    return jsonify({"recommendations": formatted_recommendations})
 
-
-# if 'DB_NAME' not in os.environ: #should this be if __name__ == "__main__" ?
-#     app.run(debug=True,host="0.0.0.0",port=5000)
 
 if 'DB_NAME' not in os.environ: #should this be if __name__ == "__main__" ?
     app.run(debug=True,host="0.0.0.0",port=5000)
