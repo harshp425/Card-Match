@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="animation-container">
+        <div class="intro-box">
+            <h1 id="typewriter">Card Match</h1>
+        </div>
+        <p class="team-credit">Jay Barrett, Harsh Patel, Maryam Albakry, Ryan King</p>
+        <p class="dev-preview">Developer preview</p>
+        <p class="skip-hint">Press any key to skip</p>
+    </div>
+
+    <div id="app-container" style="display: none;">
+        <header>
+            <div class="header-content">
+                <h1>Card Match</h1>
+                <p>Find the perfect credit card for your lifestyle and financial goals</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="filters-column">
+                <h2>Find Your Match</h2>
+                
+                <div class="filter-item">
+                    <label for="credit-score">Credit Score Range</label>
+                    <select id="credit-score" class="filter-select">
+                        <option value="good">Good (700-749)</option>
+                        <option value="excellent">Excellent (750+)</option>
+                        <option value="fair">Fair (650-699)</option>
+                        <option value="poor">Poor (Below 650)</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="annual-income">Annual Income</label>
+                    <select id="annual-income" class="filter-select">
+                        <option value="80-120">$80,001 - $120,000</option>
+                        <option value="40-80">$40,001 - $80,000</option>
+                        <option value="120-160">$120,001 - $160,000</option>
+                        <option value="160+">Over $160,000</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="preferred-airline">Preferred Airline (if any)</label>
+                    <select id="preferred-airline" class="filter-select">
+                        <option value="delta">Delta</option>
+                        <option value="united">United</option>
+                        <option value="american">American</option>
+                        <option value="southwest">Southwest</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="travel-frequency">Travel Frequency</label>
+                    <select id="travel-frequency" class="filter-select">
+                        <option value="frequent">Frequently (3-5 times/year)</option>
+                        <option value="occasional">Occasionally (1-2 times/year)</option>
+                        <option value="rare">Rarely (Less than once/year)</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="annual-fee">Willing to Pay Annual Fee?</label>
+                    <select id="annual-fee" class="filter-select">
+                        <option value="no">No annual fee</option>
+                        <option value="up-to-100">Yes, up to $100</option>
+                        <option value="up-to-250">Yes, up to $250</option>
+                        <option value="up-to-500">Yes, up to $500</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="description">Tell us what you're looking for</label>
+                    <textarea id="description" rows="4" placeholder="I want a credit card for travel and dining"></textarea>
+                </div>
+
+                <button id="find-cards-btn" class="primary-btn">Find My Cards</button>
+            </div>
+
+            <div class="results-column" id="results-container">
+                <div class="loading-placeholder" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Finding the best matches for you...</p>
+                </div>
+            </div>
+        </main>
+        
+        <div id="global-reviews-modal" class="reviews-modal">
+            <div class="reviews-content">
+                <span class="close-reviews" onclick="hideReviews()">&times;</span>
+                <h3 id="reviews-card-title">Card Reviews</h3>
+                <div id="reviews-container">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function typeWriterAnimation() {
+            const phrases = [
+                "Card Match", 
+                "Card Match...Visa", 
+                "Card Match...Chase", 
+                "Card Match...CS4300"
+            ];
+            
+            const typewriterElement = document.getElementById('typewriter');
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 150;
+            
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    if (charIndex > 10) {
+                        typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                        charIndex--;
+                        typingSpeed = 75; 
+                    } else {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        typingSpeed = 300; 
+                        
+                        if (phraseIndex === 0) {
+                            setTimeout(completeAnimation, 1000);
+                            return;
+                        }
+                    }
+                } else {
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 150;
+                    
+                    if (charIndex === currentPhrase.length) {
+                        typingSpeed = 800; 
+                        isDeleting = true;
+                    }
+                }
+                
+                setTimeout(type, typingSpeed);
+            }
+            
+            type();
+            
+            setTimeout(completeAnimation, 25000);
+        }
+        
+        // Function to collect filter values
+        function collectFilterValues() {
+            return {
+                creditScore: document.getElementById('credit-score').value,
+                annualIncome: document.getElementById('annual-income').value,
+                preferredAirline: document.getElementById('preferred-airline').value,
+                travelFrequency: document.getElementById('travel-frequency').value,
+                annualFee: document.getElementById('annual-fee').value,
+                description: document.getElementById('description').value
+            };
+        }
+        
+        // Function to transition from animation to main app
+        function completeAnimation() {
+            const animationContainer = document.getElementById('animation-container');
+            const appContainer = document.getElementById('app-container');
+            
+            animationContainer.style.animation = 'fadeOut 1s forwards';
+            
+            setTimeout(() => {
+                animationContainer.style.display = 'none';
+                appContainer.style.display = 'block';
+                appContainer.style.animation = 'fadeIn 1s forwards';
+            }, 1000);
+        }
+        
+        let currentOffset = 0;
+        let currentQuery = '';
+        let currentFilters = {};
+        let hasMoreResults = false;
+        const resultsPerPage = 3;
+        const maxResults = 20;
+        
+        // Function to generate synthetic card recommendations based on real ones
+        function generateSyntheticRecommendations(realCards) {
+            const syntheticCards = [];
+            
+            const issuers = [
+                'Chase', 'American Express', 'Capital One', 'Citi', 'Discover', 
+                'Bank of America', 'Wells Fargo', 'U.S. Bank', 'Barclays'
+            ];
+            
+            const cardTypes = [
+                'Rewards', 'Cash Back', 'Travel', 'Platinum', 'Gold', 'Preferred', 
+                'Premier', 'Signature', 'Freedom', 'Sapphire', 'Reserve'
+            ];
+            
+            for (let i = 0; i < realCards.length; i++) {
+                const baseCard = realCards[i];
+                
+                for (let j = 0; j < 5; j++) {
+                    const syntheticCard = JSON.parse(JSON.stringify(baseCard));
+                    
+                    let newIssuer;
+                    if (j === 0) {
+                        newIssuer = baseCard.title.split(' ')[0];
+                    } else {
+                        const issuerOptions = issuers.filter(iss => !baseCard.title.includes(iss));
+                        newIssuer = issuerOptions[Math.floor(Math.random() * issuerOptions.length)];
+                    }
+                    
+                    const newType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+                    
+                    syntheticCard.title = `${newIssuer} ${newType} Card`;
+                    
+                    if (baseCard.annual_fee && baseCard.annual_fee.includes('$')) {
+                        const feeStr = baseCard.annual_fee.replace(/[^0-9.-]+/g, '');
+                        const fee = parseInt(feeStr, 10);
+                        if (!isNaN(fee)) {
+                            const adjustment = Math.floor(Math.random() * 46) - 15;
+                            const newFee = Math.max(0, fee + adjustment);
+                            syntheticCard.annual_fee = `$${newFee}`;
+                        }
+                    }
+                    
+                    if (syntheticCard.title.includes('Chase')) {
+                        syntheticCard.offer_link = 'https://creditcards.chase.com/';
+                    } else if (syntheticCard.title.includes('American Express')) {
+                        syntheticCard.offer_link = 'https://www.americanexpress.com/';
+                    } else if (syntheticCard.title.includes('Capital One')) {
+                        syntheticCard.offer_link = 'https://www.capitalone.com/credit-cards/';
+                    } else if (syntheticCard.title.includes('Citi')) {
+                        syntheticCard.offer_link = 'https://www.citi.com/credit-cards/';
+                    } else if (syntheticCard.title.includes('Discover')) {
+                        syntheticCard.offer_link = 'https://www.discover.com/credit-cards/';
+                    } else {
+                        syntheticCard.offer_link = 'https://www.nerdwallet.com/credit-cards';
+                    }
+                    
+                    syntheticCards.push(syntheticCard);
+                }
+            }
+            
+            for (let i = syntheticCards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [syntheticCards[i], syntheticCards[j]] = [syntheticCards[j], syntheticCards[i]];
+            }
+            
+            return syntheticCards;
+        }
+        
+        function renderCardResult(card, matchPercentage) {
+            const cardTitle = card.title || 'Credit Card';
+            const annualFee = card.annual_fee || 'N/A';
+            const category = card.category || '';
+            const foreignFee = card.foreign_transaction_fee_value || 'N/A';
+            const offerLink = card.offer_link || '#';
+            
+            const pointsBadges = [];
+            
+            if (cardTitle.includes('Chase')) {
+                pointsBadges.push("3x Points on Travel", "3x Points on Dining", "No Foreign Transaction Fees");
+            } else if (cardTitle.includes('American Express')) {
+                pointsBadges.push("4x Points on Restaurants", "4x Points on Groceries", "3x Points on Flights");
+            } else if (category.includes('travel')) {
+                pointsBadges.push("2x Points on Travel", "Airport Lounge Access");
+            } else {
+                pointsBadges.push("2x Points on Everyday Purchases");
+            }
+            
+            const badgesHTML = pointsBadges.map(badge => 
+                `<span class="benefit-badge">${badge}</span>`
+            ).join('');
+            
+            let userTestimonial = "This card has great benefits for everyday use.";
+            if (cardTitle.includes('Chase') && cardTitle.includes('Sapphire')) {
+                userTestimonial = "This card is perfect for travelers who don't want to pay a premium annual fee. The points are flexible and the travel insurance is excellent.";
+            } else if (cardTitle.includes('American Express') && cardTitle.includes('Gold')) {
+                userTestimonial = "Great for foodies and anyone who spends a lot on groceries. The dining credits make the annual fee easier to justify.";
+            }
+            
+            let issuer = 'Major Bank';
+            if (cardTitle.includes('Chase')) {
+                issuer = 'Chase Bank';
+            } else if (cardTitle.includes('American Express')) {
+                issuer = 'American Express';
+            } else if (cardTitle.includes('Capital One')) {
+                issuer = 'Capital One';
+            } else if (cardTitle.includes('Citi')) {
+                issuer = 'Citibank';
+            } else if (cardTitle.includes('Discover')) {
+                issuer = 'Discover';
+            }
+            
+            let welcomeBonus = '60,000 points after spending $4,000 in first 3 months';
+            if (annualFee.includes('0')) {
+                welcomeBonus = '$200 statement credit after spending $1,000 in first 3 months';
+            }
+            
+            // Store reviews for this card
+            const cardReviews = [
+                {
+                    text: userTestimonial,
+                    author: "Credit Card Enthusiast"
+                },
+                {
+                    text: "This card offers exceptional value for its category. The rewards structure aligns perfectly with my spending habits.",
+                    author: "Financial Advisor"
+                },
+                {
+                    text: "I've had this card for two years and the customer service has been outstanding. The mobile app makes tracking rewards easy.",
+                    author: "Loyal Cardholder"
+                }
+            ];
+            
+            return `
+                <div class="card-result">
+                    <div class="card-header">
+                        <div class="card-info">
+                            <h3 class="card-title">
+                                <a href="${offerLink}" target="_blank" class="card-link">${cardTitle}</a>
+                            </h3>
+                            <p class="card-issuer">${issuer}</p>
+                        </div>
+                        <div class="match-percentage">${matchPercentage}% Match</div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <p class="annual-fee">Annual Fee: ${annualFee}</p>
+                        
+                        <div class="benefits-badges">
+                            ${badgesHTML}
+                        </div>
+                        
+                        <div class="welcome-bonus">
+                            <h4>Welcome Bonus:</h4>
+                            <p>${welcomeBonus}</p>
+                        </div>
+                        
+                        <div class="user-testimonial">
+                            <p><em>What Users Say: "${userTestimonial}"</em></p>
+                            <button class="view-reviews-btn" onclick="showReviews('${cardTitle}', ${JSON.stringify(cardReviews).replace(/"/g, '&quot;')})">View All Reviews</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Function to show reviews modal with specific card data
+        function showReviews(cardTitle, reviews) {
+            document.getElementById('reviews-card-title').textContent = `Top Reviews for ${cardTitle}`;
+            
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = '';
+            
+            reviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-item';
+                reviewElement.innerHTML = `
+                    <p>"${review.text}"</p>
+                    <p class="review-author">- ${review.author}</p>
+                `;
+                reviewsContainer.appendChild(reviewElement);
+            });
+            
+            document.getElementById('global-reviews-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideReviews() {
+            document.getElementById('global-reviews-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Function to load more results
+        function loadMoreResults() {
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            loadMoreBtn.textContent = 'Loading...';
+            loadMoreBtn.disabled = true;
+            
+            currentOffset += resultsPerPage;
+            
+            fetch("/recommend", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    query: currentQuery,
+                    offset: currentOffset,
+                    limit: resultsPerPage,
+                    filters: currentFilters
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                loadMoreBtn.textContent = 'See More Results';
+                loadMoreBtn.disabled = false;
+                
+                if (data.recommendations && data.recommendations.length > 0) {
+                    const resultsContainer = document.getElementById('results-container');
+                    const loadMoreContainer = document.getElementById('load-more-container');
+                    
+                    data.recommendations.forEach((card, index) => {
+                        if (!card.offer_link) {
+                            if (card.title.includes('Chase')) {
+                                card.offer_link = 'https://creditcards.chase.com/';
+                            } else if (card.title.includes('American Express')) {
+                                card.offer_link = 'https://www.americanexpress.com/';
+                            } else if (card.title.includes('Capital One')) {
+                                card.offer_link = 'https://www.capitalone.com/credit-cards/';
+                            } else if (card.title.includes('Citi')) {
+                                card.offer_link = 'https://www.citi.com/credit-cards/';
+                            } else if (card.title.includes('Discover')) {
+                                card.offer_link = 'https://www.discover.com/credit-cards/';
+                            } else {
+                                card.offer_link = 'https://www.nerdwallet.com/credit-cards';
+                            }
+                        }
+                        
+                        // Debug individual card's match percentage
+                        console.log(`Card ${currentOffset + index} (${card.title}):`, {
+                            has_match_percentage: 'match_percentage' in card,
+                            match_percentage: card.match_percentage
+                        });
+                        
+                        const matchPercentage = card.match_percentage;
+                        
+                        const cardElement = document.createElement('div');
+                        cardElement.innerHTML = renderCardResult(card, matchPercentage);
+                        
+                        resultsContainer.insertBefore(cardElement, loadMoreContainer);
+                    });
+                    
+                    hasMoreResults = data.pagination.has_more;
+                    
+                    if (!hasMoreResults || currentOffset + resultsPerPage >= maxResults) {
+                        loadMoreBtn.style.display = 'none';
+                        
+                        const noMoreText = document.createElement('p');
+                        noMoreText.className = 'no-more-cards';
+                        noMoreText.textContent = 'No more cards available';
+                        loadMoreContainer.appendChild(noMoreText);
+                    }
+                } else {
+                    hasMoreResults = false;
+                    
+                    const loadMoreContainer = document.getElementById('load-more-container');
+                    loadMoreBtn.style.display = 'none';
+                    
+                    const noMoreText = document.createElement('p');
+                    noMoreText.className = 'no-more-cards';
+                    noMoreText.textContent = 'No more cards available';
+                    loadMoreContainer.appendChild(noMoreText);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching more recommendations:', error);
+                loadMoreBtn.textContent = 'See More Results';
+                loadMoreBtn.disabled = false;
+                
+                const errorText = document.createElement('p');
+                errorText.className = 'error-message';
+                errorText.textContent = 'Error loading more results. Please try again.';
+                document.getElementById('load-more-container').appendChild(errorText);
+            });
+        }
+        
+        function getCardRecommendations() {
+            const filterValues = collectFilterValues();
+            currentQuery = filterValues.description;
+            currentFilters = {
+                creditScore: filterValues.creditScore,
+                annualIncome: filterValues.annualIncome,
+                preferredAirline: filterValues.preferredAirline,
+                travelFrequency: filterValues.travelFrequency,
+                annualFee: filterValues.annualFee
+            };
+            
+            currentOffset = 0;
+            
+            const loadingElement = document.querySelector('.loading-placeholder');
+            const loadingClone = loadingElement ? loadingElement.cloneNode(true) : null;
+            
+            const resultsContainer = document.getElementById('results-container');
+            
+            resultsContainer.innerHTML = '';
+            
+            if (loadingClone) {
+                loadingClone.style.display = 'flex';
+                resultsContainer.appendChild(loadingClone);
+            }
+            
+            console.log("Making request with query:", currentQuery);
+            
+            fetch("/recommend", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    query: currentQuery,
+                    offset: currentOffset,
+                    limit: resultsPerPage,
+                    filters: currentFilters
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Got response:", data);
+                
+                if (data.recommendations && data.recommendations.length > 0) {
+                    console.log("First card details:", {
+                        title: data.recommendations[0].title,
+                        match_percentage: data.recommendations[0].match_percentage,
+                        similarity_score: data.recommendations[0].similarity_score
+                    });
+                }
+                
+                resultsContainer.innerHTML = '';
+                
+                if (data.recommendations && data.recommendations.length > 0) {
+                    hasMoreResults = data.pagination.has_more;
+                    
+                    data.recommendations.forEach((card, index) => {
+                        if (!card.offer_link) {
+                            if (card.title.includes('Chase')) {
+                                card.offer_link = 'https://creditcards.chase.com/';
+                            } else if (card.title.includes('American Express')) {
+                                card.offer_link = 'https://www.americanexpress.com/';
+                            } else if (card.title.includes('Capital One')) {
+                                card.offer_link = 'https://www.capitalone.com/credit-cards/';
+                            } else if (card.title.includes('Citi')) {
+                                card.offer_link = 'https://www.citi.com/credit-cards/';
+                            } else if (card.title.includes('Discover')) {
+                                card.offer_link = 'https://www.discover.com/credit-cards/';
+                            } else {
+                                card.offer_link = 'https://www.nerdwallet.com/credit-cards';
+                            }
+                        }
+                        
+                        const matchPercentage = card.match_percentage;
+                        
+                        const cardElement = document.createElement('div');
+                        cardElement.innerHTML = renderCardResult(card, matchPercentage);
+                        resultsContainer.appendChild(cardElement);
+                    });
+                    
+                    const loadMoreContainer = document.createElement('div');
+                    loadMoreContainer.id = 'load-more-container';
+                    loadMoreContainer.className = 'load-more-container';
+                    
+                    if (hasMoreResults && currentOffset + resultsPerPage < maxResults) {
+                        loadMoreContainer.innerHTML = `
+                            <button id="load-more-btn" class="load-more-btn">
+                                See More Results
+                            </button>
+                        `;
+                    } else {
+                        loadMoreContainer.innerHTML = `
+                            <p class="no-more-cards">No more cards available</p>
+                        `;
+                    }
+                    
+                    resultsContainer.appendChild(loadMoreContainer);
+                    
+                    const loadMoreBtn = document.getElementById('load-more-btn');
+                    if (loadMoreBtn) {
+                        loadMoreBtn.addEventListener('click', loadMoreResults);
+                    }
+                } else {
+                    resultsContainer.innerHTML = '<p class="no-results">No matching cards found. Try adjusting your criteria.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching recommendations:', error);
+                resultsContainer.innerHTML = '<p class="error-message">An error occurred while fetching recommendations. Please try again.</p>';
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            typeWriterAnimation();
+            
+            document.getElementById('find-cards-btn').addEventListener('click', getCardRecommendations);
+            
+            document.getElementById('description').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    getCardRecommendations();
+                }
+            });
+            
+            document.getElementById('global-reviews-modal').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    hideReviews();
+                }
+            });
+            
+            document.addEventListener('keydown', function() {
+                const animationContainer = document.getElementById('animation-container');
+                if (animationContainer.style.display !== 'none') {
+                    completeAnimation();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
