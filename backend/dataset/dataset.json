@@ -75,7 +75,14 @@
         "cons_value": " Has foreign transaction fee.",
         "bonus_offer_value": "Earn $150 Statement Credit after you spend $1,200 on purchases within the first 90 days from account opening. ~ $150 Statement Credit ~",
         "redeem_value": " Unlimited Rewards Points that don't expire.",
-        "rewards_rate_value": "A rewards rate value of Earn Rewards Points on every purchase, every time. It's simple. $1 purchases = 1 Rewards Point. ~1 point per dollar spent.~"
+        "rewards_rate_value": "A rewards rate value of Earn Rewards Points on every purchase, every time. It's simple. $1 purchases = 1 Rewards Point. ~1 point per dollar spent.~",
+        "user_reviews": [
+            "I really like that this card has a $0 annual fee and no foreign transaction fees, which is great because I travel sometimes. Getting the $150 statement credit was pretty easy too, the spending requirement wasn't too high. The 0% intro APR on purchases for a year is a nice perk to start with.",
+            "The 5X points sound good, but you have to pay attention to the rotating categories each quarter, and it's capped at $1,500 in spending. Outside of those specific categories, you only get 1X points, which isn't amazing compared to some other cards out there. It takes effort to maximize the rewards.",
+            "It's a decent card if you're already an Amalgamated Bank of Chicago customer. The no annual fee and purchase perks like extended warranty are good. However, I was disappointed there's no introductory offer for balance transfers, only for purchases. The rewards are okay, but might not be the best value depending on your spending.",
+            "For a no-annual-fee card, it's straightforward. You earn points on everything. I like that I can redeem points for different things like statement credits or gift cards, not just travel. Getting the $150 welcome bonus for regular spending was a nice plus.",
+            "While the 0% purchase APR for 12 months is nice, be careful after that – the regular APR can go up pretty high (up to 22.90%). Also, there's no intro APR for balance transfers, and they charge a 3% fee for transferring a balance, plus fees for cash advances. Make sure you pay it off!"
+        ]
     },
     {
         "name": "Air Force FCU Visa Platinum Card",
@@ -153,7 +160,14 @@
         "cons_value": "Small Bank.",
         "bonus_offer_value": " Receive 2,500 bonus points when you get your credit card. ~2,500 bonus points.~",
         "redeem_value": " You can use your points on: Airline Tickets, Hotels Reservations, Vacation & Cruise Packages and Merchandise.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "This card has fantastic reward rates! Getting 5X points on gas, 4X on dining and entertainment, and even 2X on groceries and everything else is really generous. Plus, no annual fee and no international use fee makes it great for everyday spending and travel.",
+            "Be careful if you spend a lot - there's a cap on rewards. You can only earn a maximum of 10,000 points (or $100 cash back equivalent) per monthly statement cycle. While the earning rates are high, this limit could reduce the overall value for heavy spenders.",
+            "As a new hire at Aerospace Corp, the special offer is incredible! 0% APR for three full years on purchases AND balance transfers is unbeatable, even with the 3% balance transfer fee. You just need to make sure you meet the requirements like having an AFCU membership and direct deposit.",
+            "It's a solid card with no annual fee and a nice little 5,000 points bonus just for making your first purchase. I also appreciate the lack of cash advance fees, which many other cards charge.",
+            "I was initially confused about the APR. The main section mentions a 'Fixed Annual Percentage Rate as low as 12.90%', but the details for the Aerospace offer mention a standard *variable* APR after the intro period. Also, that amazing 3-year 0% APR offer isn't for everyone, only specific Aerospace employees meeting certain conditions."
+        ]
     },
     {
         "name": "Alaska Airlines Visa Signature Credit Card",
@@ -231,7 +245,14 @@
         "cons_value": " A high annual fee of $75 for Visa Signature accounts, or $50 for Platinum Plus accounts.",
         "bonus_offer_value": " 30,000 miles equals up to a $300 discount on Alaska Airlines travel within the continental United States. Actual value may vary depending on timing of travel and destination. ~30k miles worth $300.~",
         "redeem_value": "The Alaska Airlines Visa Signature Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1 mile per Dollar. ~1 mile per dollar.~"
+        "rewards_rate_value": "A rewards rate value of 1 mile per Dollar. ~1 mile per dollar.~",
+        "user_reviews": [
+            "This card is a must-have if you fly Alaska Airlines frequently. The free checked bag for yourself and up to six companions saves a lot ($35 per person each way!), and the 3X miles on Alaska purchases add up quickly. The $99 companion fare you get each year (after spending $6k) easily makes the $95 annual fee worth it.",
+            "The welcome offer is currently amazing - 60,000 miles is valued at around $900 by TPG, plus you get the Companion Fare and a 30% discount code right off the bat! Alaska miles are hard to earn otherwise, so this is a great way to get a big chunk for partner awards on airlines like Cathay Pacific or JAL.",
+            "While the perks for flying Alaska are good, the earning rate for everyday spending is pretty low at just 1 mile per dollar. Other travel cards offer better rewards on general purchases. Unless you are specifically targeting Alaska miles or use the bonus categories (gas, transit, streaming, etc.) heavily, you might earn more elsewhere.",
+            "I was disappointed that Alaska miles aren't very flexible. Unlike Chase or Amex points, you can only use them with Alaska and its partners. While the partners are good, I prefer having more options. It's also worth noting the high regular APR if you carry a balance.",
+            "For the $95 annual fee, it offers solid value, especially with the free checked bag benefit and the annual $99 Companion Fare (if you meet the $6,000 spend). The 2X miles on gas, transit, and streaming is a nice touch beyond just airline spending. Plus, no foreign transaction fees is great for international travel."
+        ]
     },
     {
         "name": "Alliant Visa Platinum Card",
@@ -309,7 +330,14 @@
         "cons_value": "No rewards.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Alliant Visa Platinum Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "I love the 0% intro APR for 12 months! It really helped me consolidate some high-interest debt. The balance transfer fee was a little annoying, but still worth it in the long run.",
+            "Pre-qualifying was super easy and didn't ding my credit score, which was a big plus. The standard APR after the intro period seems a bit high on the upper end though, so I'll need to be mindful of that.",
+            "The card works seamlessly with Apple Pay, which is how I pay for almost everything. No annual fee is also a huge benefit! Definitely a solid credit union card.",
+            "While the features like auto rental collision damage waiver sound good, I haven't actually used them yet. The customer service I contacted about a billing question was helpful and quick to respond.",
+            "My application process was smooth, and I appreciate the generous credit line I received. However, the balance transfer fee of 2% felt a bit steep compared to some other offers I've seen. Still a decent card overall."
+        ]
     },
     {
         "name": "Amazon Signature Visa Card",
@@ -387,7 +415,12 @@
         "cons_value": " You have to have an Amazon Prime membership to get the extra 5% cash back on Amazon.com purchases. If not, you get 3% back.",
         "bonus_offer_value": "$50 Amazon Gift Card will be instantly loaded into your Amazon account upon the approval of your credit card application. ~$50 Amazon.com Gift Card.~",
         "redeem_value": " You will see your rewards balance in checkout at Amazon.com. Use your rewards to pay for part or all of your purchase. There's no minimum rewards balance to redeem.  You can also redeem for cash back, gift cards, and travel on Chase.com.",
-        "rewards_rate_value": "A rewards rate value of 1%. Earn 3% Back at Amazon.com. Earn 2% Back at restaurants, gas stations and drugstores. Earn 1% Back on all other purchases. ~3% at Amazon.com. 2% on dining, gas, and drugstores. 1% all others.~"
+        "rewards_rate_value": "A rewards rate value of 1%. Earn 3% Back at Amazon.com. Earn 2% Back at restaurants, gas stations and drugstores. Earn 1% Back on all other purchases. ~3% at Amazon.com. 2% on dining, gas, and drugstores. 1% all others.~",
+        "user_reviews": [
+            "We put all of our Amazon purchases on this card. That 5% on Amazon purchases adds up fast, and the rewards are easy to redeem at checkout. It's a nice surprise when you're expecting to pay $40 for something and, hey, you can just use $40 of your available rewards.",
+            "The sign-up bonus changes on this card, so I waited to get it until the welcome offer was an automatic $200 Amazon gift card. [Note: Current bonus offer may be different.] That's right: I didn't have to spend a cent in order to get the bonus. The card also offers 5% back on Amazon purchases and the ability to redeem rewards as soon as you earn them. Just remember that you need an Amazon Prime subscription to get this card.",
+            "I appreciate the card’s easy redemption process and how quickly I can earn rewards to use toward future purchases."
+        ]
     },
     {
         "name": "American Express Gold Card for Ameriprise Financial",
@@ -465,7 +498,13 @@
         "cons_value": "Has high annual fee.",
         "bonus_offer_value": " Earn 25,000 Membership Rewards\u00c2\u00ae points after you spend $1,000 in purchases on the Card within the first 3 months of Card Membership. ~25k points after spending $1k.~",
         "redeem_value": " Redeem for tickets, hotels, and other items on Amex's website.",
-        "rewards_rate_value": "A rewards rate value of 1.0%.   2X points for Flights booked directly with airlines.  2X points at U.S. Restaurants. 1X points on other purchases. ~2x points on directly booked flights. 2x points at restaurants. 1x points all others.~"
+        "rewards_rate_value": "A rewards rate value of 1.0%.   2X points for Flights booked directly with airlines.  2X points at U.S. Restaurants. 1X points on other purchases. ~2x points on directly booked flights. 2x points at restaurants. 1x points all others.~",
+        "user_reviews": [
+            "The Gold card takes sort of an opposite approach from its gaudy Platinum sibling. American Express Platinum is all about flashy benefits but doesn't offer much in the way of spending rewards. The Gold doesn’t offer perks on par with premium rewards cards, nor is it as straightforward or affordable as some other dining and travel credit cards. But it's one of the best cards if you’re looking for outstanding rewards at restaurants and at U.S. supermarkets. Cardholders can quickly amass points with everyday spending and then take advantage of a valuable redemption option by transferring points to a travel partner and booking a rewards flight.",
+            "I love my AmEx Gold card because I have a system down where I know how and when to use my credits. (Hello, Uber Eats and Grubhub lunches!) However, AmEx hiked the annual fee and justified it with additional Dunkin' and Resy credits. Depending on where you live, those credits could be amazing or completely useless, so it's important to consider that when deciding whether this card is worth its annual fee.",
+            "If you're a foodie — or you have a family — you're gonna be hard-pressed to find a better one-two punch than this card. That's because it offers rich rewards on two of the top line items in most household budgets: groceries and restaurants. There's no shortage of cards that offer high rates on one of those categories or the other. But not usually both. Now, you'll owe a significant annual fee for that, so you're also gonna want to get comfortable using the card's various offsetting credits. If you don't have time to fool with all that (or if you don't have a compelling use for AmEx Membership Rewards points), you're better off with a no-annual-fee cash-back card.",
+            "AmEx is often criticized for turning its cards into expensive coupon books, and recent changes to this card follow that track. The 4X at restaurants and U.S. supermarkets is superb, but its statement credits are way too narrow to cover the high annual fee for me. I never go to Dunkin’ and rarely go to qualifying Resy restaurants. Instead, I’ll buy my groceries with my no-annual-fee Capital One Savor and earn 3% back, thank you very much."
+        ]
     },
     {
         "name": "American Express Platinum Card for Schwab",
@@ -543,7 +582,14 @@
         "cons_value": "High annual fee.",
         "bonus_offer_value": "None.",
         "redeem_value": "The American Express Platinum Card for Schwab information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "The ability to cash out points directly into my Schwab account at 1.1 cents per point is a game-changer for me as a long-time Schwab customer. The lounge access is also fantastic for my frequent travels.",
+            "While the travel perks are great, the $695 annual fee is definitely something to consider carefully. You really need to utilize the credits and benefits to make it worthwhile. Also, being tied to Schwab is a limitation for some.",
+            "I've been very happy with the welcome bonus and the 5x points on flights and hotels booked through Amex Travel. The customer service has also been top-notch whenever I've had a question.",
+            "The sheer number of benefits can be overwhelming at first, and it takes some effort to understand and maximize them all. However, once you do, the value is definitely there, especially if you travel often.",
+            "As someone who already banks and invests with Schwab, this card was a natural fit. The added benefit of the enhanced cash-out rate for rewards makes it even more appealing than the standard Amex Platinum."
+        ]
     },
     {
         "name": "Ameriprise World MasterCard",
@@ -621,7 +667,12 @@
         "cons_value": "Has foreign transaction fees; no bonus categories for higher points.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Ameriprise World MasterCard information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "Priority Pass has different membership levels. The basic level, for which one pays about $US109 per year, allows the cardholder to use the PP lounges at a rate of $US27 per use. The next level has a much higher annual fee and allows ten lounge visits before the daily fee is charged; there is a top level allowing an almost unlimited number of lounge visits",
+            "Some of the pay per use lounges are better than others; if you do have free lounge use for a year I suspect it's because Priority Pass want pax to become interested in and happy to use the product then start paying for it in the following year. If you fly a fair amount then it may be a handy thing to have.",
+            "Just got the Ameriprise World Elite Mastercard. Has a $150 annual fee. One of the benefits is you get a Priority Pass Membership which gives you access to 500 airport lounges worldwide for no charge. The fine print of this benefit basically says that they can change the offer and start charging you to enter an airport lounge. This deal seems too good to be true. no other credit cards gives you free airport lounge access for this annual fee. "
+        ]
     },
     {
         "name": "Amex EveryDay Credit Card from American Express",
@@ -699,7 +750,14 @@
         "cons_value": "High penalty A P R.",
         "bonus_offer_value": " Earn 10,000 Membership Rewards points after you use your new card to make $1,000 in purchases in your first 3 months. Terms Apply. ~10k points after spending $1000.~",
         "redeem_value": " Use points for rewards from over 500 leading brands in travel, gift cards, merchandise, or entertainment. You can transfer points to our selection of frequent traveler programs.  You can use Membership Rewards\u00c2\u00ae points towards eligible charges you make on your Card, such as retail, dining, entertainment and more.",
-        "rewards_rate_value": "A rewards rate value of 1.0%.  2x points at US supermarkets on up to $6,000 per year in purchases. 1X points for every eligible dollar you spend. ~2x points at supermarkets. 1x points per dollar spent.~"
+        "rewards_rate_value": "A rewards rate value of 1.0%.  2x points at US supermarkets on up to $6,000 per year in purchases. 1X points for every eligible dollar you spend. ~2x points at supermarkets. 1x points per dollar spent.~",
+        "user_reviews": [
+            "I appreciate that there's no annual fee, and the potential to earn a 20% bonus by using the card frequently is a nice perk for my everyday spending.",
+            "The rewards rate is just okay, even with the bonus. I can find other no-annual-fee cards that offer better rewards on groceries and other common purchases.",
+            "Being able to transfer points to airline and hotel partners is a big plus for me, as it gives my rewards more potential value than just cash back.",
+            "The welcome offer is pretty weak compared to other cards I've considered. It doesn't feel like a very strong incentive to sign up.",
+            "It's a decent basic card if you want to stay within the Amex ecosystem without paying a yearly fee, but it's not the most rewarding card out there."
+        ]
     },
     {
         "name": "Banco Popular Avianca Vida",
@@ -777,7 +835,14 @@
         "cons_value": "Has foreign transaction fees; Has annual fee.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Banco Popular Avianca Vida information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "The 20,000 LifeMiles bonus after the first purchase was a decent start, especially if you know how to maximize Avianca miles.",
+            "The $59 annual fee that wasn't waived from the start was a bit of a drawback, making me question the value in the first year.",
+            "Earning 2x miles on Avianca purchases was nice for loyal customers, but the 1x on everything else wasn't particularly competitive.",
+            "The fact that it had foreign transaction fees made it a poor choice for any international travel, which is disappointing for an airline-affiliated card.",
+            "Since this card has been discontinued, it's no longer an option, and the abrupt closure reportedly hurt some customers' credit history, which is concerning."
+        ]
     },
     {
         "name": "Banco Popular Avianca Vuela",
@@ -855,7 +920,14 @@
         "cons_value": "High annual fee.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Banco Popular Avianca Vuela information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "The 40,000 LifeMiles welcome bonus was quite attractive, especially with the potential value of Avianca miles for travel.",
+            "Earning 3x miles on Avianca purchases and 2x on gas and groceries was a solid rewards structure for frequent flyers and everyday spending.",
+            "The $149 annual fee, without a first-year waiver, felt a bit steep unless you were sure you'd heavily utilize the rewards and benefits.",
+            "The lack of foreign transaction fees was a significant advantage for international travelers, unlike the other Avianca card offered by Banco Popular.",
+            "It's a shame this card was discontinued, as the higher rewards categories and no foreign transaction fees made it a more compelling option for Avianca loyalists, despite the annual fee. The abrupt closure was also disappointing to hear about."
+        ]
     },
     {
         "name": "Bank of America Asiana Visa Signature Card",
@@ -933,7 +1005,14 @@
         "cons_value": "Has annual fee; Limited to Asiana.",
         "bonus_offer_value": " Get 30,000 Bonus Miles after you make $3,000 or more in purchases within the first 90 days of account opening. ~30k miles after spending $3k.~",
         "redeem_value": " Redeem miles for flight awards, upgrades, baggage charges, use of the lounge and more.",
-        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn Asiana Miles: 3 miles for every dollar you spend on Asiana Airlines purchases.  2 miles for every dollar you spend on gas and at grocery stores. 1 mile for every dollar you spend on all other purchases. ~3 miles per dollar on Asiana Airlines purchases. 2 miles per dollar on gas and groceries. 1 mile per dollar all else.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn Asiana Miles: 3 miles for every dollar you spend on Asiana Airlines purchases.  2 miles for every dollar you spend on gas and at grocery stores. 1 mile for every dollar you spend on all other purchases. ~3 miles per dollar on Asiana Airlines purchases. 2 miles per dollar on gas and groceries. 1 mile per dollar all else.~",
+        "user_reviews": [
+            "Earning 3x miles on Asiana purchases and 2x on gas and groceries was a great way to accumulate miles for those who fly Asiana regularly and spend on those categories.",
+            "The 30,000-mile sign-up bonus felt a bit underwhelming for a card with a $99 annual fee, even with the annual 10,000-mile bonus certificate.",
+            "The $100 annual rebate on an Asiana ticket effectively offsets the annual fee for frequent flyers of the airline, which is a significant benefit.",
+            "The inclusion of two Asiana lounge passes per year was a nice perk for improving the travel experience.",
+            "While the rewards and perks catered well to Asiana loyalists, those who don't fly the airline often would likely find more value in other travel cards, especially considering the miles expire."
+        ]
     },
     {
         "name": "Bank of America Business Advantage Cash Rewards Mastercard Credit Card",
@@ -1011,7 +1090,14 @@
         "cons_value": "Mediocre customer service; High interest rates.",
         "bonus_offer_value": "Earn a $200 statement credit after $500 in purchases within 60 days of account opening with no annual fee and no limit to the base cash back you can earn.~$200 statement credit after spending $500.~",
         "redeem_value": "The Bank of America Business Advantage Cash Rewards Mastercard Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "I appreciate the simple 1.5% cash back on all purchases, but the real value comes from the Preferred Rewards program. Getting up to 2.62% back is fantastic!",
+            "The $300 welcome bonus is okay, but not the best I've seen. The 0% intro APR on purchases for 9 months is helpful though.",
+            "No annual fee is a definite plus. It's a solid, low-cost option for my business, especially since I already bank with Bank of America.",
+            "The redemption options are a bit limited. I wish I could redeem for travel or gift cards, not just statement credits or direct deposits.",
+            "The lack of extra perks is a bit disappointing. I wish it had more travel benefits or purchase protection, but the high potential cash back makes up for it somewhat."
+        ]
     },
     {
         "name": "Bank of America Business Advantage Travel Rewards World Mastercard Credit Card",
@@ -1089,7 +1175,14 @@
         "cons_value": "You can only get points through booking travel through the Bank of America\u00ae Travel Center.",
         "bonus_offer_value": " Earn 25,000 bonus points when you spend $1,000 in the first 60 days. ~25k points after spending $1k.~",
         "redeem_value": "The Bank of America Business Advantage Travel Rewards World Mastercard Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~"
+        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~",
+        "user_reviews": [
+            "I love that there's no annual fee and you still get travel rewards. The 1.5 points per dollar is decent, but the real potential is with the Preferred Rewards boost.",
+            "The 30,000-point sign-up bonus is a nice start, essentially $300 towards travel or dining. The 0% intro APR on purchases is also a helpful feature for new expenses.",
+            "Being able to redeem points for a broad range of travel purchases, not just flights and hotels, is a big plus for my business trips.",
+            "While the rewards are versatile, the base earning rate of 1.5x isn't the highest out there, especially if you don't qualify for the Preferred Rewards tiers.",
+            "It's a solid no-annual-fee travel card, especially if you're already banking with Bank of America and can leverage the Preferred Rewards for a significant boost in points."
+        ]
     },
     {
         "name": "Bank of the West Platinum Rewards MasterCard Credit Card",
@@ -1167,7 +1260,14 @@
         "cons_value": "Has foreign transaction fees.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Bank of the West Platinum Rewards MasterCard Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "The 3% cash back on restaurants and groceries is fantastic for everyday spending, and the $0 annual fee makes it even better.",
+            "The $1,500 quarterly cap on the 3% cash back for gas could be limiting for some drivers.",
+            "Redeeming cash back only in $25 increments is a bit inconvenient. It would be nicer to redeem any amount I've earned.",
+            "The 3% foreign transaction fee is a major drawback if you travel internationally. This card is really only good for domestic use.",
+            "The 0% intro APR for 15 months on purchases and balance transfers is a great feature, but the 4% balance transfer fee is something to consider."
+        ]
     },
     {
         "name": "BankAmericard Cash Rewards Credit Card",
@@ -1245,7 +1345,12 @@
         "cons_value": " If you're a big spender with excellent credit and willing to pay an annual fee, there are cards with higher rewards.",
         "bonus_offer_value": "$150 online cash rewards bonus after you spend at least $500 on purchases in the first 90 days of account opening.  ~$150 online cash after spending $500.~",
         "redeem_value": "The BankAmericard Cash Rewards Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "I got this card when I had a big purchase coming up. The bonus offer, the 0% intro APR period and the option to make online shopping my 3% category meant I saved hundreds of dollars upfront. It has remained my go-to for online shopping, but being able to swap out 3% categories on a monthly basis allows me to boost rewards on other spending when I can.",
+            "Because I have accounts with Bank of America® and qualify for Preferred Rewards, I get up to 3.75% cash back on eligible purchases with this card. That's a great value for a $0 annual fee. This is also my go-to Costco card. With the Preferred Rewards bonus, I can get up to 2.5% cash back on wholesale club purchases, 25% more than what the Costco card gives me. It's also a Visa, which is the only credit card network Costco accepts.",
+            "The Customized Cash Rewards card has been a workhorse for my wallet. I originally used the card’s introductory 0% APR period to finance a home remodel. I also have other accounts with Bank of America® and qualify for Platinum Honors in the bank’s Preferred Rewards program. That allows me to earn bonus cashback on all qualifying purchases. Home improvement stores are one of the card’s rotating 3% cash back categories on the card, so that bonus lets me earn 5.25% cash back on all home improvement store purchases."
+        ]
     },
     {
         "name": "BankAmericard Credit Card",
@@ -1323,7 +1428,14 @@
         "cons_value": "No rewards.",
         "bonus_offer_value": "None.",
         "redeem_value": "The BankAmericard Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "The 0% intro APR on both purchases and balance transfers for 18 months is excellent! It's really helping me pay down my debt without interest piling up.",
+            "It's a very basic card, which is fine if you just need to transfer a balance. But there are no rewards, so I don't see myself using it much after the intro period ends.",
+            "No annual fee is a big plus. It's a low-cost way to manage debt, but you definitely need good credit to qualify.",
+            "I like that there's no penalty APR, which gives me some peace of mind. However, I wish it had some ongoing rewards like cash back.",
+            "For balance transfers, it's a solid choice. But if you want a card you can use long-term, you're better off with something that offers rewards, even if the intro period is a bit shorter."
+        ]
     },
     {
         "name": "BankAmericard Travel Rewards Credit Card",
@@ -1401,7 +1513,14 @@
         "cons_value": " More restrictive than a straight cash back card; If you're a big spender with excellent credit and willing to pay an annual fee, there are cards with higher rewards.",
         "bonus_offer_value": " 20,000 online bonus points if you make at least $1,000 in purchases in the first 90 days ; that can be a $200 statement credit toward travel purchases. ~20k online points worth $200.~",
         "redeem_value": "The BankAmericard Travel Rewards Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.5 points per dollar. ~1.5 points per dollar.~"
+        "rewards_rate_value": "A rewards rate value of 1.5 points per dollar. ~1.5 points per dollar.~",
+        "user_reviews": [
+            "The 25,000-point sign-up bonus was easy to achieve and gave me a nice $250 towards my travel expenses. Plus, no annual fee is a huge win!",
+            "I love that there are no foreign transaction fees, making it a great card to use when traveling internationally. The 1.5 points per dollar on everything is simple and straightforward.",
+            "Redeeming points for travel is very flexible – I can just use a statement credit for any travel or dining purchase I make on the card, which is much better than being limited to a specific portal.",
+            "The regular APR after the 0% intro period ends is quite high, so it's definitely a card you want to pay off in full each month to avoid interest.",
+            "If you're a Bank of America Preferred Rewards member, the boosted points earning makes this card even more valuable, potentially earning up to 2.62 points per dollar, which is excellent for a no-annual-fee card."
+        ]
     },
     {
         "name": "Barclay Choice Privileges Visa Signature Card",
@@ -1479,7 +1598,14 @@
         "cons_value": "Needs excellent credit; Limited to Choice hotels.",
         "bonus_offer_value": " Earn 8,000 anniversary bonus points every year you spend $10,000 or more on purchases with your card by your account anniversary date. ~8k points every year you spend $10k.~",
         "redeem_value": "Redemptions for free nights at Choice Hotels or digital gift cards from over 80 of your favorite restaurants and retailors..",
-        "rewards_rate_value": "A rewards rate value of 1.60%.   15 points per $1 spent at eligible Choice Privileges\u00c2\u00ae locations with your Choice Privileges Visa Signature Card and Choice Privileges membership.  2 points per eligible $1 spent on everyday purchases everywhere Visa is accepted.. ~15 points per dollar at Choice Privilege locations. 2 points per dollar all others.~"
+        "rewards_rate_value": "A rewards rate value of 1.60%.   15 points per $1 spent at eligible Choice Privileges\u00c2\u00ae locations with your Choice Privileges Visa Signature Card and Choice Privileges membership.  2 points per eligible $1 spent on everyday purchases everywhere Visa is accepted.. ~15 points per dollar at Choice Privilege locations. 2 points per dollar all others.~",
+        "user_reviews": [
+            "Earning 5 points per dollar at Choice Hotels is great if you stay with them often. Plus, the 2 points per dollar on everything else is a decent base rate for a no-annual-fee card.",
+            "It's disappointing that there's no welcome bonus mentioned in this review. That would have been a nice incentive to sign up.",
+            "The fact that Choice Privileges points never expire is a big plus for me, giving me more flexibility in when I can use them for free nights.",
+            "The fees on balance transfers and foreign transactions are a bit of a letdown. I wish it had no foreign transaction fees like some other travel cards.",
+            "Getting automatic Gold elite status is a nice perk for Choice members, offering benefits like bonus points and potential room upgrades."
+        ]
     },
     {
         "name": "Barclay Wyndham Rewards Visa Card",
@@ -1557,7 +1683,14 @@
         "cons_value": "Needs excellent credit; Won't get rewards at Walmart or Target; Limited to Wyndham.",
         "bonus_offer_value": " Earn 30,000 bonus points after your first purchase. Plus, earn an additional 15,000 bonus points after you spend $1,000 on purchases within the first 90 days of account opening. ~30k points after first purchase. 15k more points after spending $1k.~",
         "redeem_value": " Redeem points for a free night stay.  15,000 points is enough for a free night at participating hotels!.",
-        "rewards_rate_value": "A rewards rate value of 3 points per $1 spent on eligible purchases for every participating hotel stay at a Wyndham Vacation Rental North America properties, and on-property spend and maintenance fees at Wyndham timeshare properties.  Earn 2 points per $1 spent on eligible gas, utility and grocery store purchases, but excluding Target\u00c2\u00ae and Walmart\u00c2\u00ae. ~3 points per dollar on select hotel purchases. 2 points per dollar on gas, utility, and groceries.~"
+        "rewards_rate_value": "A rewards rate value of 3 points per $1 spent on eligible purchases for every participating hotel stay at a Wyndham Vacation Rental North America properties, and on-property spend and maintenance fees at Wyndham timeshare properties.  Earn 2 points per $1 spent on eligible gas, utility and grocery store purchases, but excluding Target\u00c2\u00ae and Walmart\u00c2\u00ae. ~3 points per dollar on select hotel purchases. 2 points per dollar on gas, utility, and groceries.~",
+        "user_reviews": [
+            "I like that it has no annual fee and earns decent rewards, especially the 5x points at Wyndham hotels and on gas. It's a good choice for budget-conscious travelers.",
+            "The sign-up bonus is okay, but not the most impressive. I do appreciate the solid rewards on everyday spending categories like groceries and restaurants.",
+            "Getting automatic Gold status is a nice perk, and the potential for a free night each year is attractive if you spend enough on the card.",
+            "If you're a really loyal Wyndham customer, the Wyndham Rewards Earner Plus Card might be a better option with its higher rewards rates and perks, but it does have an annual fee.",
+            "For occasional Wyndham stays and everyday purchases, this card is a solid choice. But if you want more flexibility in your travel rewards, a general travel card might be a better fit."
+        ]
     },
     {
         "name": "Barclays AAdvantage Aviator Red World Mastercard",
@@ -1635,7 +1768,14 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": " Earn 50,000 bonus miles when you make your first purchase in the first 90 days and pay the annual fee. ~50k miles with first purchase.~",
         "redeem_value": " You redeem for American miles via their website, but blackout dates may apply.",
-        "rewards_rate_value": "A rewards rate value of 1.0%.  Earn 2X miles on eligible  American Airlines purchases, 1X for all else. ~2x miles on American Airlines purchases. 1x on all else.~"
+        "rewards_rate_value": "A rewards rate value of 1.0%.  Earn 2X miles on eligible  American Airlines purchases, 1X for all else. ~2x miles on American Airlines purchases. 1x on all else.~",
+        "user_reviews": [
+            "The 60,000-mile welcome bonus after just one purchase and paying the annual fee is a really easy way to get a good chunk of AAdvantage miles.",
+            "Getting the first checked bag free for myself and up to four companions is a fantastic perk that easily offsets the $99 annual fee if you fly American Airlines as a family.",
+            "Earning 2x miles on American Airlines purchases is nice for loyal customers, but the 1x mile on everything else isn't very competitive for everyday spending.",
+            "The companion certificate sounds great, but the $20,000 spending requirement to earn it seems quite high, especially with the limited bonus categories.",
+            "While the travel benefits like preferred boarding and inflight savings are useful, the lack of flexibility in redeeming miles and the potential for award availability issues are things to consider."
+        ]
     },
     {
         "name": "Barclays Frontier Airlines World MasterCard",
@@ -1713,7 +1853,14 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": " Earn 40,000 bonus miles after spending $500 in purchases in the first 90 days of account opening and payment of the annual fee. ~40k miles after spending $500.~",
         "redeem_value": " Roundtrip award travel may be booked once a minimum of twenty thousand (20,000) miles have been earned and deposited into member's EarlyReturns\u00c2\u00ae account. Award tickets on Frontier flights are subject to availability and capacity controls.",
-        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 2 miles for every $1 spent on purchases at FlyFrontier.com.  Earn 1 mile for every $1 spent on all other purchases.  Complimentary online FICO\u00c2\u00ae credit score. ~2 miles per dollar on FlyFrontier.com purchases. 1 mile per dollar all else.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 2 miles for every $1 spent on purchases at FlyFrontier.com.  Earn 1 mile for every $1 spent on all other purchases.  Complimentary online FICO\u00c2\u00ae credit score. ~2 miles per dollar on FlyFrontier.com purchases. 1 mile per dollar all else.~",
+        "user_reviews": [
+            "The potential to earn up to 60,000 miles with the initial bonus is pretty good, especially if you can meet the spending requirements.",
+            "Getting 5 miles per dollar on Frontier purchases and 3 miles at restaurants is a decent earning structure for frequent Frontier flyers and diners.",
+            "The $99 annual fee feels a bit steep, and it would be nice if it were waived for the first year to try out the card.",
+            "The 0% intro APR on balance transfers for 15 months is a helpful feature, but the 5% balance transfer fee is quite high.",
+            "Instant Elite Gold status for the first year is a nice perk, but the $3,000 spending requirement within the first 90 days to maintain it seems like a lot."
+        ]
     },
     {
         "name": "Barclays Hawaiian Airlines World Elite MasterCard",
@@ -1791,7 +1938,14 @@
         "cons_value": "Has annual fee; Needs excellent credit.",
         "bonus_offer_value": "Earn 35,000 bonus HawaiianMiles after you spend $1,000 on purchases in the first 90 days. ~35k HawaiianMiles after spending $1k.~",
         "redeem_value": " To redeem miles for flights on Hawaiian Airlines, Cardmembers should \u00e2\u20ac\u02dcSign-in\u00e2\u20ac\u2122 to their HawaiianMiles Account at HawaiianAirlines.com.  Hawaiian Airlines won't give out information anywhere else..",
-        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 2X miles on eligible purchases made directly from Hawaiian Airlines.  Earn 1X miles on all other purchases. ~2x miles on Hawaiian Airlines purchases. 1x miles on all others.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 2X miles on eligible purchases made directly from Hawaiian Airlines.  Earn 1X miles on all other purchases. ~2x miles on Hawaiian Airlines purchases. 1x miles on all others.~",
+        "user_reviews": [
+            "I love the solid earning rates, especially the 3x miles on Hawaiian Airlines purchases and 2x on gas, dining, and groceries. It's better than many other airline cards for everyday spending.",
+            "The welcome bonus is decent, and the spending requirement is relatively low, which is nice. The one-time companion discount is a cool perk, even if you don't hit the bonus.",
+            "The $99 annual fee is a bit of a drawback. You really need to use the free checked bags or the annual companion discount to make it worthwhile.",
+            "I'm excited about the merger with Alaska Airlines and the ability to transfer miles 1:1. This opens up a lot more redemption options, which is a big plus.",
+            "It's a good card for Hawaiian Airlines loyalists, but it lacks some common airline card benefits like priority boarding. If you fly with multiple airlines, a more flexible travel card might be better."
+        ]
     },
     {
         "name": "Barclays Lufthansa Miles & More World Elite MasterCard",
@@ -1869,7 +2023,14 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": " Earn 35,000 award miles after you spend $1,000 in purchases in the first 90 days. ~35k miles after spending $1k.~",
         "redeem_value": " You can redeem miles for flight awards and upgrades on Lufthansa, Austrian Airlines, Brussels Airlines, SWISS, Star Alliance Airlines and other partners..",
-        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 2 award miles per $1 spent on ticket purchases directly from Miles & More integrated airline partners (I don't know who these are though).  Earn 1 award mile per $1 spent on all other purchases everywhere MasterCard is accepted.. ~2 miles per dollar on airline partner purchases. 1 miles per dollar on all others.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 2 award miles per $1 spent on ticket purchases directly from Miles & More integrated airline partners (I don't know who these are though).  Earn 1 award mile per $1 spent on all other purchases everywhere MasterCard is accepted.. ~2 miles per dollar on airline partner purchases. 1 miles per dollar on all others.~",
+        "user_reviews": [
+            "The companion ticket is a potentially valuable perk, but it's important to be aware of the taxes and fees that come with it, which can significantly increase the cost.",
+            "Earning double miles on Lufthansa and partner airlines is good if you frequently fly with them, but the 1 mile per dollar on everything else isn't very competitive for everyday spending.",
+            "The 0% intro APR on balance transfers is a nice feature, and the lack of foreign transaction fees is a plus for international travelers.",
+            "The $89 annual fee can be justifiable if you maximize the benefits, but it might not be worth it if you don't fly Lufthansa or its partners often.",
+            "The lounge passes and the ability to convert award miles to elite-status miles are interesting perks, but the complexity of the Miles & More program can be a bit confusing."
+        ]
     },
     {
         "name": "BBVA Compass Clearpoints Card",
@@ -1947,7 +2108,14 @@
         "cons_value": " Foreign transaction fees, unknown rewards system.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Clearpoints information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "The 0% intro APR for 13 months on both purchases and balance transfers is a fantastic offer for anyone looking to finance a large purchase or consolidate debt.",
+            "I really like the concept of choosing your 3x and 2x rewards categories each quarter. It allows you to tailor the card to your current spending habits.",
+            "The $100 account credit after spending $1,500 in the first 90 days is a decent welcome bonus for a no-annual-fee card.",
+            "Forgetting to select your bonus categories each quarter would really hurt the rewards earnings, as you'd default to just 1 point per dollar on everything.",
+            "The 4% balance transfer fee (with a $10 minimum) is a bit higher than some other cards offer, so that's something to factor in if you're planning to transfer a large balance."
+        ]
     },
     {
         "name": "BECU Cash Back Visa credit card",
@@ -2025,7 +2193,14 @@
         "cons_value": "--MANUALLY FILL IN--",
         "bonus_offer_value": "--MANUALLY FILL IN--",
         "redeem_value": "--MANUALLY FILL IN--",
-        "rewards_rate_value": "--MANUALLY FILL IN--"
+        "rewards_rate_value": "--MANUALLY FILL IN--",
+        "user_reviews": [
+            "Earning a straightforward 1.5% cash back on all purchases is great and easy to understand. Plus, the potential $100 bonus for new members is a nice extra.",
+            "I appreciate that there are no annual fees, balance transfer fees, or foreign transaction fees. That really helps keep the cost of using the card down.",
+            "The price protection and extended warranty are valuable perks for shoppers, offering some extra security for your purchases.",
+            "While 1.5% cash back is decent, there are other cash back cards that offer higher rates in specific spending categories if you're willing to track those.",
+            "The rates starting at 17.24% APR are fairly standard, but if you tend to carry a balance, you'd want to make sure you qualify for the lower end of that range or consider their Low Rate card."
+        ]
     },
     {
         "name": "Berkshire Bank primor Secured Visa Classic",
@@ -2103,7 +2278,14 @@
         "cons_value": "Has annual fee; No rewards.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Berkshire Bank primor Secured Visa Classic information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 0.00%. ~None.~"
+        "rewards_rate_value": "A rewards rate value of 0.00%. ~None.~",
+        "user_reviews": [
+            "As someone with a low credit score, I appreciate that this secured card considers applicants like me. The $0 annual fee is also a big plus as I'm trying to keep costs down while rebuilding my credit.",
+            "The high APR of 28.24% is definitely a concern. I'll need to be very careful to pay my balance in full each month to avoid those interest charges.",
+            "It's disappointing that there are no rewards or cash back offered. Even a small amount would have been a nice incentive while building credit.",
+            "The 3% balance transfer fee could be costly if I'm looking to consolidate debt onto this card. I'll have to weigh that against the 0% annual fee.",
+            "Knowing that this card reports to all three major credit bureaus is important. Consistent, responsible use should help improve my credit score over time."
+        ]
     },
     {
         "name": "Berkshire Bank primor Secured Visa Gold",
@@ -2181,7 +2363,14 @@
         "cons_value": "Has annual fee; No rewards.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Berkshire Bank primor Secured Visa Gold information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "The low 9.99% fixed purchase APR is a huge draw for a secured card, especially if I might need to carry a balance while rebuilding my credit.",
+            "I like that they offer potentially high credit lines, up to $5,000 based on my deposit. This could be really helpful for larger purchases I need to make.",
+            "The $49 annual fee is a bit of a downside, as many secured cards have no annual fee. I'll need to make sure the low APR and potential credit line justify the cost.",
+            "It's good to know they report to all three major credit bureaus, which is essential for rebuilding my credit score with responsible use.",
+            "The fact that it doesn't graduate to an unsecured card is a bit disappointing. Once my credit improves, I'll have to apply for a new card elsewhere to get rewards and better perks."
+        ]
     },
     {
         "name": "Blue Business Plus Credit Card from American Express",
@@ -2259,7 +2448,14 @@
         "cons_value": "High penalty A P R.",
         "bonus_offer_value": "Earn 20,000 Membership Rewards&reg points after you spend $3,000 in qualifying purchases on the Card within your first 3 months of Card Membership. Terms Apply. (This offer is no longer valid on our site.). ~20k points after spending $3k.~",
         "redeem_value": " Using Points for Your Charges is only available to Basic Consumer and OPEN Card Members enrolled in the U.S. Membership Rewards\u00c2\u00ae program.  A minimum of 1,000 Membership Rewards points in your program Account is required and you may use Membership Rewards points only toward the entire amount of an eligible charge..",
-        "rewards_rate_value": "A rewards rate value of 2.0%.  Earn 2X Membership Rewards\u00c2\u00ae points on everyday business purchases up to $50,000 with no category restrictions. ~2x points on business purchases.~"
+        "rewards_rate_value": "A rewards rate value of 2.0%.  Earn 2X Membership Rewards\u00c2\u00ae points on everyday business purchases up to $50,000 with no category restrictions. ~2x points on business purchases.~",
+        "user_reviews": [
+            "Earning 2x Membership Rewards points on the first $50,000 in purchases is a fantastic flat-rate reward for a no-annual-fee business card, especially if you value AmEx points for travel.",
+            "The 0% intro APR for 12 months on purchases is a great benefit for new businesses or those looking to finance larger expenses without immediate interest.",
+            "The lack of an annual fee makes this card a low-risk option to hold and earn rewards, even if your spending fluctuates.",
+            "The $50,000 annual cap on the 2x points can be a significant limitation for businesses with higher spending, reducing the overall rewards value.",
+            "The 2.7% foreign transaction fee is a major drawback for businesses that make purchases or travel internationally. It's surprising for a card that emphasizes travel rewards."
+        ]
     },
     {
         "name": "Blue Cash Everyday Card from American Express",
@@ -2337,7 +2533,14 @@
         "cons_value": "Foreign transaction fees.",
         "bonus_offer_value": " $100 statement credit after you spend $1,000 in purchases on your new Card within the first 3 months. Terms Apply. ~$100 statement credit after spending $1k~",
         "redeem_value": " Redemption is really complicated for this program.  To learn more, go to www.membershiprewards.com/pointsinfo..",
-        "rewards_rate_value": "A rewards rate value of 1.00%.  For each dollar charged on an eligible purchase in each billing period on your Amex EveryDay\u00c2\u00ae Credit Card from American Express, you earn one Membership Rewards\u00c2\u00ae point. You earn: 1 additional point (for a total of 2 points) on the first $6,000 of eligible purchases in a calendar year at supermarkets located in the U.S. (superstores and warehouse clubs are not considered supermarkets). ~1 point per dollar spent. 1 additional point at supermarkets.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%.  For each dollar charged on an eligible purchase in each billing period on your Amex EveryDay\u00c2\u00ae Credit Card from American Express, you earn one Membership Rewards\u00c2\u00ae point. You earn: 1 additional point (for a total of 2 points) on the first $6,000 of eligible purchases in a calendar year at supermarkets located in the U.S. (superstores and warehouse clubs are not considered supermarkets). ~1 point per dollar spent. 1 additional point at supermarkets.~",
+        "user_reviews": [
+            "I love getting 3% cash back on groceries and gas, those are my biggest spending categories, so it really adds up. The $6,000 annual limit is reasonable for my household.",
+            "The $200 statement credit after meeting the initial spending requirement was a nice welcome bonus and easy to achieve within the first 6 months.",
+            "Having a 0% intro APR for 15 months on both purchases and balance transfers gives you a lot of flexibility for financing or consolidating debt.",
+            "It's a great no-annual-fee card, but the 1% cash back on everything else is pretty standard and not as exciting as the bonus categories.",
+            "The foreign transaction fee is a bummer if you travel internationally, but for everyday U.S. spending, this card is a solid cash back earner."
+        ]
     },
     {
         "name": "Blue Cash Preferred Card from American Express",
@@ -2415,7 +2618,14 @@
         "cons_value": "Has annual fee; Amex has limited acceptance.",
         "bonus_offer_value": " $150 statement credit after you spend $1,000 in purchases on your new Card within the first 3 months. Terms Apply. ~$150 statement credit after spending $1k.~",
         "redeem_value": "Cash back is received in the form of Reward Dollars that can be redeemed as a statement credit..",
-        "rewards_rate_value": "A rewards rate value of 1.00%.  6% at US supermarkets, up to $6,000 per year in purchases. 3% at US gas stations and select US department stores. 1% Cash back on other purchases. ~6% on groceries. 3% on gas and department stores. 1% all others.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%.  6% at US supermarkets, up to $6,000 per year in purchases. 3% at US gas stations and select US department stores. 1% Cash back on other purchases. ~6% on groceries. 3% on gas and department stores. 1% all others.~",
+        "user_reviews": [
+            "The 6% cash back on groceries and streaming services is incredible! It really adds up for my family, and the $6,000 annual cap in the grocery category is usually enough for us.",
+            "Getting 3% back on gas and transit is a nice bonus, covering some of my other regular expenses. The variety of transit options included is also a plus.",
+            "The $250 statement credit for new cardholders is a solid welcome bonus and helps offset the annual fee in the first year.",
+            "While the rewards are great, the $95 annual fee starting in the second year means you need to spend enough in the bonus categories to make it worthwhile. If your spending is lower, the no-annual-fee Blue Cash Everyday might be a better fit.",
+            "The 0% intro APR for 12 months on purchases and balance transfers is helpful, but the regular APR can be quite high depending on your creditworthiness, so it's best to pay your balance in full each month."
+        ]
     },
     {
         "name": "BP Visa Credit Card",
@@ -2493,7 +2703,14 @@
         "cons_value": "Has foreign transaction fee.",
         "bonus_offer_value": "Earn 25\u00a2 off per gallon for every $100 you spend with your BP Visa\u00ae Credit Card or BP Credit Card for the first 90 days your account is open (excluding non-BP gas stations). ~25\u00a2 per gallon off for every $100 spent.~",
         "redeem_value": "Redeem earned rewards at the pump.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "Saving 15 cents per gallon at BP and Amoco stations is a solid perk if you fill up there regularly. The initial 30 cents off for the first two months is a nice introductory bonus, even if it's not a traditional welcome offer.",
+            "I'm pleasantly surprised by the 3% cash back on groceries and dining. That's a better rate than many other gas cards offer on everyday spending categories.",
+            "The lack of an annual fee is a definite plus, making it easier to justify having this card for the gas savings and bonus rewards.",
+            "The 30.99% APR is extremely high. This card is only worth it if you pay your balance in full every single month; otherwise, the interest charges will quickly outweigh any rewards you earn.",
+            "It's a bit concerning that using a mobile wallet to pay for gas might prevent you from getting the per-gallon discount. That's something BP and the card issuer should clarify and ideally resolve."
+        ]
     },
     {
         "name": "British Airways Visa Signature Card",
@@ -2571,7 +2788,14 @@
         "cons_value": "Has annual fee; Most valuable for those who fly British Airways or oneWorld partners.",
         "bonus_offer_value": " Earn 50,000 bonus Avios after you spend $3,000 on purchases within the first 3 months from account opening. Earn an additional 25,000 bonus Avios after you spend $10,000 total on purchases within your first year of account opening for a total of 75,000 bonus Avios. Earn a further 25,000 bonus Avios after you spend $20,000 total on purchases within your first year from account opening for a total of 100,000 bonus Avios. ~Up to 100k bonus Avios.~",
         "redeem_value": " Cardmember must make $30,000 in Purchases in a single calendar year on their British Airways Visa Card to receive a Travel Together Ticket. The Travel Together Ticket will be in the form of a voucher that can be redeemed by Cardmember for a companion ticket. Cardmember is eligible for only one voucher each calendar year.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "The sign-up bonus is huge and definitely a major draw, especially if you're planning a big trip. However, you need to be prepared to meet a significant spending requirement to earn it.",
+            "Earning 3 Avios per dollar on British Airways, Aer Lingus, Iberia, and LEVEL purchases is great for frequent flyers of those airlines. The 2 Avios on hotel bookings is a nice bonus too.",
+            "The Travel Together Ticket can be incredibly valuable, but the $30,000 annual spending requirement is a high bar to clear. It's really only beneficial for those who already spend a lot on their card.",
+            "The biggest downside is definitely the high surcharges on British Airways award flights. While the statement credits help, they don't cover everything, and it can make redeeming Avios less rewarding than you'd expect.",
+            "The lack of flexibility for domestic US travel is a drawback. You're mostly limited to American Airlines and Alaska Airlines, whereas other cards offer a wider range of airline partners."
+        ]
     },
     {
         "name": "Business Gold Rewards Card from American Express",
@@ -2649,7 +2873,14 @@
         "cons_value": "High annual fee; Must pay off right away.",
         "bonus_offer_value": "Earn 50,000 Membership Rewards points after you spend $5,000 in purchases on the Card within your first 3 months of Card Membership. Terms Apply. ~50k points after spending $5k.~",
         "redeem_value": "The Business Gold Rewards Card from American Express information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "The automatic 4x points in my top two spending categories each month is a really smart feature and helps me maximize rewards without constantly tracking bonuses.",
+            "The 100,000 Membership Rewards point welcome bonus is substantial and a great way to kickstart your points balance, especially if you can meet the $15,000 spending requirement.",
+            "The statement credits for FedEx, Grubhub, and office supply stores are a nice perk that can add up to significant savings over the year if you use those services regularly.",
+            "The $375 annual fee is very steep, and you really need to spend heavily in the 4x categories to justify the cost. If your spending is more spread out, a card with a lower fee might be better.",
+            "While the 4x bonus is great, the $150,000 combined annual cap on those categories could be a limitation for larger businesses with significant expenses in those areas."
+        ]
     },
     {
         "name": "Business Green Rewards Card from American Express",
@@ -2727,7 +2958,14 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": " Earn 5,000 Membership Rewards points after your first purchase on the Card. Terms Apply. ~5k points after first purchase.~",
         "redeem_value": "The Business Green Rewards Card from American Express information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "The green card for businesses from American Express is a very good card since it provides additional services to the traveller. Although American Express is not accepted everywhere, it is easy to manage and one of its great advantages is that it is easy to replace if it is lost. Additionally, Amex offers some emergency services to the business travellers.",
+            "There is nothing like an American Express card. It is a necessity for the image of your business. This is especially true if you are traveling. I have this card through my brothers business. The customer service is top notch. However, be prepared for a high yearly fee and paying in full each month. We had fraudulent activity on my card a few years ago. Removing it was as easy as calling in to customer service. It was removed and we never had to do anything else. I was with Discover and after having $5,000 in fraudulent gasoline charges and months of dealing with having it removed. This issue was not a problem. Amex is always recommended by me.",
+            "The $95 annual fee feels hard to justify given the limited rewards and lack of significant perks. You'd need to spend a lot to make the rewards outweigh the cost.",
+            "The 2.7% foreign transaction fee is a significant drawback for any business that conducts transactions or travels internationally.",
+            "While the 'Pay Over Time' option offers some flexibility, the card primarily functions as a charge card requiring the balance to be paid in full each month, which might not suit all business needs."
+        ]
     },
     {
         "name": "Business Platinum Card from American Express",
@@ -2805,7 +3043,14 @@
         "cons_value": "High annual fees; A complicated rewards system.",
         "bonus_offer_value": " Earn 50,000 Membership Rewards points after you spend $10,000 and an extra 25,000 points after you spend an additional $10,000 all on qualifying purchases within your first 3 months of Card Membership. Terms Apply. ~50k points after spending $10k. 25k more points after spending another $10k.~",
         "redeem_value": "The Business Platinum Card from American Express information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+        "user_reviews": [
+            "The lounge access through the Global Lounge Collection is a game-changer for frequent business travelers. Having access to Centurion Lounges and Priority Pass makes airport waits much more comfortable and productive.",
+            "The potential to earn a massive 150,000 Membership Rewards points with the welcome offer is very attractive, but the $20,000 spending requirement in the first 3 months is quite high and might not be achievable for all small businesses.",
+            "The various statement credits, like the airline fee credit, Dell credit, and CLEAR Plus credit, can add significant value if you can utilize them effectively. However, remembering to enroll and use them requires effort.",
+            "The $695 annual fee is a major hurdle. You really need to take advantage of the travel perks and statement credits to justify this cost, as the ongoing rewards rate on most spending is just 1x.",
+            "While the 5x points on flights and prepaid hotels booked through Amex Travel is a good bonus, the 1x on most other purchases feels low for such a premium business card. Businesses with diverse spending might find better rewards elsewhere."
+        ]
     },
     {
         "name": "Capital One Quicksilver Cash Rewards Credit Card",
@@ -2883,7 +3128,13 @@
         "cons_value": "Balance transfer fees.",
         "bonus_offer_value": "One-time $100 cash bonus after you spend $500 on purchases within 3 months from account opening. ~$100 cash after spending $500.~",
         "redeem_value": "The Capital One Quicksilver Cash Rewards Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~"
+        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~",
+        "user_reviews": [
+            "It’s a solid card at unlimited 1.5% cash back. Capital one has a pre approval tool I strongly recommend you use before applying. And be sure you don’t select the annual fee version. That’ll eat the first $2600 in spending each year.",
+            "I have it, I like it, solid card with easy cashback (which you get as soon as the tranaction posts, you don't have to wait until the statement goes out or pay), no annual fee, no foreign transaction fee. As long as you pay it off every month, easy card with no fees. And, approval is pretty easy (I got mine when my file was thin, it was my second CC).There are 2% cashback cards, but I am not aware of one that does not have an annual fee or a foreign transaction fee (which a 3% transaction fee eats up that 2% instantly....) Making them useless during travel. I would much rather have 1.5% and no annual fee and no foriegn transaction fee if I had to choose just one. If you don't travel a lot, then you may be willing to put up with such fees.... but I still advise against any fees.",
+            "The quicksilver is as good as you can find for a catch-all rewards card with no annual fee and no foreign transaction fees. Even using domestically, the difference between the 1.5% of the QS and the 2% of other catch-all cards is pretty inconsequential for how much most people spend. Lets say you spend 10k on it in a year - the difference in rewards is $50 over the whole year vs a 2% card. But you can use it everywhere.If you don't travel abroad, I think that the 2% cards like citi doublecash, paypal mastercard, WF active cash, etc. are a better move. But if you do travel internationally, the QS is a great card.",
+            "I've had a Capital One Quicksilver card for years. The cash back is better than my Navy Federal GO Rewards card. With Capital One, you can cash out 30 cents if you want. With Navy Federal you have to have 5000 points ($50) to get cash back. No annual fee on either card, but I have a lower interest rate on Navy Federal. I tend to use Capital One as my every day card but pay it off whenever I can."
+        ]
     },
     {
         "name": "Capital One QuicksilverOne Cash Rewards Credit Card",
@@ -2961,7 +3212,15 @@
         "cons_value": "Has annual fee; High A P R.",
         "bonus_offer_value": " Earn unlimited 1.5% cash back on every purchase, every day. ~1.5% cash back on every purchase.~",
         "redeem_value": "The Capital One QuicksilverOne Cash Rewards Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~"
+        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~",
+        "user_reviews": [
+            "This card has an annual fee, which is the main reason I'm rating it good and not great. I understand it's a card for people with less-than-perfect credit, and it's designed to help people build their credit, but the annual fee is a drawback for me. (Note: the fee is really reasonable compared to some of the other cards out there.) The other reason for a lower score is the excessive verification Capital One puts you through. I've had to verify my bank account several times because I make smaller, more frequent payments. It's a huge hassle to verify your banking account and get your card turned back on. It almost seems like you're being punished for making payments. Plus, with lower credit limits, smaller, more frequent payments should be expected. I understand the need to verify but once (or maybe twice) should be enough. Beyond these couple of issues, the card is good overall. It offers rewards and if you're using it for purchases you'd be making anyway, the rewards can really add up. I would recommend this card for people looking to build their credit profile and/or repair past damage.",
+            "Earning a flat 1.5% cash back on all purchases is straightforward and easy to understand, which is great for someone like me who doesn't want to track bonus categories.",
+            "It's good that they consider applicants with fair credit or those new to credit, making it an accessible option for building or rebuilding a credit history.",
+            "The fact that there are no foreign transaction fees is a nice perk if you occasionally make purchases in foreign currencies online or while traveling.",
+            "The $39 annual fee is a bit of a drawback, especially since there's no welcome bonus to offset it. You need to spend enough to earn more in cash back than the fee costs.",
+            "The 29.74% variable APR is very high, so it's crucial to pay your balance in full each month to avoid significant interest charges. This card isn't ideal for carrying a balance."
+        ]
     },
     {
         "name": "Capital One Secured MasterCard",
@@ -3039,7 +3298,14 @@
         "cons_value": "No rewards; High A P R.",
         "bonus_offer_value": "None.",
         "redeem_value": "The Capital One Secured MasterCard information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "None."
+        "rewards_rate_value": "None.",
+        "user_reviews": [
+            "It's a great option for those of us with poor credit or no credit history who need a way to start building or rebuilding our credit.",
+            "The fact that there's no annual fee is a huge benefit when you're trying to manage your finances and improve your credit score.",
+            "The security deposit requirement, starting as low as $49 for a $200 credit line, makes it more accessible than some other secured cards.",
+            "The possibility of getting your security deposit back as a statement credit for responsible use is a really motivating factor.",
+            "The 29.74% variable APR is very high, which means it's essential to pay your balance in full each month to avoid expensive interest charges. This card is really meant for building credit, not for carrying a balance."
+        ]
     },
     {
         "name": "Capital One Spark Cash for Business",
@@ -3117,7 +3383,16 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": "A one-time $500 cash bonus once you spend $4,500 on purchases within 3 months from account opening. ~$500 after spending $4.5k.~",
         "redeem_value": "The Capital One Spark Card for Business information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 2.00%. ~2.00%~"
+        "rewards_rate_value": "A rewards rate value of 2.00%. ~2.00%~",
+        "user_reviews": [
+            "I signed up for Spark Business 1.5% mainly because I wanted to use it for no-fee international transactions. At the time, they were running a promo for $750 cash bonus if I spend $6k within 3 months. They only gave me $500. When I called about it, they said, they can change that cash bonus amount in your TOS but they'll be quiet about it.",
+            "Similarly, I wouldn't recommend the Capital One Spark Card which offers a 'no pre-set spending limit' which I'm finding is code for you actually have no idea how much you can spend at a given time. They offer a tool where you can enter how much you're planning to spend, it will tell you if you can spend that much or not. In the meantime, I'm dealing with business transactions that are being declined because we've passed the 4k spending limit... our previous card with them have a 50k limit. The card is a pretty terrible experience so far. I'm being told my spending limit should go up with time, but having purchases constantly not go through is quite frustrating and time consuming for our team. I'm going to give it another month to see if things improve, but as of right now, if I would start over, I would not get this card with their strong sign up bonuses.",
+            "Earning a flat 2% cash back on all purchases, with no categories to track, is incredibly simple and valuable for my business expenses.",
+            "The $750 cash bonus after meeting the spending requirement is one of the most generous welcome offers I've seen for a business cash back card.",
+            "I appreciate that employee cards are free and also earn the same 2% cash back, making it easy to manage rewards across my team.",
+            "The $95 annual fee starting in the second year is something to consider, but the high cash back rate and welcome bonus should easily offset it for businesses with decent spending.",
+            "Requiring excellent credit for approval means it might not be an option for all business owners, but if you qualify, it's a strong cash back rewards card."
+        ]
     },
     {
         "name": "Capital One Spark Cash Select for Business",
@@ -3195,7 +3470,14 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": "A one-time $200 cash bonus once you spend $3,000 on purchases within 3 months from account opening. ~$200 cash after spending $3k.~",
         "redeem_value": "The Capital One Spark Cash Select for Business information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~"
+        "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~",
+        "user_reviews": [
+            "I love the simplicity of earning a flat 1.5% cash back on every purchase without having to worry about bonus categories or spending limits.",
+            "The $500 welcome bonus after meeting the spending requirement is a great way to get started with this no-annual-fee business card.",
+            "For businesses that deal with international vendors or travel abroad occasionally, the lack of foreign transaction fees is a significant cost-saving benefit.",
+            "The fact that there's no annual fee makes this a very cost-effective way to earn cash back on all business expenses.",
+            "The requirement for excellent credit might make it inaccessible to some small business owners, but if you qualify, it's a fantastic, straightforward cash back option."
+        ]
     },
     {
         "name": "Capital One Spark Classic for Business",
@@ -3273,7 +3555,14 @@
         "cons_value": "High A P R; 1% cash back rate; $39 late payment fee.",
         "bonus_offer_value": "None.",
         "redeem_value": " You can get your cash back upon request in the form of a statement credit or a check. You can also set up an automatic redemption preference; options include: (1) at a set time each calendar year or (2) when a specific threshold ($25, $50, $100 or $200) has been reached.",
-        "rewards_rate_value": "A rewards rate value of 1.00%. Earn unlimited 1% cash back on every purchase for your business, with no minimum to redeem. ~1% on all purchases.~"
+        "rewards_rate_value": "A rewards rate value of 1.00%. Earn unlimited 1% cash back on every purchase for your business, with no minimum to redeem. ~1% on all purchases.~",
+        "user_reviews": [
+            "It's a solid option for new business owners or those with limited credit history who might not qualify for more premium business cards.",
+            "The fact that there's no annual fee is a significant advantage, especially when you're just starting out and trying to keep costs low.",
+            "Earning a flat 1% cash back on all purchases is simple and straightforward, even if it's not the highest rewards rate available.",
+            "The absence of foreign transaction fees is a nice perk for businesses that occasionally make purchases from international suppliers or travel abroad.",
+            "The 29.74% variable APR is quite high, so it's really important to pay your balance in full each month to avoid accruing expensive interest charges. This card is best used for its accessibility and basic rewards, not for carrying a balance."
+        ]
     },
     {
         "name": "Capital One Spark Miles for Business",
@@ -3351,7 +3640,14 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": "A one-time bonus of 50,000 miles once you spend $4,500 on purchases within 3 months from account opening. ~50k miles after spending $4.5k.~",
         "redeem_value": "The Capital One Spark Miles for Business information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 2 miles. ~2 miles.~"
+        "rewards_rate_value": "A rewards rate value of 2 miles. ~2 miles.~",
+        "user_reviews": [
+            "Earning a flat 2x miles on all purchases is fantastic for travel rewards, making it easy to accumulate miles without worrying about bonus categories.",
+            "The 50,000-mile welcome bonus (worth $500 in travel) is a great incentive for new cardholders who can meet the $4,500 spending requirement.",
+            "The ability to transfer miles to over 15 travel loyalty programs adds significant flexibility and potential for maximizing the value of your rewards.",
+            "The $95 annual fee starting in the second year is something to factor in, but the ongoing rewards and welcome bonus can easily outweigh it for frequent travelers or those with significant business spending.",
+            "The fact that there are no foreign transaction fees is a major plus for businesses that travel internationally or make purchases from foreign vendors."
+        ]
     },
     {
         "name": "Capital One Venture Rewards Credit Card",
@@ -3429,7 +3725,17 @@
         "cons_value": "Has annual fee.",
         "bonus_offer_value": " Enjoy a one-time bonus of 40,000 miles once you spend $3,000 on purchases within 3 months from account opening, equal to $400 in travel. ~40k miles worth $400 in travel.~",
         "redeem_value": "The Capital One Venture Rewards Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-        "rewards_rate_value": "A rewards rate value of 2 miles. ~2 miles.~"
+        "rewards_rate_value": "A rewards rate value of 2 miles. ~2 miles.~",
+        "user_reviews": [
+            "This was one of my first travel cards, and it's one I often mention to friends who are dipping their toes into the confusing ocean of travel rewards for the first time. There are no spending categories to memorize, redeeming miles is easy, and the annual fee isn't going to make your eyes water. Plus, the sign-up bonus is often generous, and you get a credit toward TSA PreCheck or Global Entry.",
+            "This is the card I recommend to friends who aren’t loyal to one airline or hotel brand and who are new to travel rewards optimizing. It was my first travel credit card for these reasons. It has a simple and uncomplicated rewards structure and straightforward redemption options. Plus, it’s annual fee is manageable if you don’t have the budget to pay for a pricier card.",
+            "This card's sign-up bonus funded a family vacation to Washington, D.C., last year, and we enjoyed its simple, straightforward rewards. The card has transfer partners, but because those partners are largely international airlines, you'll need to do some homework if you want to squeeze outsize value from your rewards. I don't have the patience for that, and the fee wasn't worth paying after Year One, since any number of cards offer 2% rewards for free. But it's a great starter travel card.",
+            "I love the simplicity of this card. Earning 2 miles per dollar on everything makes it easy to rack up rewards quickly, and I don't have to think about bonus categories.",
+            "The sign-up bonus is excellent and definitely helps offset the annual fee in the first few years. It's a great way to start accumulating a lot of miles for a trip.",
+            "Redeeming miles for statement credit against any travel purchase is incredibly flexible. I appreciate not being tied to specific airlines or hotels.",
+            "While the 2x miles is good, if you're really into maximizing value through transfer partners, the lack of domestic airline partners might be a bit limiting.",
+            "The $95 annual fee is reasonable for the rewards and perks you get, but if you're not a frequent traveler, a no-annual-fee cash back card might be a better option."
+        ]
     },
     {
         "name": "Capital One VentureOne Rewards Credit Card",
