@@ -26,7 +26,8 @@ card_names = []
 reviews = []
 categories = []
 annual_fees = []
-foreign_transaction_fees = []  # Changed from bonus_offer_values
+foreign_transaction_fees = []
+min_credit_scores = []
 
 for entry in data:
     card_names.append(entry["name"])
@@ -34,21 +35,90 @@ for entry in data:
     categories.append(entry.get("category", "N/A"))
     annual_fees.append(entry.get("annual_fee_value", "N/A"))
     foreign_transaction_fees.append(entry.get("foreign_transaction_fee_value", "N/A"))
+    min_credit_scores.append(entry.get("credit_score_low", "N/A"))
+
 
 # Vectorize text for cosine similarity
 vectorizer = TfidfVectorizer(stop_words="english")
 tfidf_matrix = vectorizer.fit_transform(reviews)
 
-def get_recommendations(user_input, offset=0, limit=3):
+def filter_by_credit_score(recommendations, credit_score):
+    """
+    Filter recommendations based on user's credit score.
+    Include cards where the user's minimum credit score meets or exceeds the card's requirement.
+    """
+    if not credit_score or credit_score == "all":
+        return recommendations
+    
+    # Define minimum credit score values based on dropdown options
+    credit_score_minimums = {
+        "excellent": 750,  # Excellent (750+)
+        "good": 700,       # Good (700-749)
+        "fair": 650,       # Fair (650-699)
+        "poor": 300        # Poor (Below 650)
+    }
+    
+    # Get the user's minimum credit score
+    user_min_score = credit_score_minimums.get(credit_score, 0)
+    
+    filtered_recommendations = []
+    
+    for rec in recommendations:
+        # Find the card in the original data
+        card_title = rec["title"]
+        card_index = -1
+        for i, name in enumerate(card_names):
+            if name == card_title:
+                card_index = i
+                break
+        
+        if card_index == -1:
+            # If card not found, include it
+            filtered_recommendations.append(rec)
+            continue
+        
+        # Get card's minimum required score
+        card_min_score = min_credit_scores[card_index]
+        
+        # Process the card's minimum score
+        try:
+            if card_min_score == "N/A" or card_min_score is None:
+                # No specific requirement, include it
+                filtered_recommendations.append(rec)
+                continue
+            
+            # Convert to integer if it's a string
+            if isinstance(card_min_score, str):
+                if card_min_score.isdigit():
+                    card_min_score = int(card_min_score)
+                else:
+                    # Not a valid number, include the card
+                    filtered_recommendations.append(rec)
+                    continue
+            
+            # Include the card if the user's credit score is sufficient
+            if user_min_score >= card_min_score:
+                filtered_recommendations.append(rec)
+                
+        except Exception as e:
+            print(f"Error processing card {card_title}: {e}")
+            # In case of errors, include the card
+            filtered_recommendations.append(rec)
+    
+    return filtered_recommendations
+
+def get_recommendations(user_input, filters=None, offset=0, limit=3):
     """Compute cosine similarity between user input and stored credit card reviews."""
+    if filters is None:
+        filters = {}
+        
     user_vec = vectorizer.transform([user_input])
     cosine_similarities = cosine_similarity(user_vec, tfidf_matrix).flatten()
     sorted_indices = np.argsort(-cosine_similarities)  # Sort descending
     
-    current_indices = sorted_indices[offset:offset+limit]
-    
-    top_matches = []
-    for i in current_indices:
+    # First get all potential recommendations
+    all_matches = []
+    for i in sorted_indices:
         # Scale cosine similarity to a percentage (0-100)
         similarity_score = float(cosine_similarities[i])
         
@@ -57,7 +127,7 @@ def get_recommendations(user_input, offset=0, limit=3):
         match_percentage = int(min(raw_percentage, 99))
         
         # Include both the raw data and the calculated match percentage
-        top_matches.append({
+        all_matches.append({
             "title": card_names[i],
             "category": categories[i],
             "annual_fee": annual_fees[i],
@@ -65,7 +135,18 @@ def get_recommendations(user_input, offset=0, limit=3):
             "similarity_score": similarity_score,
             "match_percentage": match_percentage
         })
-    return top_matches
+    
+    # Apply filters
+    credit_score = filters.get('creditScore')
+    if credit_score:
+        filtered_matches = filter_by_credit_score(all_matches, credit_score)
+    else:
+        filtered_matches = all_matches
+    
+    # Apply pagination
+    paginated_matches = filtered_matches[offset:offset+limit]
+    
+    return paginated_matches, len(filtered_matches)
 
 @app.route("/")
 def home():
@@ -79,6 +160,18 @@ def old_ui():
 def new_ui():
     return render_template('base2.html', title="Card Match - Credit Card Recommender")
 
+@app.route("/filter-cards", methods=["POST"])
+def filter_cards():
+    """Handle the form submission for filtering cards."""
+    credit_score = request.form.get('credit-score')
+    
+    # Log it to verify
+    print(f"Credit Score selected: {credit_score}")
+    
+    # For simplicity, we'll redirect to the main page after processing
+    # In a real app, you might want to pass this value to a template or return JSON
+    return render_template('base2.html', title="Card Match - Credit Card Recommender")
+
 @app.route("/recommend", methods=["POST", "GET"])
 def recommend():
     """API endpoint to return credit card recommendations."""
@@ -86,29 +179,32 @@ def recommend():
     if request.method == "POST":
         data = request.json
         user_query = data.get("query", "")
+        filters = data.get("filters", {})
         offset = data.get("offset", 0)
         limit = data.get("limit", 3)
     else:
         user_query = request.args.get("title", "")
+        filters = {}
         offset = int(request.args.get("offset", 0))
         limit = int(request.args.get("limit", 3))
     
     if not user_query:
         return jsonify({"error": "No query provided"}), 400
     
-    user_vec = vectorizer.transform([user_query])
-    cosine_similarities = cosine_similarity(user_vec, tfidf_matrix).flatten()
-    total_potential_matches = min(len(cosine_similarities), 20)
-    
-    recommendations = get_recommendations(user_input=user_query, offset=offset, limit=limit)
+    recommendations, total_matches = get_recommendations(
+        user_input=user_query, 
+        filters=filters,
+        offset=offset, 
+        limit=limit
+    )
     
     return jsonify({
         "recommendations": recommendations,
         "pagination": {
             "offset": offset,
             "limit": limit,
-            "total": total_potential_matches,
-            "has_more": (offset + limit) < total_potential_matches
+            "total": total_matches,
+            "has_more": (offset + limit) < total_matches
         }
     })
 

@@ -28,14 +28,16 @@
         </header>
 
         <main class="main-content">
-            <div class="filters-column">
+            <!-- Changed to a form with method and action -->
+            <form method="POST" action="/filter-cards" class="filters-column">
                 <h2>Find Your Match</h2>
                 
                 <div class="filter-item">
                     <label for="credit-score">Credit Score Range</label>
-                    <select id="credit-score" class="filter-select">
-                        <option value="good">Good (700-749)</option>
+                    <!-- Added name attribute to the select element -->
+                    <select id="credit-score" name="credit-score" class="filter-select">
                         <option value="excellent">Excellent (750+)</option>
+                        <option value="good">Good (700-749)</option>
                         <option value="fair">Fair (650-699)</option>
                         <option value="poor">Poor (Below 650)</option>
                     </select>
@@ -86,8 +88,9 @@
                     <textarea id="description" rows="4" placeholder="I want a credit card for travel and dining"></textarea>
                 </div>
 
-                <button id="find-cards-btn" class="primary-btn">Find My Cards</button>
-            </div>
+                <!-- Changed to type="submit" -->
+                <button type="submit" id="find-cards-btn" class="primary-btn">Find My Cards</button>
+            </form>
 
             <div class="results-column" id="results-container">
                 <div class="loading-placeholder" style="display: none;">
@@ -192,74 +195,33 @@
         const resultsPerPage = 3;
         const maxResults = 20;
         
-        // Function to generate synthetic card recommendations based on real ones
-        function generateSyntheticRecommendations(realCards) {
-            const syntheticCards = [];
+        // Function to show reviews modal with specific card data
+        function showReviews(cardTitle, reviews) {
+            document.getElementById('reviews-card-title').textContent = `Top Reviews for ${cardTitle}`;
             
-            const issuers = [
-                'Chase', 'American Express', 'Capital One', 'Citi', 'Discover', 
-                'Bank of America', 'Wells Fargo', 'U.S. Bank', 'Barclays'
-            ];
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = '';
             
-            const cardTypes = [
-                'Rewards', 'Cash Back', 'Travel', 'Platinum', 'Gold', 'Preferred', 
-                'Premier', 'Signature', 'Freedom', 'Sapphire', 'Reserve'
-            ];
+            reviews.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-item';
+                reviewElement.innerHTML = `
+                    <p>"${review.text}"</p>
+                    <p class="review-author">- ${review.author}</p>
+                `;
+                reviewsContainer.appendChild(reviewElement);
+            });
             
-            for (let i = 0; i < realCards.length; i++) {
-                const baseCard = realCards[i];
-                
-                for (let j = 0; j < 5; j++) {
-                    const syntheticCard = JSON.parse(JSON.stringify(baseCard));
-                    
-                    let newIssuer;
-                    if (j === 0) {
-                        newIssuer = baseCard.title.split(' ')[0];
-                    } else {
-                        const issuerOptions = issuers.filter(iss => !baseCard.title.includes(iss));
-                        newIssuer = issuerOptions[Math.floor(Math.random() * issuerOptions.length)];
-                    }
-                    
-                    const newType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
-                    
-                    syntheticCard.title = `${newIssuer} ${newType} Card`;
-                    
-                    if (baseCard.annual_fee && baseCard.annual_fee.includes('$')) {
-                        const feeStr = baseCard.annual_fee.replace(/[^0-9.-]+/g, '');
-                        const fee = parseInt(feeStr, 10);
-                        if (!isNaN(fee)) {
-                            const adjustment = Math.floor(Math.random() * 46) - 15;
-                            const newFee = Math.max(0, fee + adjustment);
-                            syntheticCard.annual_fee = `$${newFee}`;
-                        }
-                    }
-                    
-                    if (syntheticCard.title.includes('Chase')) {
-                        syntheticCard.offer_link = 'https://creditcards.chase.com/';
-                    } else if (syntheticCard.title.includes('American Express')) {
-                        syntheticCard.offer_link = 'https://www.americanexpress.com/';
-                    } else if (syntheticCard.title.includes('Capital One')) {
-                        syntheticCard.offer_link = 'https://www.capitalone.com/credit-cards/';
-                    } else if (syntheticCard.title.includes('Citi')) {
-                        syntheticCard.offer_link = 'https://www.citi.com/credit-cards/';
-                    } else if (syntheticCard.title.includes('Discover')) {
-                        syntheticCard.offer_link = 'https://www.discover.com/credit-cards/';
-                    } else {
-                        syntheticCard.offer_link = 'https://www.nerdwallet.com/credit-cards';
-                    }
-                    
-                    syntheticCards.push(syntheticCard);
-                }
-            }
-            
-            for (let i = syntheticCards.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [syntheticCards[i], syntheticCards[j]] = [syntheticCards[j], syntheticCards[i]];
-            }
-            
-            return syntheticCards;
+            document.getElementById('global-reviews-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
         
+        function hideReviews() {
+            document.getElementById('global-reviews-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Function to render a card result
         function renderCardResult(card, matchPercentage) {
             const cardTitle = card.title || 'Credit Card';
             const annualFee = card.annual_fee || 'N/A';
@@ -357,32 +319,6 @@
             `;
         }
         
-        // Function to show reviews modal with specific card data
-        function showReviews(cardTitle, reviews) {
-            document.getElementById('reviews-card-title').textContent = `Top Reviews for ${cardTitle}`;
-            
-            const reviewsContainer = document.getElementById('reviews-container');
-            reviewsContainer.innerHTML = '';
-            
-            reviews.forEach(review => {
-                const reviewElement = document.createElement('div');
-                reviewElement.className = 'review-item';
-                reviewElement.innerHTML = `
-                    <p>"${review.text}"</p>
-                    <p class="review-author">- ${review.author}</p>
-                `;
-                reviewsContainer.appendChild(reviewElement);
-            });
-            
-            document.getElementById('global-reviews-modal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function hideReviews() {
-            document.getElementById('global-reviews-modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
         // Function to load more results
         function loadMoreResults() {
             const loadMoreBtn = document.getElementById('load-more-btn');
@@ -429,12 +365,6 @@
                             }
                         }
                         
-                        // Debug individual card's match percentage
-                        console.log(`Card ${currentOffset + index} (${card.title}):`, {
-                            has_match_percentage: 'match_percentage' in card,
-                            match_percentage: card.match_percentage
-                        });
-                        
                         const matchPercentage = card.match_percentage;
                         
                         const cardElement = document.createElement('div');
@@ -477,6 +407,7 @@
             });
         }
         
+        // Function to get card recommendations - this was missing!
         function getCardRecommendations() {
             const filterValues = collectFilterValues();
             currentQuery = filterValues.description;
@@ -503,6 +434,7 @@
             }
             
             console.log("Making request with query:", currentQuery);
+            console.log("Filters:", currentFilters);
             
             fetch("/recommend", {
                 method: "POST",
@@ -592,7 +524,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             typeWriterAnimation();
             
-            document.getElementById('find-cards-btn').addEventListener('click', getCardRecommendations);
+            // Prevent the default form submission and use our custom logic
+            document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                
+                // Log the selected credit score
+                const creditScore = document.getElementById('credit-score').value;
+                console.log("Selected Credit Score:", creditScore);
+                
+                // Use our existing AJAX flow
+                getCardRecommendations();
+            });
             
             document.getElementById('description').addEventListener('keyup', function(event) {
                 if (event.key === 'Enter') {
