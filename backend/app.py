@@ -102,13 +102,100 @@ def filter_by_credit_score(recommendations, credit_score):
                 
         except Exception as e:
             print(f"Error processing card {card_title}: {e}")
+            filtered_recommendations.append(rec)
+    
+    return filtered_recommendations
+
+def filter_by_annual_fee(recommendations, annual_fee_preference):
+    """
+    Filter recommendations based on user's annual fee preference.
+    """
+    if not annual_fee_preference:
+        return recommendations
+    
+    # Define annual fee thresholds based on dropdown options
+    annual_fee_thresholds = {
+        "no": 0,            # No annual fee
+        "up-to-100": 100,   # Up to $100
+        "up-to-250": 250,   # Up to $250
+        "up-to-500": 500    # Up to $500
+    }
+    
+    # Get the maximum annual fee the user is willing to pay
+    max_fee = annual_fee_thresholds.get(annual_fee_preference, float('inf'))
+    
+    filtered_recommendations = []
+    
+    for rec in recommendations:
+        # Find the card in the original data
+        card_title = rec["title"]
+        card_index = -1
+        for i, name in enumerate(card_names):
+            if name == card_title:
+                card_index = i
+                break
+        
+        if card_index == -1:
+            # If card not found, include it
+            filtered_recommendations.append(rec)
+            continue
+        
+        # Get card's annual fee
+        annual_fee = annual_fees[card_index]
+        
+        # Process the annual fee
+        try:
+            if annual_fee == "N/A" or annual_fee is None:
+                # If annual fee is not specified, include the card
+                filtered_recommendations.append(rec)
+                continue
+            
+            # Extract numeric value from fee string
+            if isinstance(annual_fee, str):
+                # Remove $ and any other non-numeric characters
+                fee_value = annual_fee.replace('$', '').strip()
+                if fee_value == "0" or fee_value.lower() == "none":
+                    fee_value = 0
+                else:
+                    # Try to extract numeric value
+                    import re
+                    numeric_match = re.search(r'\d+', fee_value)
+                    if numeric_match:
+                        fee_value = int(numeric_match.group())
+                    else:
+                        # Couldn't extract a fee, assume it's free
+                        fee_value = 0
+            else:
+                fee_value = annual_fee
+            
+            # Convert to a number if it's still a string
+            if isinstance(fee_value, str) and fee_value.isdigit():
+                fee_value = int(fee_value)
+            elif not isinstance(fee_value, (int, float)):
+                # If not a valid number, include the card
+                filtered_recommendations.append(rec)
+                continue
+            
+            # Check if card's annual fee is within user's threshold
+            if annual_fee_preference == "no" and fee_value == 0:
+                # For "no annual fee" preference, only include cards with $0 fee
+                filtered_recommendations.append(rec)
+            elif annual_fee_preference != "no" and fee_value <= max_fee:
+                # For other preferences, include cards up to the max fee
+                filtered_recommendations.append(rec)
+                
+        except Exception as e:
+            print(f"Error processing annual fee for card {card_title}: {e}")
             # In case of errors, include the card
             filtered_recommendations.append(rec)
     
     return filtered_recommendations
 
 def get_recommendations(user_input, filters=None, offset=0, limit=3):
-    """Compute cosine similarity between user input and stored credit card reviews."""
+    """
+    Compute cosine similarity between user input and stored credit card reviews,
+    then apply filters based on user preferences.
+    """
     if filters is None:
         filters = {}
         
@@ -136,17 +223,23 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
             "match_percentage": match_percentage
         })
     
-    # Apply filters
+    filtered_matches = all_matches
+    
+    # Apply credit score filter if specified
     credit_score = filters.get('creditScore')
     if credit_score:
-        filtered_matches = filter_by_credit_score(all_matches, credit_score)
-    else:
-        filtered_matches = all_matches
+        filtered_matches = filter_by_credit_score(filtered_matches, credit_score)
+    
+    # Apply annual fee filter if specified
+    annual_fee = filters.get('annualFee')
+    if annual_fee:
+        filtered_matches = filter_by_annual_fee(filtered_matches, annual_fee)
     
     # Apply pagination
+    total_matches = len(filtered_matches)
     paginated_matches = filtered_matches[offset:offset+limit]
     
-    return paginated_matches, len(filtered_matches)
+    return paginated_matches, total_matches
 
 @app.route("/")
 def home():

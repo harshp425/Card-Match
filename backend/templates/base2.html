@@ -520,6 +520,13 @@
                 resultsContainer.innerHTML = '<p class="error-message">An error occurred while fetching recommendations. Please try again.</p>';
             });
         }
+
+        function scrollToTop() {
+            window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+            });
+        }
         
         document.addEventListener('DOMContentLoaded', function() {
             typeWriterAnimation();
@@ -534,6 +541,8 @@
                 
                 // Use our existing AJAX flow
                 getCardRecommendations();
+
+                scrollToTop();
             });
             
             document.getElementById('description').addEventListener('keyup', function(event) {
