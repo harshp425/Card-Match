@@ -28,19 +28,33 @@ categories = []
 annual_fees = []
 foreign_transaction_fees = []
 min_credit_scores = []
+issuer = []
+user_reviews = []
+
 
 for entry in data:
     card_names.append(entry["name"])
     reviews.append(entry.get("our_take_value", ""))
-    categories.append(entry.get("category", "N/A"))
+    categories.append(entry.get("category", ""))
     annual_fees.append(entry.get("annual_fee_value", "N/A"))
     foreign_transaction_fees.append(entry.get("foreign_transaction_fee_value", "N/A"))
     min_credit_scores.append(entry.get("credit_score_low", "N/A"))
+    issuer.append(entry.get("issuer", ""))
+    user_reviews.append("     ".join(entry.get("user_reviews", [])))
 
+# Add the name of the issuer to the reviews to create an informed_description of the card against which we will
+# perform cosine similarity 
+
+informed_description = []
+for i in range(len(reviews)):
+    informed_description.append(reviews[i] + " issuer: " + issuer[i] + " category: " + categories[i])
 
 # Vectorize text for cosine similarity
 vectorizer = TfidfVectorizer(stop_words="english")
-tfidf_matrix = vectorizer.fit_transform(reviews)
+tfidf_matrix = vectorizer.fit_transform(informed_description)
+
+user_review_vectorizer = TfidfVectorizer(stop_words="english")
+user_review_matrix = user_review_vectorizer.fit_transform(user_reviews)
 
 def filter_by_credit_score(recommendations, credit_score):
     """
@@ -199,21 +213,54 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
     if filters is None:
         filters = {}
         
-    user_vec = vectorizer.transform([user_input])
-    cosine_similarities = cosine_similarity(user_vec, tfidf_matrix).flatten()
-    sorted_indices = np.argsort(-cosine_similarities)  # Sort descending
+    # user_vec = vectorizer.transform([user_input])
+    # cosine_similarities = cosine_similarity(user_vec, tfidf_matrix).flatten()
+    # sorted_indices = np.argsort(-cosine_similarities)  # Sort descending
+
+    # Transform user input for both vectorizers
+    desc_vec = vectorizer.transform([user_input])
+    review_vec = user_review_vectorizer.transform([user_input])
+
+    # Compute cosine similarities separately
+    desc_sim = cosine_similarity(desc_vec, tfidf_matrix).flatten()
+    review_sim = cosine_similarity(review_vec, user_review_matrix).flatten()
+
+    # Define weights
+    w1 = 0.7  # weight for description match
+    w2 = 0.3  # weight for review match
+
+    # Compute final weighted similarity
+    final_sim = w1 * desc_sim + w2 * review_sim
+
+    # Sort by final score
+    sorted_indices = np.argsort(-final_sim)
+
     
-    # First get all potential recommendations
+    # # First get all potential recommendations
+    # all_matches = []
+    # for i in sorted_indices:
+    #     # Scale cosine similarity to a percentage (0-100)
+    #     similarity_score = float(cosine_similarities[i])
+        
+    #     # Convert to percentage without floor
+    #     raw_percentage = similarity_score * 100
+    #     match_percentage = int(min(raw_percentage, 99))
+        
+    #     # Include both the raw data and the calculated match percentage
+    #     all_matches.append({
+    #         "title": card_names[i],
+    #         "category": categories[i],
+    #         "annual_fee": annual_fees[i],
+    #         "foreign_transaction_fee_value": foreign_transaction_fees[i],
+    #         "similarity_score": similarity_score,
+    #         "match_percentage": match_percentage
+    #     })
     all_matches = []
     for i in sorted_indices:
-        # Scale cosine similarity to a percentage (0-100)
-        similarity_score = float(cosine_similarities[i])
-        
-        # Convert to percentage without floor
+        similarity_score = float(final_sim[i])
         raw_percentage = similarity_score * 100
         match_percentage = int(min(raw_percentage, 99))
-        
-        # Include both the raw data and the calculated match percentage
+
         all_matches.append({
             "title": card_names[i],
             "category": categories[i],
@@ -222,7 +269,7 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
             "similarity_score": similarity_score,
             "match_percentage": match_percentage
         })
-    
+        
     filtered_matches = all_matches
     
     # Apply credit score filter if specified
