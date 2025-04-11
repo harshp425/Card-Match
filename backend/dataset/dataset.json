@@ -4911,7 +4911,15 @@
     "cons_value": "Has annual fee; Needs excellent credit.",
     "bonus_offer_value": " Earn 40,000 bonus points after spending $4,000 in purchases within the first 3 months of account opening. ~40k points after spending $4k.~",
     "redeem_value": "The Citi Prestige information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1 point per Dollar. ~1 point per dollar.~"
+    "rewards_rate_value": "A rewards rate value of 1 point per Dollar. ~1 point per dollar.~",
+    "user_reviews": [
+    "The Citi Prestige remains a solid $120K card, though its lagging earn rates and nerfs to Citi PayAll have reduced its attractiveness somewhat.",
+    "The card can be worth the cost for those who use most of the Citi Prestige's benefits. When used strategically, the fourth-night-free benefit can still provide hundreds of dollars in value.",
+    "The Citi Prestige Card doesn't boast the best earning rates these days, but there's a nice 50,000 miles sign-up bonus on offer for a reasonable spend of $2,000 in the first two months, plus an annual recurring bonus of 25,000 miles after that.",
+    "Horrified that you are actually saying anything positive about this card. Went from being the best non-amex to the worst card available. They have killed off all the benefits and earning and kept the $750 annual fee. Avoid this card at all costs.",
+    "The Citi Prestige used to be my go-to card for all travel bookings, thanks to its 5X earn rate. When Citi removed travel protections in 2019, I had to stop charging my travel purchases to the card."
+]
+
   },
   {
     "name": "Citi Secured Mastercard",
@@ -4989,10 +4997,18 @@
     "cons_value": "No rewards; High A P R.",
     "bonus_offer_value": "None.",
     "redeem_value": "The Citi Secured Mastercard information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "None."
+    "rewards_rate_value": "None.",
+    "user_reviews": [
+    "I applied with a credit score of 451 and was approved. After a month of responsible use, my score jumped to 532. Five months in, it's now 600. This card has truly helped me rebuild my credit.",
+    "I've had this card for over 7 years, never missed a payment, and it still hasn't graduated to an unsecured card. My credit score is nearly 800, and I’ve been approved for other Citi cards. It's frustrating that my deposit hasn't been returned.",
+    "I got the card years ago. Despite having scores back in the 700s, they refuse to unsecure the card every single year. I don't even need it anymore but keep it open to pay for Netflix.",
+    "The application process was a bit slow. They took my $200 deposit before approval, and it took over two weeks to get the card. However, customer service was friendly, and the card did help improve my credit score.",
+    "The Citi Secured Mastercard is a decent choice for building credit without high fees, but it doesn't offer rewards. It's straightforward and reports to all three major credit bureaus, which is helpful for credit building."
+]
+
   },
   {
-    "name": "Citi Simplicity Card - No Late Fees Ever",
+    "name": "Citi Simplicity Card",
     "short_card_name": "Citi Simplicity Card",
     "trademark_card_name": "Citi Simplicity\u00ae Card - No Late Fees Ever",
     "category": "balance_transfer, low_interest",
@@ -5067,7 +5083,14 @@
     "cons_value": "No rewards; Higher regular interest rate; Has foreign transaction fee.",
     "bonus_offer_value": "0% on purchases and balance transfers for 21 months. ~0% APR on purchases.~",
     "redeem_value": "No rewards to redeem.",
-    "rewards_rate_value": "None."
+    "rewards_rate_value": "None.",
+    "user_reviews": [
+  "I was approved today! It was very easy to apply and I got approved for 12K. I almost didn't apply after reading the reviews, but I'm glad I did. Looking forward to using the 21 months of zero interest on my balance transfers.",
+  "Wish I had read the reviews before I applied! Credit Karma said I had an excellent chance of approval and I was looking for a balance transfer card, so I applied. I was immediately denied even though I have great credit scores and make decent money. I was surprised because I haven't been denied credit of any kind in something like twenty years, so I will never go with Citi again.",
+  "I applied, was approved, and when I received it in the mail, I called for the balance transfer. They said you can't do it from one Citi card to another. Now I don't need the card; it's just an open credit line until they close it for inactivity, because if I close it, it will hurt my credit score.",
+  "The Citi Simplicity Card is a very good 0% APR credit card. It offers introductory rates of 0% for 21 months on balance transfers and 0% for 12 months on new purchases. But Simplicity isn’t for everyone. You need good credit to qualify. And a balance transfer fee complicates its long interest-free period.",
+  "The Citi Simplicity® Card can help you pay down debt or finance a large purchase, although it may not be the best option for either. Its standout feature is a lengthy 0% intro APR period for balance transfers. That could make it a good choice for tackling existing debt, but this card earns no rewards."
+]
   },
   {
     "name": "Citi ThankYou Preferred Card for College Students",
@@ -5145,7 +5168,15 @@
     "cons_value": "High 3% foreign transaction fee.",
     "bonus_offer_value": " Earn 2,500 bonus points after spending $500 in purchases within the first 3 months of account opening. ~2,500 points after spending $500.~",
     "redeem_value": "The Citi ThankYou Preferred Card for College Students information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1 point per Dollar. ~1 point per dollar.~"
+    "rewards_rate_value": "A rewards rate value of 1 point per Dollar. ~1 point per dollar.~",
+    "user_reviews": [
+    "I got this card as my first student credit card. The 2X points on dining and entertainment were great while I was in college. The sign-up bonus was easy to earn, and the no annual fee was a big plus.",
+    "The rewards are decent, but the redemption options are limited. I found that redeeming points for gift cards gave the best value.",
+    "This card helped me build my credit during college. However, the high APR after the intro period means it's important to pay off the balance in full each month.",
+    "I appreciated the 0% intro APR on purchases for 7 months. It helped me manage some large expenses at the beginning of the semester.",
+    "The foreign transaction fee was a downside when I studied abroad. I ended up getting a different card without foreign fees for that purpose."
+  ]
+
   },
   {
     "name": "CitiBusiness / AAdvantage Platinum Select World Mastercard",
@@ -5223,7 +5254,14 @@
     "cons_value": "Has annual fee; Needs excellent credit..",
     "bonus_offer_value": " Earn 60,000 American Airlines AAdvantage bonus miles after making $3,000 in purchases within the first 3 months of account opening. ~60k miles after spending $3k.~",
     "redeem_value": "The CitiBusiness / AAdvantage Platinum Select World Mastercard information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1 mile per Dollar. ~1 mile per dollar.~"
+    "rewards_rate_value": "A rewards rate value of 1 mile per Dollar. ~1 mile per dollar.~",
+    "user_reviews": [
+  "The CitiBusiness Platinum Select card is great for business owners who frequently travel with American Airlines. The low annual fee, free checked bag, and tons of perks and discounts make this card valuable.",
+  "The absolute worst 'business' card that I've ever had. Low credit limit, random denials, and errors when we try to use it, terrible customer service.",
+  "Citibank has refused to assist with our billing dispute and allowed our card to be charged for $841.28 in unauthorized charges. The card is dangerous and will leave you exposed to hundreds. Lesson learned we will be using our American Express from now on.",
+  "Credit Card customer service is horrible. My signing bonus offer was 50,000 bonus miles and a $250 statement credit. In August when I signed on, the representative I spoke to assured me I would see these offers. In September, I saw the 50,000 miles, but not the $250. The representative told me I would see my statement credit on my October statement. The credit did not show. Customer service told me to show them my offer, and then I can have my credit. This is the best their supervisor could do."
+]
+
   },
   {
     "name": "Citizens Bank Cash Back Plus World MasterCard",
@@ -5301,7 +5339,15 @@
     "cons_value": "Cash redeemable in $25 increments.",
     "bonus_offer_value": "None.",
     "redeem_value": "The Citizens Bank Cash Back Plus World MasterCard information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~"
+    "rewards_rate_value": "A rewards rate value of 1.50%. ~1.50%.~",
+    "user_reviews": [
+  "The Citizens Bank Cash Back Plus® World Mastercard® is a pretty good credit card for people with excellent credit or better (750+ credit score) who want a flat rewards rate that does not vary by spending category. The card is worth getting because it has a $0 annual fee and gives 1.8% cash back on purchases. You can even get a slightly higher rewards rate if you have a Citizens Quest Checking Account.",
+  "The card offers a flat 1.8% cash back and a lucrative first-year bonus. But there are cards that earn higher ongoing flat rates.",
+  "It's fine. No annual fee or foreign transaction fee. You could do slightly better with any of the 2% cards, but if you really like Citizens then go for it.",
+  "Trash, why would you get a 1.8% card when there are flat 2% cards out there? Overall citizens is a D tier bank. Low or no interest on their banking accounts. Look for your local credit union or an online bank.",
+  "It was all fine and good until they reduced my limit to just $2,000 down from $18,000 over a 7 day late payment and I’ve actually been with that bank for over 15 years with multiple accounts. I’m very anal about my credit cards and my credit score so to see what that did to my utilization absolutely sent me……"
+]
+
   },
   {
     "name": "Club Carlson Radisson Rewards Visa Signature Card",
@@ -5379,7 +5425,15 @@
     "cons_value": "Has annual fee; Needs excellent credit.",
     "bonus_offer_value": " Earn 50,000 Gold Points after your first purchase, plus 35,000 points once you spend $2,500 on your card within the first 90 days; that's up to 9 Free Award Nights at Category 1 hotels. ~50k points after first purchase. 35k more points after spending $2.5k.~",
     "redeem_value": "The Club Carlson Radisson Rewards Visa Signature Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 2.70%; 6 points per $1 spent in eligible net purchases at participating Carlson Rezidor hotels. 3 points per $1 spent in eligible net purchases everywhere else. ~6 points per dollar at Carlson Rezidor hotels. 3 points per dollar all else.~"
+    "rewards_rate_value": "A rewards rate value of 2.70%; 6 points per $1 spent in eligible net purchases at participating Carlson Rezidor hotels. 3 points per $1 spent in eligible net purchases everywhere else. ~6 points per dollar at Carlson Rezidor hotels. 3 points per dollar all else.~",
+    "user_reviews": [
+  "The Club Carlson Visa is no longer offering a second night free benefit, which was a huge perk. Despite this, I still find value in the card due to the 40,000-point anniversary bonus and Gold Elite status.",
+  "I kept the card just because of the one award night free, but after the devaluation, I don't see any good reasons to keep it anymore.",
+  "The card still offers 40,000 points upon your account anniversary every year, which more than justifies the $75 annual fee, in my opinion.",
+  "Club Carlson properties aren't aspirational compared to some other hotel chains, but the card has made me want to visit places I wouldn't have otherwise considered due to lack of hotel options.",
+  "The Radisson Rewards credit cards are being discontinued, and all cardholders will be converted to other U.S. Bank credit cards in June."
+]
+
   },
   {
     "name": "Comerica Cash Rewards American Express Card",
@@ -5457,7 +5511,15 @@
     "cons_value": "Has annual fee; sign up bonus isn't great.",
     "bonus_offer_value": "None.",
     "redeem_value": "The Comerica Cash Rewards American Express Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "None."
+    "rewards_rate_value": "None.",
+    "user_reviews": [
+  "I just had the worst experience with this bank. I will be withdrawing my money and finding a bank that can answer the phone and walk a person through things. I waited for 2 hours to receive incompetent service and encounter lazy workers. Wow, I do not recommend this.",
+  "Coamerica bank and Direct express are scammer's I have a hearing to talk to a judge for them holding my money I don't see how you people can do this to someone like me I am disabled and homeless now because of those 2 companies.",
+  "Unfortunately i’ve used this bank for 30+ years and for the past couple months i’ve been treated horribly, money has been stolen BY the bank and disappeared out of my account with no explanation, they never gave me a credible explanation and I was fraudulently attacked. I was robbed from and then they came up with a fake story. They are thieves! Over $800+ was stolen from me.",
+  "I made a mistake and overpaid my credit card balance in March 2022. In an email from customer service they agreed to send me a check for the amount I overpaid. 6 weeks have gone by no check and no help on the phone or email. I received a letter from them stating they transferred the money owed to me electronically to my financial institution. What! They will not tell me where they sent my money!",
+  "JUNK! Cut and RUN!!! Seriously. Comerica has NOTHING to do with this card. Elan Financial Services is the card holder. They are absolutely terrible. The left hand doesn't know up from down. The right hand doesn't know anything at all. You will be given a super low limit. It will not change. They give out the 0% intro rate. But that limit will be VERY low. And they will not increase that limit. This card is only good for a young person who might want to get their credit started ONLY. If you are an adult with established credit. Don't get this card. I thought COMERICA backed it. COMERICA is NOT affiliated with the services AT ALL. You can't go into a branch for services or with questions. They will only call the phone number on the back of the card for you."
+]
+
   },
   {
     "name": "Commerce Bank Kansas City Royals with Rewards",
@@ -5535,7 +5597,14 @@
     "cons_value": "High penalty A P R.",
     "bonus_offer_value": "None.",
     "redeem_value": "The Commerce Bank Kansas City Royals with Rewards information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+    "user_reviews": [
+  "As a die-hard Royals fan, this card is a must-have. The exclusive access to Royals events and discounted tickets make it worth it.",
+  "The rewards are decent, but the redemption process can be a bit cumbersome. Still, the 0% intro APR is a nice perk.",
+  "I appreciate the 3% cash back on fast food and rideshares. It's a unique feature that aligns well with my spending habits.",
+  "The card's design is a great conversation starter among fellow Royals fans. Plus, the no annual fee is a bonus.",
+  "While the card offers some unique perks for Royals fans, the customer service experience has been less than stellar."
+]
   },
   {
     "name": "Commerce Bank Visa Business Platinum",
@@ -5613,7 +5682,15 @@
     "cons_value": "No rewards.",
     "bonus_offer_value": "None.",
     "redeem_value": " From 1% cash back to airline travel to gift cards, this card offers some of the most competitive redemption options in the industry. We even offer a bonus point program that allows you to earn 2x and 3x points in select merchant categories when you activate Quarterly Bonus Points..",
-    "rewards_rate_value": "Not available"
+    "rewards_rate_value": "Not available",
+    "user_reviews": [
+  "The Commerce Bank Visa Business Platinum Card is a great option for businesses that regularly make large purchases and need a relatively low fixed APR.",
+  "Commerce Bank's credit cards are far from the worst on the market, but they're not the best either. The fact that Commerce Bank is a regional bank limits who can apply for some of the cards, too.",
+  "I had five fraudulent charges on my Commerce Visa Card. I called Commerce Bank and shut down the card. They refused to stop payment on the charges. I opened a dispute case on all five charges. A month later, I received a letter stating they ruled against me on the dispute. I've called their customer service over a dozen times, waiting about an hour each time to talk to a representative. Each representative was rude and of no help.",
+  "One of the best cards I've ever had, and I've tried more than a few. The ease and convenience of using this card are truly amazing. I love my interest rates, as well as the relatively easy way it is to talk to someone for help.",
+  "Where to start? This bank has the worst customer service and the most poorly trained customer service representatives of any bank I have ever worked with. I had placed an order from a merchant that was never delivered to me. I filed a dispute with Commerce Bank and had to call several times to handle the matter. Their reply to my inquiry was that they have been busy, and the last person did not document my file, etc. I finally got tired of dealing with incompetence and closed the account."
+]
+
   },
   {
     "name": "Delta Reserve Credit Card from American Express",
@@ -5691,7 +5768,15 @@
     "cons_value": "Has annual fee; Needs excellent credit.",
     "bonus_offer_value": " Earn 10,000 Medallion\u00c2\u00ae Qualification Miles (MQMs) and 10,000 bonus miles after your first purchase on the Card. ~10k MQMs and 10k miles after first purchase.~",
     "redeem_value": " Miles are redeemable toward travel on Delta.  Miles redemptions must be in 5,000 mile increments, with a minimum of 5,000 miles for redemption, and the number of miles redeemed will be rounded up to the nearest 5,000 mile increment. Five thousand miles generally provides $50 of value..",
-    "rewards_rate_value": "A rewards rate value of 1.00%.  2x for miles on Delta purchases, 1x for all other purchases. ~2x miles on Delta purchases. 1x all else.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%.  2x for miles on Delta purchases, 1x for all other purchases. ~2x miles on Delta purchases. 1x all else.~",
+    "user_reviews": [
+  "The Delta SkyMiles Reserve Amex has been a game-changer for my frequent Delta flights. The lounge access and companion certificate easily offset the annual fee.",
+  "I appreciate the complimentary Delta Sky Club access, but the recent cap on visits unless you spend $75,000 annually is a significant drawback.",
+  "The card's $650 annual fee is steep, but the benefits like priority boarding and free checked bags make it worthwhile for regular Delta travelers.",
+  "I found the Resy dining and rideshare credits useful, but tracking monthly credits can be cumbersome.",
+  "The welcome bonus was generous, but the everyday spending rewards are underwhelming compared to other cards."
+]
+
   },
   {
     "name": "Deserve Edu Mastercard for Students",
@@ -5769,10 +5854,18 @@
     "cons_value": "--MANUALLY FILL IN--",
     "bonus_offer_value": "--MANUALLY FILL IN--",
     "redeem_value": "--MANUALLY FILL IN--",
-    "rewards_rate_value": "--MANUALLY FILL IN--"
+    "rewards_rate_value": "--MANUALLY FILL IN--",
+    "user_reviews": [
+  "As an international student without an SSN, this card was a lifesaver. The application process was straightforward, and I appreciated the $0 annual fee and no foreign transaction fees.",
+  "The 1% cash back on all purchases is decent, but there are other student cards that offer higher rewards in specific categories. Still, it's a solid starter card.",
+  "I liked the Amazon Prime Student membership reimbursement after spending $500 in the first three months. It was a nice perk for a student budget.",
+  "One downside is that the card doesn't report to Equifax, only to Experian and TransUnion. This could affect how quickly you build credit.",
+  "The lack of an introductory APR offer was a bit disappointing, especially compared to other student cards that offer 0% intro APR periods."
+]
+
   },
   {
-    "name": "Discover it - Cashback Match",
+    "name": "Discover it",
     "short_card_name": "Discover it - Cashback",
     "trademark_card_name": "Discover it\u00ae Cash Back",
     "category": "cash_back, dining, favorite, service, starter",
@@ -5847,7 +5940,15 @@
     "cons_value": " Slightly less merchant acceptance for Discover in US - acceptance outside of US can be an issue; If you value simplicity, a flat rate cash back card may be better.",
     "bonus_offer_value": "Match all the cash back you've earned at the end of your first year. ~First year cash back matched.~",
     "redeem_value": " Discover automatically matches all the cash back you've earned at the end of your first year.  Your cash back never expires. Redeem your rewards in any amount, at any time.",
-    "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 5% Cash Back in rotating categories each quarter like gas stations, restaurants, Amazon.com, wholesale clubs and more, up to the quarterly maximum each time you activate. Plus unlimited 1% cash back on all other purchases. ~5% on rotating categories. 1% on all others.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%.  Earn 5% Cash Back in rotating categories each quarter like gas stations, restaurants, Amazon.com, wholesale clubs and more, up to the quarterly maximum each time you activate. Plus unlimited 1% cash back on all other purchases. ~5% on rotating categories. 1% on all others.~",
+    "user_reviews": [
+  "The Discover it Cash Back card offers a high rewards rate in rotating categories, a good 0% APR offer, and an unusual bonus that could become a windfall.",
+  "Discover it is a solid free card. It's a good fit for someone still learning the ropes for how to use rewards.",
+  "The Discover it® Cash Back card offers clear value for anyone who doesn't mind putting in a little more work to earn rewards.",
+  "Discover it® Cash Back is a good credit card to consider if you have a credit score of 700 or higher and you want a $0 annual fee as well as a high reward rate.",
+  "The Discover it® Cash Back card offers a substantial cash back program with the unique feature of matching all the cash back you earn at the end of your first year."
+]
+
   },
   {
     "name": "Discover it chrome for Students",
@@ -5925,7 +6026,14 @@
     "cons_value": "Not accepted at all merchants.",
     "bonus_offer_value": "Match all the cash back you've earned at the end of your first year. ~First year cash back matched.~",
     "redeem_value": "The Discover it chrome for Students information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+    "user_reviews": [
+  "The Discover it Student Chrome card has been a great first card and a fantastic way to start building credit. I never had any problems with it, and it was the best financial decision I made to start building my credit history.",
+  "I started with Discover it Chrome. Cashback is matched at the end of your first year, effectively giving 4% back on gas and dining. You can switch your card rewards program from the 'it' to the 'it chrome' with a simple phone call, allowing you to maximize rewards when categories align with your spending.",
+  "The Discover it Student Chrome is a solid choice for students who spend a lot at gas stations and restaurants, offering bonus cash back in those spending categories. Plus, it has a $0 annual fee and matches the rewards you earn the first year if you're a new accountholder.",
+  "I appreciate the 2% cash back at gas stations and restaurants on up to $1,000 in combined purchases each quarter. It's a straightforward rewards structure that's easy to understand and benefit from.",
+  "The card offers a 0% intro APR on purchases for 6 months, which was helpful for managing initial expenses. However, the regular APR can be high, so it's important to pay off the balance each month."
+]
   },
   {
     "name": "Discover it for Students",
@@ -6003,7 +6111,15 @@
     "cons_value": " Limited acceptance for Discover, especially if you're planning to study abroad.",
     "bonus_offer_value": " Get a dollar-for-dollar match of all the cash back you've earned at the end of your first year, automatically. ~First year cash back matched.~",
     "redeem_value": " Discover will match all the cash back you've earned at the end of your first year, automatically.  You can redeem anytime after the match is done..",
-    "rewards_rate_value": "A rewards rate value of 1.00%.  5% Cash Back Rewards in rotating categories each quarter like gas stations, restaurants, Amazon.com and more, up to the quarterly maximum each time you activate. Plus unlimited 1% cash back on all other purchases. ~5%  on rotating categories. 1% on all others.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%.  5% Cash Back Rewards in rotating categories each quarter like gas stations, restaurants, Amazon.com and more, up to the quarterly maximum each time you activate. Plus unlimited 1% cash back on all other purchases. ~5%  on rotating categories. 1% on all others.~",
+    "user_reviews": [
+  "The Discover it Student Cash Back card offers a high rewards rate in rotating categories, a good 0% APR offer, and an unusual bonus that could become a windfall.",
+  "Discover it is a solid free card. It's a good fit for someone still learning the ropes for how to use rewards.",
+  "The Discover it® Student Cash Back card offers clear value for anyone who doesn't mind putting in a little more work to earn rewards.",
+  "Discover it® Student Cash Back is a good credit card to consider if you have a credit score of 700 or higher and you want a $0 annual fee as well as a high reward rate.",
+  "The Discover it® Student Cash Back card offers a substantial cash back program with the unique feature of matching all the cash back you earn at the end of your first year."
+]
+
   },
   {
     "name": "Discover it Miles",
@@ -6081,7 +6197,15 @@
     "cons_value": " Limited acceptance for Discover, especially abroad.",
     "bonus_offer_value": "Will match all the Miles you've earned at the end of your first year. Bonus Miles - For example, if you earn 30,000 Miles, you get 60,000 Miles. ~First year earned Miles matched.~",
     "redeem_value": " Use your Discover it\u00ae Miles card for any travel purchase, including all airlines, hotels, rental cars and more. No Blackout Dates. Once you book your travel with Discover it\u00ae Miles card, redeem your Miles as a statement credit towards the purchase. Your rewards never expire.",
-    "rewards_rate_value": "A rewards rate value of 1.5 miles.  Earn unlimited 1.5x Miles for every dollar spent on all purchases \u2013 from airfare and hotels to groceries and online shopping. ~1.5x miles per dollar on all purchases.~"
+    "rewards_rate_value": "A rewards rate value of 1.5 miles.  Earn unlimited 1.5x Miles for every dollar spent on all purchases \u2013 from airfare and hotels to groceries and online shopping. ~1.5x miles per dollar on all purchases.~",
+    "user_reviews": [
+  "The Discover it® Miles card offers a straightforward rewards structure, earning 1.5 miles per dollar on all purchases, which is great for those who prefer simplicity in their rewards program.",
+  "I appreciate the first-year unlimited mile-for-mile match. It effectively gives me 3% back on all my spending during the first year, which is a fantastic deal.",
+  "While the card has no annual fee and no foreign transaction fees, I found that Discover isn't as widely accepted internationally as Visa or Mastercard, which can be inconvenient when traveling abroad.",
+  "The flexibility to redeem miles for travel or as cash back at the same value is a big plus. It gives me options depending on my needs at the time.",
+  "After the first year, the rewards rate drops to 1.5 miles per dollar without any bonus categories, which is decent but not as competitive as some other travel cards that offer higher rates or additional perks."
+]
+
   },
   {
     "name": "Discover It Secured Card",
@@ -6159,7 +6283,15 @@
     "cons_value": " Although no annual fee, you have to put in a security deposit of $200.",
     "bonus_offer_value": "Match all the cash back you've earned at the end of your first year. ~First year cash back matched.~",
     "redeem_value": "Redeem Any Amount Any Time: Discover will credit your account with your cash back bonus balance if your account is closed or has not been used in 18 months. And you can redeem on Amazon.com..",
-    "rewards_rate_value": "A rewards rate value of 1.00%.  2% Cashback at restaurants or gas stations on up to $1,000 in combined purchases each quarter. Plus 1% cash back on all other credit card purchases. ~2% on dining and gas. 1% all others.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%.  2% Cashback at restaurants or gas stations on up to $1,000 in combined purchases each quarter. Plus 1% cash back on all other credit card purchases. ~2% on dining and gas. 1% all others.~",
+    "user_reviews": [
+  "I used this card to rebuild my credit, made on-time payments, and kept my usage low. They just upgraded me to a non-secured card after 6 months, just like they said! Highly recommend.",
+  "Started off with a $200 secured card and was upgraded to $1,500 unsecured within 7 months. Super proud of myself and grateful to Discover.",
+  "After having this card for around a year now, I can honestly say it did amazing things for my credit score post-bankruptcy 2 years ago. Highly recommend, and the cash back match is pretty good as well.",
+  "I was approved with a $200 deposit. After 7 months of on-time payments, they refunded my deposit and increased my limit to $1,800. Great for building credit.",
+  "Discover's customer service is stellar. They upgraded me to an unsecured card and increased my limit to $9,000 after 4 years of on-time payments. Try that with a Capital One card."
+]
+
   },
   {
     "name": "Exxon Mobil Credit Card",
@@ -6237,7 +6369,14 @@
     "cons_value": "No rewards; High A P R.",
     "bonus_offer_value": "None.",
     "redeem_value": "The Exxon Mobil Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "None."
+    "rewards_rate_value": "None.",
+    "user_reviews": [
+  "I applied and was turned down. After calling the toll-free credit number, I asked for a reconsideration. They initially ran an Equifax check but ran TransUnion upon request. One week later, I received my card in the mail. A request for a second look is 50/50 but worth the extra time and effort. Also, they are offering 6 cents per gallon and also a $30 refund after buying 100 gallons in 60 days. The only drawback is you have to pay the balance in full monthly to avoid the crazy high interest rate.",
+  "I had a credit card with Exxon for over 14 years. I found out through Credit Karma Exxon closed my account out. I called Exxon and was advised that it was closed out because of no activity. It would have been nice to get a phone call or a letter advising me of the situation. When I called Exxon, I spoke to a manager named Terry who had the personality of a dish rag. They had the nerve to ask me if I wanted to re-apply! NO WAY would I do business with this company again!",
+  "Great card to have when traveling! There is an Exxon at almost every exit on the highway. Most have nice places for food & coffee. Usually hot food also.",
+  "10 cents off per gallon. It's ok! Overall not a bad card, just don't know how to get more rewards. Maybe need to look for a better gas card.",
+  "I got remorseful after getting this card. I decided to try it once just for the heck of it. I paid at the pump one day and I watched the price per gallon on the pump roll back. I did the math and the savings I got using this card beats my 2% cash rewards general-purpose credit card!! They raised my charge limit after the first month. No problem keeping my payments up as I can pay by phone. It's still a gas card, but that's where a lot of my money goes. By using this card, I also take the load off my other cards."
+]
   },
   {
     "name": "Fidelity Rewards Visa Signature Card",
@@ -6315,10 +6454,17 @@
     "cons_value": "A requirement that rewards be deposited into a Fidelity account; Outsourced customer service is so so.",
     "bonus_offer_value": " $100 bonus offer after you spend $1,000 in the first 90 days. ~$100 after spending $1k.~",
     "redeem_value": "The Fidelity Rewards Visa Signature Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 2.00%. ~2.00%~"
+    "rewards_rate_value": "A rewards rate value of 2.00%. ~2.00%~",
+    "user_reviews": [
+  "The Fidelity Rewards card earns a flat 2 percent cash back on every purchase, which is as simple a cash back structure as you can get. It has no annual fee, the points never expire, and there are no cash back caps or category restrictions.",
+  "The card's value breakdown makes the upside clear. Imagine $2,000 in spending every month. At a 2 percent rewards rate, that's $480 per year in cash back. You can set up your Fidelity card to automatically transfer your cash back to a connected Fidelity investment account.",
+  "The Fidelity Rewards Visa card was my first 2% cash back card. There is no cap on the cash you can earn, and you can deposit your rewards directly into an investment account to let them grow over time. However, the card has a minimum $25/2,500-point redemption threshold, which can be a hassle to manage. The user interface for the card’s website is also not user-friendly.",
+  "The card itself is great. However, if you have any issues, the customer service is very poor. When I went to redeem my points, no where on the site did it indicate that the value would be different if I opted for credit to my credit card statement vs investing it into a Fidelity fund. The former option decreased my value in half.",
+  "I like Fidelity's Reward card, it's a good basic 2% rebate on everything card (if you have other accounts with Fidelity). I like that I don't need any other logins or 'apps' to access the card features. I would probably consolidate to using just that card if it offered some form of car rental CDW. It used to, but they dropped it."
+]
   },
   {
-    "name": "First Tech FCU Platinum Secured MasterCard\u00ae",
+    "name": "First Tech FCU Platinum Secured MasterCard",
     "short_card_name": "First Tech Platinum ",
     "trademark_card_name": "First Tech FCU Platinum Secured MasterCard",
     "category": "secured",
@@ -6393,7 +6539,15 @@
     "cons_value": "---MANUALLY FILL IN---",
     "bonus_offer_value": "---MANUALLY FILL IN---",
     "redeem_value": "---MANUALLY FILL IN---",
-    "rewards_rate_value": "---MANUALLY FILL IN---"
+    "rewards_rate_value": "---MANUALLY FILL IN---",
+    "user_reviews": [
+  "The First Tech Platinum Secured Mastercard is a great option for rebuilding credit. The $0 annual fee and no foreign transaction fees make it stand out among secured cards. Plus, earning 1 point per dollar spent is a nice bonus.",
+  "I appreciate that this card offers a high credit limit—up to $25,000—based on your security deposit. It gives flexibility and helps manage credit utilization effectively.",
+  "The card's Chip and PIN feature is excellent for international travel, especially in Europe where PIN is often required.",
+  "One downside is that you need to be a member of First Tech Federal Credit Union to apply. Membership eligibility can be restrictive depending on your location or employer.",
+  "The mobile app and online banking features are user-friendly, making it easy to manage the account and monitor transactions."
+]
+
   },
   {
     "name": "Gold Delta SkyMiles Business Credit Card from American Express",
@@ -6549,7 +6703,15 @@
     "cons_value": "Only gets good miles on Delta; Flight options often blocked off.",
     "bonus_offer_value": "Earn 60,000 bonus miles after you spend $3,000 in purchases on your new Card within your first 4 months. Terms Apply.  ~60k miles after spending $3k.~",
     "redeem_value": "Miles are redeemable toward travel on Delta and more than 15 airline partners (but you have to call Delta to know who the 15 are)..",
-    "rewards_rate_value": "A rewards rate value of 1 mile.  For each dollar charged on an eligible purchase in each billing period on your Card from American Express, you earn 1 mile. You earn 1 additional mile (for a total of 2 miles) on each dollar of eligible purchases made directly with Delta. ~2 miles per dollar on Delta purchases. 1 mile per dollar all else.~"
+    "rewards_rate_value": "A rewards rate value of 1 mile.  For each dollar charged on an eligible purchase in each billing period on your Card from American Express, you earn 1 mile. You earn 1 additional mile (for a total of 2 miles) on each dollar of eligible purchases made directly with Delta. ~2 miles per dollar on Delta purchases. 1 mile per dollar all else.~",
+    "user_reviews": [
+  "The Delta SkyMiles Gold Business Amex offers solid perks like priority boarding and a free checked bag, which are valuable for frequent Delta flyers. However, the lack of lounge access and the annual fee after the first year are drawbacks to consider.",
+  "I appreciate the 60,000 bonus miles after spending $4,000 in the first six months. It's a great incentive for new cardholders.",
+  "The card's earning rates are decent, with 2 miles per dollar on Delta purchases and at restaurants. But for non-Delta expenses, other cards might offer better rewards.",
+  "The $0 introductory annual fee for the first year is appealing, but the $150 fee thereafter requires evaluating if the benefits justify the cost.",
+  "Overall, it's a good entry-level card for business owners loyal to Delta, but those seeking more premium perks might consider higher-tier options."
+]
+
   },
   {
     "name": "Golden1 Credit Union Platinum Rewards for Students",
@@ -6627,7 +6789,15 @@
     "cons_value": "Small bank.",
     "bonus_offer_value": "None.",
     "redeem_value": "The Golden1 Credit Union Platinum Rewards for Students information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "None."
+    "rewards_rate_value": "None.",
+    "user_reviews": [
+  "The Golden 1 Platinum Rewards Student Card offers 3% cash back on groceries, gas, and dining, plus 1% on everything else. It's a solid choice for students looking to build credit while earning rewards.",
+  "I appreciate that there's no annual fee, and the cash back is automatically deposited into my savings account. The low APR is also a plus for a student card.",
+  "One downside is the lack of a sign-up bonus and limited redemption options—cash back is only deposited into a Golden 1 savings account.",
+  "I had issues with automatic payments. After a system update, I was unable to set up automatic full balance payments, which led to carrying a balance unexpectedly. Customer service confirmed this limitation applies to student cards.",
+  "Overall, it's a decent starter card with good rewards, but the inability to set up automatic payments and limited redemption options are drawbacks to consider."
+]
+
   },
   {
     "name": "Hilton Honors Card from American Express",
@@ -6705,7 +6875,15 @@
     "cons_value": "Has foreign transaction fee; Doesn't cover many other hotel brands.",
     "bonus_offer_value": " Earn 50,000 Hilton Honors Bonus Points after you spend $1,000 in purchases on the Card within your first 3 months of Card Membership. ~50k points after spending $1k.~",
     "redeem_value": "The Hilton Honors Card from American Express information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.00%.  7x on Hilton stays, 5x on many gas stations, supermarkets and restaurants, and 3x in other places. ~7x on Hilton stays. 5x on gas, dining, and groceries. 3x all others.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%.  7x on Hilton stays, 5x on many gas stations, supermarkets and restaurants, and 3x in other places. ~7x on Hilton stays. 5x on gas, dining, and groceries. 3x all others.~",
+    "user_reviews": [
+  "The Hilton Honors Amex Card offers solid perks for no annual fee. It's a great option for travelers looking to get started with Hilton Honors thanks to generous category bonuses and travel and purchase protections.",
+  "The card features automatic Hilton Honors™ Silver status, which comes with a bonus on points earned from qualifying Hilton stays, complimentary breakfasts at select hotels, and other benefits.",
+  "The Hilton Honors American Express Card is a great option for anyone looking to dip their toes into the world of hotel loyalty programs. With no annual fee, perks like automatic Silver status, and solid earning potential on Hilton stays, it’s an easy way to start building up points without extra costs!",
+  "The Hilton Honors American Express Card has a great balance of hotel benefits and everyday rewards that can rival higher-tier travel cards. It's free of any fees you can’t avoid since there are no annual fees or foreign transaction fees to worry about.",
+  "The Hilton Honors American Express Card is good if you want to earn Hilton rewards but don't want to pay an annual fee. It offers a great balance of hotel benefits and everyday rewards."
+]
+
   },
   {
     "name": "Hilton Honors Surpass Card from American Express",
@@ -6783,7 +6961,15 @@
     "cons_value": "Annual fee; Only works of Hilton and its partners; High A P R.",
     "bonus_offer_value": " Earn 75,000 Hilton Honors Bonus Points after you spend $3,000 in purchases on the card within your first 3 months of Card Membership. Terms Apply. ~75k points after spending $3k.~",
     "redeem_value": "Earn 500 Hilton Honors Bonus Points for each qualifying stay when you use your Hilton Honors Surpass\u00c2\u00ae Card from American Express to both 1) book your reservation online within the Hilton Portfolio and 2) pay for your stay using your same Hilton Honors Surpass\u00c2\u00ae Card.",
-    "rewards_rate_value": "A rewards rate value of 1.50%.  EARN 12X Hilton Honors Bonus Points for each dollar of eligible purchases charged on your Card directly with a participating hotel or resort within the Hilton Portfolio. EARN 6X Hilton Honors Bonus Points  for each dollar of eligible purchases on your Card at U.S. restaurants, at U.S. supermarkets, and at U.S. gas stations. EARN 3X Hilton Honors Bonus Points for all other eligible purchases on your Card. ~12x points at select hotels and resorts. 6x points at restaurants, supermarkets, and on gas. 3x points on all others.~"
+    "rewards_rate_value": "A rewards rate value of 1.50%.  EARN 12X Hilton Honors Bonus Points for each dollar of eligible purchases charged on your Card directly with a participating hotel or resort within the Hilton Portfolio. EARN 6X Hilton Honors Bonus Points  for each dollar of eligible purchases on your Card at U.S. restaurants, at U.S. supermarkets, and at U.S. gas stations. EARN 3X Hilton Honors Bonus Points for all other eligible purchases on your Card. ~12x points at select hotels and resorts. 6x points at restaurants, supermarkets, and on gas. 3x points on all others.~",
+    "user_reviews": [
+  "The Hilton Surpass card offers solid earnings at Hilton properties and automatic Hilton Gold elite status. The status perk alone may make it easy to justify the card's annual fee.",
+  "The Hilton Surpass is an ideal choice for those who stay at Hilton properties often and want a cobranded credit card with a modest annual fee and valuable perks.",
+  "The card's earning rates are decent, with 12X points at Hilton hotels and 6X points at U.S. restaurants, supermarkets, and gas stations. However, for non-Hilton expenses, other cards might offer better rewards.",
+  "The Hilton Surpass offers a free night reward when you spend $15,000 on purchases on the card in a calendar year. It can be used at almost any Hilton property worldwide.",
+  "The Hilton Surpass card is a good credit card to apply for if you have a good credit score and you spend a lot of money at Hilton hotels and resorts, as well as restaurants, supermarkets, and gas stations in the U.S. It is worth paying the Surpass Card’s $150 annual fee if you can take advantage of its bonus rewards."
+]
+
   },
   {
     "name": "Hyatt Credit Card",
@@ -6861,7 +7047,15 @@
     "cons_value": "Has annual fee; Not great for other hotels; Hyatt not as common as Marriotts around the world.",
     "bonus_offer_value": " Earn 2 free nights at any Hyatt hotel or resort worldwide after you make $2,000 on purchases in the first 3 months after account opening. ~2 free nights at Hyatt hotels or resorts.~",
     "redeem_value": "The Hyatt Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+    "user_reviews": [
+  "The World of Hyatt Credit Card offers a compelling suite of first-rate benefits: a big sign-up bonus, generous ongoing rewards, high-value points, automatic elite status, and a free night certificate every anniversary year. The free night benefit alone could make up for the annual fee of $95.",
+  "With a rewarding loyalty program and generous card benefits, the World of Hyatt Credit Card is one of the top hotel cards on the market. Cardholders earn 4 points per dollar on all Hyatt spending, and you'll get a Category 1-4 free-night award each year you keep the card and another when you spend $15,000 in a calendar year.",
+  "The World of Hyatt Credit Card is great for travelers who are loyal to Hyatt. You'll have the opportunity to earn hotel nights and hotel status. However, if you prefer the flexibility to stay at any hotel you like, this card might not be the right fit for you.",
+  "The World of Hyatt Credit Card has many fans and comes with a modest $95 annual fee, but does that mean it's worth it? Just because a card is popular among some doesn't automatically make it a good fit for your wallet. It's important to assess your own travel habits and preferences.",
+  "The World of Hyatt Credit Card is one of the best hotel credit cards available right now. New cardholders get 30,000 points for spending $3,000 within 3 months of opening an account. This bonus is worth roughly $735 in Hyatt reservations and is among the biggest reasons why the Hyatt Credit Card is so good."
+]
+
   },
   {
     "name": "IHG Rewards Club Premier Credit Card",
@@ -6939,7 +7133,15 @@
     "cons_value": " Has annual fee; Can only use at IHG hotels.",
     "bonus_offer_value": " 80,000 bonus points after you spend $1,000 on purchases in the first 3 months of account opening. ~80k points after spending $1k.~",
     "redeem_value": " Points earned during a billing cycle will be automatically transferred to I H G Rewards Club after the end of each billing cycle.  I H G won't disclose more..",
-    "rewards_rate_value": "A rewards rate value of 1.50%.  Earn 5 points per $1 spent when you stay at IHG\u00c2\u00ae hotels. Earn 2 points per $1 spent on purchases at gas stations, grocery stores, and restaurants. Earn 1 point per $1 spent on all other purchases. ~5 points per dollar at IHGA hotels. 2 points per dollar on gas, groceries, and dining. 1 point per dollar all others.~"
+    "rewards_rate_value": "A rewards rate value of 1.50%.  Earn 5 points per $1 spent when you stay at IHG\u00c2\u00ae hotels. Earn 2 points per $1 spent on purchases at gas stations, grocery stores, and restaurants. Earn 1 point per $1 spent on all other purchases. ~5 points per dollar at IHGA hotels. 2 points per dollar on gas, groceries, and dining. 1 point per dollar all others.~",
+    "user_reviews": [
+  "The IHG Premier Card offers a generous 140,000-point sign-up bonus after spending $3,000 in the first 3 months. This bonus is valued at approximately $938 in IHG reservations, which can easily offset the $99 annual fee.",
+  "Cardholders earn up to 26 points per dollar at IHG Hotels & Resorts, combining the card's 10 points per dollar with additional points from IHG membership and Platinum Elite status.",
+  "The annual free night certificate and the fourth reward night free when redeeming points for a consecutive four-night stay are standout benefits that add significant value.",
+  "While the card offers strong rewards for IHG stays, the points' value may be lower compared to other hotel programs. Additionally, the card lacks an introductory APR offer, and the regular APR ranges from 19.99% to 28.49% variable.",
+  "Some users have reported delays in receiving the sign-up bonus points and challenges with customer service when resolving issues."
+]
+
   },
   {
     "name": "IHG Rewards Club Traveler Credit Card",
@@ -7017,7 +7219,15 @@
     "cons_value": "--MANUALLY FILL IN--",
     "bonus_offer_value": "--MANUALLY FILL IN--",
     "redeem_value": "--MANUALLY FILL IN--",
-    "rewards_rate_value": "--MANUALLY FILL IN--"
+    "rewards_rate_value": "--MANUALLY FILL IN--",
+    "user_reviews": [
+  "For the most part, we have enjoyed our cards (both of us have them) and booked many properties in the US and abroad. They always seem to have at least one or two properties at our destination. We also buy some points when they offer the 100% bonus, which they do three or four times a year. By buying points, we rarely pay cash for a room. Their app makes booking easy. On two occasions, we have had to contact customer service and then escalate the issue to management to get a resolution.",
+  "I've read comments and reviews that say that for people who travel as infrequently as I do, that this card isn't worth it. Because I don't travel as often as others, I can't justify paying an annual fee on any credit card.",
+  "The IHG One Rewards Traveler Credit Card is worth considering if you regularly stay at InterContinental, Holiday Inn, Crowne Plaza or one of the other popular hotel brands owned by IHG but do not want to pay an annual fee in order to earn extra rewards points with an IHG credit card.",
+  "The IHG One Rewards Traveler Credit Card is a solid choice if you're an occasional traveler who wants to earn maximum travel points to help cover the costs of your next IHG stay. This no-annual-fee card offers up to 17X points on bookings and purchases made at participating IHG hotels and resorts.",
+  "The IHG One Rewards Traveler Credit Card isn't a bad option for the occasional IHG guest, as you'll get a few IHG-related perks for no annual fee. However, if you're looking for extra perks during your IHG stays, you'll be disappointed with this card's limited benefits."
+]
+
   },
   {
     "name": "Ink Business Cash Credit Card",
@@ -7095,7 +7305,15 @@
     "cons_value": "Foreign transaction fee.",
     "bonus_offer_value": " Earn $300 bonus cash back when you spend $3,000 on purchases in the first 3 months from account opening. ~$300 cash back after spending $3k.~",
     "redeem_value": "The Ink Business Cash Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+    "user_reviews": [
+  "This card has been very helpful in helping my business grow. I use it mostly for inventory purchases.",
+  "I've been a cardholder of the Chase Ink Business Cash Credit Card for over 10 years. It's reliable, the rewards system is easy to use, and best of all I've earned thousands of dollars in cash back rewards.",
+  "BEST FOR BUSINESS. No annual fee, 0% APR for 12 months does not affect my personal credit score or my 5/24 status. Great when combined with a points earner.",
+  "RIDICULOUS customer service and experience. I've had this credit card for almost a year when they suddenly asked me to verify my business name and address. I immediately faxed AND mailed back the appropriate information. After several weeks and receiving a second letter saying they still had not received my information, I called customer service and spoke to someone who reassured me they had all the documents they need and I should be all set.",
+  "Ink Cash is arguably the best Chase card of all. It has 5X categories, a high spending limit, and you can get multiple Ink Cash cards through multiple businesses."
+]
+
   },
   {
     "name": "Ink Business Preferred Credit Card",
@@ -7173,7 +7391,15 @@
     "cons_value": "Has annual fee.",
     "bonus_offer_value": " Earn 80,000 bonus points after you spend $5,000 on purchases in the first 3 months from account opening. That's $1,000 toward travel when you redeem through Chase Ultimate Rewards. ~80k points after spending $5k.~",
     "redeem_value": "The Ink Business Preferred Credit Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1 point per Dollar. ~1 point per dollar.~"
+    "rewards_rate_value": "A rewards rate value of 1 point per Dollar. ~1 point per dollar.~",
+    "user_reviews": [
+  "The Ink Business Preferred® Credit Card offers a substantial 90,000-point sign-up bonus after spending $8,000 in the first 3 months, which can be worth up to $1,125 when redeemed through Chase Travel. This bonus alone can offset the $95 annual fee for several years.",
+  "Cardholders earn 3 points per $1 on the first $150,000 spent on travel and select business categories each account anniversary year, including shipping, internet, cable, phone services, and advertising purchases with social media sites and search engines. All other purchases earn 1 point per $1.",
+  "The card provides valuable benefits such as cell phone protection, primary car rental coverage, trip cancellation/interruption insurance, and extended warranty protection, making it a well-rounded option for business owners.",
+  "While the card offers strong rewards in specific categories, the base rewards rate for non-bonus categories is 1 point per $1, which may be lower compared to other cards that offer higher flat-rate rewards.",
+  "Some users have noted that the card's benefits are particularly advantageous when paired with other Chase Ultimate Rewards cards, allowing for point pooling and maximizing redemption value through travel partners."
+]
+
   },
   {
     "name": "JetBlue Card",
@@ -7251,7 +7477,15 @@
     "cons_value": "Rewards limited to Jetblue; Minimum $5 fee for balance transfers.",
     "bonus_offer_value": " Earn 5,000 bonus points after you spend $1,000 on purchases in the first 90 days. ~5k points after spending $1k.~",
     "redeem_value": "The JetBlue Card information on redeeming is on their website. Click apply now to go to the site to check it out.",
-    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~"
+    "rewards_rate_value": "A rewards rate value of 1.00%. ~1.00%.~",
+    "user_reviews": [
+  "I applied for this card a little over 2 weeks ago and got a 'need more time to review' response. So I went online to check the application status and saw that I was denied due to too many inquiries and new accounts. I understood and walked away. Last night, I read online to try the reconsideration line. I called and explained that although I have new accounts with AMEX & Chase, I opened them to strengthen my credit profile. I further explained that I have a 100% on-time payment history, all accounts are in good standing, and that I make sure that my utilization is below 30%. The rep agreed and approved my World Mastercard with an initial $3k limit. Hopefully, they increase often and the limit will be raised within a few months. I'm just happy to have it as I frequent JetBlue; it will be great to get 3x the points on travel, 2x on groceries and restaurants, and 1 point on other purchases.",
+  "It's a terrible earner card outside of spend on JetBlue, but they do have bonus promotions every once in a while (earn 5x on grocery and dining spend for the first $1,500 in the next 3 months, etc.). If you and your partner are flying round-trip at least once a year with checked bags, you will be saving money with this card. It's nice because it has no foreign transaction fees and is a Mastercard, so it works widely on vacations.",
+  "The JetBlue Card is a decent, albeit uninspiring, product for occasional JetBlue flyers who want to avoid an annual fee. However, most JetBlue loyalists will want to skip this card in favor of the JetBlue Plus Card. Even with an annual fee, the JetBlue Plus Card's list of more valuable benefits makes it the superior option.",
+  "The JetBlue Card offers solid value potential for big spenders, but most people will consider its benefits underwhelming. While the card does offer some solid value potential for big spenders, most people will consider its benefits underwhelming.",
+  "The JetBlue Card is a good credit card to consider if you have a credit score of 700 or higher and you fly frequently but not enough to justify paying an annual fee on a card. It's one of the best airline credit cards with no annual fee because it has good rewards, including an initial bonus and in-flight savings."
+]
+
   },
   {
     "name": "Journey Student Credit Card from Capital One",
