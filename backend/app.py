@@ -213,10 +213,6 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
     if filters is None:
         filters = {}
         
-    # user_vec = vectorizer.transform([user_input])
-    # cosine_similarities = cosine_similarity(user_vec, tfidf_matrix).flatten()
-    # sorted_indices = np.argsort(-cosine_similarities)  # Sort descending
-
     # Transform user input for both vectorizers
     desc_vec = vectorizer.transform([user_input])
     review_vec = user_review_vectorizer.transform([user_input])
@@ -235,31 +231,40 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
     # Sort by final score
     sorted_indices = np.argsort(-final_sim)
 
-    
-    # # First get all potential recommendations
-    # all_matches = []
-    # for i in sorted_indices:
-    #     # Scale cosine similarity to a percentage (0-100)
-    #     similarity_score = float(cosine_similarities[i])
-        
-    #     # Convert to percentage without floor
-    #     raw_percentage = similarity_score * 100
-    #     match_percentage = int(min(raw_percentage, 99))
-        
-    #     # Include both the raw data and the calculated match percentage
-    #     all_matches.append({
-    #         "title": card_names[i],
-    #         "category": categories[i],
-    #         "annual_fee": annual_fees[i],
-    #         "foreign_transaction_fee_value": foreign_transaction_fees[i],
-    #         "similarity_score": similarity_score,
-    #         "match_percentage": match_percentage
-    #     })
     all_matches = []
     for i in sorted_indices:
         similarity_score = float(final_sim[i])
         raw_percentage = similarity_score * 100
         match_percentage = int(min(raw_percentage, 99))
+
+        # Get the actual user reviews for this card
+        card_idx = card_names.index(card_names[i])
+        card_reviews_raw = data[card_idx].get("user_reviews", [])
+        
+        # Get top contributing reviews (if any)
+        top_reviews = []
+        if card_reviews_raw and len(card_reviews_raw) > 0:
+            # Calculate similarity for individual reviews
+            if isinstance(card_reviews_raw, list):
+                # Vectorize each review individually to find top matches
+                review_scores = []
+                for review in card_reviews_raw:
+                    if review:  # Skip empty reviews
+                        try:
+                            # Calculate similarity between user input and this specific review
+                            review_vec_single = user_review_vectorizer.transform([review])
+                            review_sim_single = cosine_similarity(review_vec, review_vec_single).flatten()[0]
+                            review_scores.append((review, float(review_sim_single)))
+                        except:
+                            # Skip reviews that cause issues with vectorization
+                            continue
+                
+                # Sort reviews by contribution score in descending order
+                review_scores.sort(key=lambda x: x[1], reverse=True)
+                
+                # Take top 3 reviews that contributed most to the match
+                for review, score in review_scores[:3]:
+                    top_reviews.append({"text": review, "score": score})
 
         all_matches.append({
             "title": card_names[i],
@@ -267,7 +272,8 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
             "annual_fee": annual_fees[i],
             "foreign_transaction_fee_value": foreign_transaction_fees[i],
             "similarity_score": similarity_score,
-            "match_percentage": match_percentage
+            "match_percentage": match_percentage,
+            "reviews": top_reviews
         })
         
     filtered_matches = all_matches

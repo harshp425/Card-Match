@@ -245,11 +245,43 @@
                 `<span class="benefit-badge">${badge}</span>`
             ).join('');
             
+            // Get user testimonial from actual reviews if available
             let userTestimonial = "This card has great benefits for everyday use.";
-            if (cardTitle.includes('Chase') && cardTitle.includes('Sapphire')) {
-                userTestimonial = "This card is perfect for travelers who don't want to pay a premium annual fee. The points are flexible and the travel insurance is excellent.";
-            } else if (cardTitle.includes('American Express') && cardTitle.includes('Gold')) {
-                userTestimonial = "Great for foodies and anyone who spends a lot on groceries. The dining credits make the annual fee easier to justify.";
+            const cardReviews = [];
+            
+            if (card.reviews && card.reviews.length > 0) {
+                // Use the first review as testimonial
+                userTestimonial = card.reviews[0].text;
+                
+                // Convert reviews to the format expected by showReviews
+                card.reviews.forEach(review => {
+                    cardReviews.push({
+                        text: review.text,
+                        author: "Card User"
+                    });
+                });
+            } else {
+                // Fallback to default reviews if none are available
+                if (cardTitle.includes('Chase') && cardTitle.includes('Sapphire')) {
+                    userTestimonial = "This card is perfect for travelers who don't want to pay a premium annual fee. The points are flexible and the travel insurance is excellent.";
+                } else if (cardTitle.includes('American Express') && cardTitle.includes('Gold')) {
+                    userTestimonial = "Great for foodies and anyone who spends a lot on groceries. The dining credits make the annual fee easier to justify.";
+                }
+                
+                cardReviews.push(
+                    {
+                        text: userTestimonial,
+                        author: "Credit Card Enthusiast"
+                    },
+                    {
+                        text: "This card offers exceptional value for its category. The rewards structure aligns perfectly with my spending habits.",
+                        author: "Financial Advisor"
+                    },
+                    {
+                        text: "I've had this card for two years and the customer service has been outstanding. The mobile app makes tracking rewards easy.",
+                        author: "Loyal Cardholder"
+                    }
+                );
             }
             
             let issuer = 'Major Bank';
@@ -269,22 +301,6 @@
             if (annualFee.includes('0')) {
                 welcomeBonus = '$200 statement credit after spending $1,000 in first 3 months';
             }
-            
-            // Store reviews for this card
-            const cardReviews = [
-                {
-                    text: userTestimonial,
-                    author: "Credit Card Enthusiast"
-                },
-                {
-                    text: "This card offers exceptional value for its category. The rewards structure aligns perfectly with my spending habits.",
-                    author: "Financial Advisor"
-                },
-                {
-                    text: "I've had this card for two years and the customer service has been outstanding. The mobile app makes tracking rewards easy.",
-                    author: "Loyal Cardholder"
-                }
-            ];
             
             return `
                 <div class="card-result">
