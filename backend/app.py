@@ -5,6 +5,7 @@ from flask_cors import CORS
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from sklearn.decomposition import TruncatedSVD
 
 # ROOT_PATH for linking with all your files.
 # Feel free to use a config.py or settings.py with a global export variable
@@ -51,10 +52,19 @@ for i in range(len(reviews)):
 
 # Vectorize text for cosine similarity
 vectorizer = TfidfVectorizer(stop_words="english")
-tfidf_matrix = vectorizer.fit_transform(informed_description)
+tfidf_matrix_raw = vectorizer.fit_transform(informed_description)
+
+svd = TruncatedSVD(n_components=130, random_state=42) 
+tfidf_matrix = svd.fit_transform(tfidf_matrix_raw)
+
+
+
 
 user_review_vectorizer = TfidfVectorizer(stop_words="english")
-user_review_matrix = user_review_vectorizer.fit_transform(user_reviews)
+user_review_matrix_raw = user_review_vectorizer.fit_transform(user_reviews)
+user_svd = TruncatedSVD(n_components=130, random_state=42)
+user_review_matrix = user_svd.fit_transform(user_review_matrix_raw)
+
 
 def filter_by_credit_score(recommendations, credit_score):
     """
@@ -214,10 +224,13 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
         filters = {}
         
     # Transform user input for both vectorizers
-    desc_vec = vectorizer.transform([user_input])
-    review_vec = user_review_vectorizer.transform([user_input])
+    desc_vec_raw = vectorizer.transform([user_input])
+    desc_vec = svd.transform(desc_vec_raw)
 
-    # Compute cosine similarities separately
+    review_vec_raw = user_review_vectorizer.transform([user_input])
+    review_vec = user_svd.transform(review_vec_raw)
+
+
     desc_sim = cosine_similarity(desc_vec, tfidf_matrix).flatten()
     review_sim = cosine_similarity(review_vec, user_review_matrix).flatten()
 
