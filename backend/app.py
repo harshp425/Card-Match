@@ -251,8 +251,7 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
         match_percentage = int(min(raw_percentage, 99))
 
         # Get the actual user reviews for this card
-        card_idx = card_names.index(card_names[i])
-        card_reviews_raw = data[card_idx].get("user_reviews", [])
+        card_reviews_raw = data[i].get("user_reviews", [])
         
         # Get top contributing reviews (if any)
         top_reviews = []
@@ -265,7 +264,9 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
                     if review:  # Skip empty reviews
                         try:
                             # Calculate similarity between user input and this specific review
-                            review_vec_single = user_review_vectorizer.transform([review])
+                            review_vec_single_raw = user_review_vectorizer.transform([review])
+                            # Transform to SVD space for proper comparison
+                            review_vec_single = user_svd.transform(review_vec_single_raw)
                             review_sim_single = cosine_similarity(review_vec, review_vec_single).flatten()[0]
                             review_scores.append((review, float(review_sim_single)))
                         except:
