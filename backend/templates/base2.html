@@ -277,7 +277,7 @@
 
             // render badges into HTML
             // 1) filter out placeholders and zero‐percent
-            // 1) filter out placeholders, zero-percent, and “No Annual Fee”
+            // 1) filter out placeholders, zero-percent, and "No Annual Fee"
             let filteredBadges = pointsBadges.filter(badge => {
             if (!badge) return false;
             const t = badge.trim();
@@ -297,7 +297,7 @@
             // 2) dedupe
             filteredBadges = [...new Set(filteredBadges)];
 
-            // 3) append “ back” to pure-percent badges
+            // 3) append " back" to pure-percent badges
             const finalBadges = filteredBadges.map(badge => {
             const m = badge.match(/^(\d+(\.\d+)?)%$/);
             return m ? `${m[1]}% back` : badge;
@@ -381,7 +381,13 @@
                             </h3>
                             <p class="card-issuer">${issuer}</p>
                         </div>
-                        <div class="match-percentage">${matchPercentage}% Match</div>
+                        <div class="card-image-container">
+                            <img src="${card.image_url || 'https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'}" 
+                                alt="${cardTitle}" 
+                                class="card-image"
+                                onerror="this.src='https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'">
+                            <div class="image-match-percentage">${matchPercentage}% Match</div>
+                        </div>
                     </div>
                     
                     <div class="card-details">

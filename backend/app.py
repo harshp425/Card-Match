@@ -167,7 +167,8 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
             "similarity_score":          sim,
             "match_percentage":          pct,
             "reviews":                   reviews_out,
-            "bonus_offer_value":         bonus_offers[i]
+            "bonus_offer_value":         bonus_offers[i],
+            "image_url":                 data[i].get("image_url", "")
         })
 
     # apply filters
