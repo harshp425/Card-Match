@@ -30,11 +30,13 @@ min_credit_scores = [entry.get("credit_score_low", "N/A") for entry in data]
 issuers = [entry.get("issuer", "") for entry in data]
 user_reviews = ["     ".join(entry.get("user_reviews", [])) for entry in data]
 bonus_offers = [entry.get("bonus_offer_value", "") for entry in data]
+short_card_names = [entry.get("short_card_name", "") for entry in data]
+pros_value = [entry.get("pros_value", "") for entry in data]
 
 
 # Build TF-IDF + SVD matrices
 informed_description = [
-    f"{rev} issuer: {issuers[i]} category: {categories[i]}"
+    f"{rev} {pros_value[i]} issuer: {issuers[i]} card name: {card_names[i]}/{short_card_names[i]} card name: {card_names[i]}/{short_card_names[i]} card name: {card_names[i]}/{short_card_names[i]} category: {categories[i]} category: {categories[i]}"
     for i, rev in enumerate(reviews)
 ]
 vectorizer = TfidfVectorizer(stop_words="english")
