@@ -75,11 +75,12 @@
 
                 <div class="filter-item">
                     <label for="annual-fee">Willing to Pay Annual Fee?</label>
-                    <select id="annual-fee" class="filter-select">
+                    <select id="annual-fee" name="annual-fee" class="filter-select">
                         <option value="no">No annual fee</option>
                         <option value="up-to-100">Yes, up to $100</option>
                         <option value="up-to-250">Yes, up to $250</option>
                         <option value="up-to-500">Yes, up to $500</option>
+                        <option value="up-to-700">Yes, up to $700</option>
                     </select>
                 </div>
 
@@ -229,21 +230,86 @@
             const foreignFee = card.foreign_transaction_fee_value || 'N/A';
             const offerLink = card.offer_link || '#';
             
+            // Inside renderCardResult(card, matchPercentage), replace your existing pointsBadges logic with this:
+
+// dynamically build badges from card fields
             const pointsBadges = [];
-            
-            if (cardTitle.includes('Chase')) {
-                pointsBadges.push("3x Points on Travel", "3x Points on Dining", "No Foreign Transaction Fees");
-            } else if (cardTitle.includes('American Express')) {
-                pointsBadges.push("4x Points on Restaurants", "4x Points on Groceries", "3x Points on Flights");
-            } else if (category.includes('travel')) {
-                pointsBadges.push("2x Points on Travel", "Airport Lounge Access");
-            } else {
-                pointsBadges.push("2x Points on Everyday Purchases");
+
+            // 1) Reward rate badge
+            if (card.reward_rate_string_2018 && card.reward_rate_string_2018 !== "-1") {
+                pointsBadges.push(card.reward_rate_string_2018);
             }
-            
-            const badgesHTML = pointsBadges.map(badge => 
-                `<span class="benefit-badge">${badge}</span>`
-            ).join('');
+
+            // 2) Annual fee badge
+            if (card.annual_fee === "$0") {
+                pointsBadges.push("No Annual Fee");
+            } else if (card.annual_fee && card.annual_fee !== "N/A") {
+                pointsBadges.push(`Annual Fee: ${card.annual_fee}`);
+            }
+
+            // 3) Foreign‐transaction fee badge
+            if (card.foreign_transaction_fee_value === "0%" || card.foreign_transaction_fee_value === "0.0") {
+                pointsBadges.push("No Foreign Transaction Fees");
+            } else if (card.foreign_transaction_fee_value && card.foreign_transaction_fee_value !== "-1") {
+                pointsBadges.push(`Foreign Transaction Fee: ${card.foreign_transaction_fee_value}`);
+            }
+
+            // 4) Intro APR badge
+            if (card.intro_apr_check_value && card.intro_apr_check_value !== "None" && card.intro_apr_check_value !== "-1") {
+                pointsBadges.push(`Intro APR: ${card.intro_apr_check_value}`);
+            }
+
+            if (card.reward_rate_string_2018 && card.reward_rate_string_2018 !== "-1") {
+                pointsBadges.push(card.reward_rate_string_2018);
+            }
+            if (card.intro_apr_check_value && card.intro_apr_check_value!=="None") {
+                pointsBadges.push(`Intro APR: ${card.intro_apr_check_value}`);
+            }
+
+            // 5) Category‐specific perks
+            if (card.category && card.category.includes("travel")) {
+                pointsBadges.push("Travel Benefits");
+            } else if (card.category && card.category.includes("miles")) {
+                pointsBadges.push("Earn Miles");
+            } else if (card.category && card.category.includes("cash_back")) {
+                pointsBadges.push("Cash Back Rewards");
+            }
+
+            // render badges into HTML
+            // 1) filter out placeholders and zero‐percent
+            // 1) filter out placeholders, zero-percent, and “No Annual Fee”
+            let filteredBadges = pointsBadges.filter(badge => {
+            if (!badge) return false;
+            const t = badge.trim();
+            if (
+                t === 'N/A' ||
+                t === '-1' ||
+                t === 'None' ||
+                /^0+(\.0+)?%$/.test(t) ||           // drop 0% or 0.00%
+                t.toLowerCase() === 'no annual fee' ||
+                t == "Intro APR: -1"
+            ) {
+                return false;
+            }
+            return true;
+            });
+
+            // 2) dedupe
+            filteredBadges = [...new Set(filteredBadges)];
+
+            // 3) append “ back” to pure-percent badges
+            const finalBadges = filteredBadges.map(badge => {
+            const m = badge.match(/^(\d+(\.\d+)?)%$/);
+            return m ? `${m[1]}% back` : badge;
+            });
+
+            // now render
+            const badgesHTML = finalBadges
+            .map(b => `<span class="benefit-badge">${b}</span>`)
+            .join('');
+
+
+
             
             // Get user testimonial from actual reviews if available
             let userTestimonial = "This card has great benefits for everyday use.";
@@ -297,10 +363,14 @@
                 issuer = 'Discover';
             }
             
-            let welcomeBonus = '60,000 points after spending $4,000 in first 3 months';
-            if (annualFee.includes('0')) {
-                welcomeBonus = '$200 statement credit after spending $1,000 in first 3 months';
+            const rawBonus = card.bonus_offer_value;
+            let welcomeBonus;
+            if (rawBonus !== undefined && rawBonus.trim() !== '' && rawBonus != "None." && rawBonus != "Nones." && rawBonus != "--MANUALLY FILL IN--.") {
+                welcomeBonus = rawBonus;
+            } else {
+                welcomeBonus = 'No bonus offer available';
             }
+
             
             return `
                 <div class="card-result">

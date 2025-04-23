@@ -1,5 +1,8 @@
+# app.py
+
 import json
 import os
+import re
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -7,366 +10,204 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from sklearn.decomposition import TruncatedSVD
 
-# ROOT_PATH for linking with all your files.
-# Feel free to use a config.py or settings.py with a global export variable
-os.environ['ROOT_PATH'] = os.path.abspath(os.path.join("..", os.curdir))
-
-# Get the directory of the current script
-current_directory = os.path.dirname(os.path.abspath(__file__))
-# Specify the path to the JSON file relative to the current script
-json_file_path = os.path.join(current_directory, 'dataset/dataset.json')
-
+# Set up Flask
 app = Flask(__name__)
 CORS(app)
 
-# Load JSON data
+# Load the dataset
+current_directory = os.path.dirname(os.path.abspath(__file__))
+json_file_path = os.path.join(current_directory, 'dataset', 'dataset.json')
 with open(json_file_path, 'r') as file:
     data = json.load(file)
 
-card_names = []
-reviews = []
-categories = []
-annual_fees = []
-foreign_transaction_fees = []
-min_credit_scores = []
-issuer = []
-user_reviews = []
+# Pre-extract fields for recommendation math
+card_names = [entry["name"] for entry in data]
+reviews = [entry.get("our_take_value", "") for entry in data]
+categories = [entry.get("category", "") for entry in data]
+annual_fees = [entry.get("annual_fee_value", "N/A") for entry in data]
+foreign_transaction_fees = [entry.get("foreign_transaction_fee_value", "N/A") for entry in data]
+min_credit_scores = [entry.get("credit_score_low", "N/A") for entry in data]
+issuers = [entry.get("issuer", "") for entry in data]
+user_reviews = ["     ".join(entry.get("user_reviews", [])) for entry in data]
+bonus_offers = [entry.get("bonus_offer_value", "") for entry in data]
 
 
-for entry in data:
-    card_names.append(entry["name"])
-    reviews.append(entry.get("our_take_value", ""))
-    categories.append(entry.get("category", ""))
-    annual_fees.append(entry.get("annual_fee_value", "N/A"))
-    foreign_transaction_fees.append(entry.get("foreign_transaction_fee_value", "N/A"))
-    min_credit_scores.append(entry.get("credit_score_low", "N/A"))
-    issuer.append(entry.get("issuer", ""))
-    user_reviews.append("     ".join(entry.get("user_reviews", [])))
-
-# Add the name of the issuer to the reviews to create an informed_description of the card against which we will
-# perform cosine similarity 
-
-informed_description = []
-for i in range(len(reviews)):
-    informed_description.append(reviews[i] + " issuer: " + issuer[i] + " category: " + categories[i])
-
-# Vectorize text for cosine similarity
+# Build TF-IDF + SVD matrices
+informed_description = [
+    f"{rev} issuer: {issuers[i]} category: {categories[i]}"
+    for i, rev in enumerate(reviews)
+]
 vectorizer = TfidfVectorizer(stop_words="english")
 tfidf_matrix_raw = vectorizer.fit_transform(informed_description)
-
-svd = TruncatedSVD(n_components=130, random_state=42) 
+svd = TruncatedSVD(n_components=130, random_state=42)
 tfidf_matrix = svd.fit_transform(tfidf_matrix_raw)
-
-
-
 
 user_review_vectorizer = TfidfVectorizer(stop_words="english")
 user_review_matrix_raw = user_review_vectorizer.fit_transform(user_reviews)
 user_svd = TruncatedSVD(n_components=130, random_state=42)
 user_review_matrix = user_svd.fit_transform(user_review_matrix_raw)
 
-
 def filter_by_credit_score(recommendations, credit_score):
-    """
-    Filter recommendations based on user's credit score.
-    Include cards where the user's minimum credit score meets or exceeds the card's requirement.
-    """
     if not credit_score or credit_score == "all":
         return recommendations
-    
-    # Define minimum credit score values based on dropdown options
+
     credit_score_minimums = {
-        "excellent": 750,  # Excellent (750+)
-        "good": 700,       # Good (700-749)
-        "fair": 650,       # Fair (650-699)
-        "poor": 300        # Poor (Below 650)
+        "excellent": 750,
+        "good": 700,
+        "fair": 650,
+        "poor": 300
     }
-    
-    # Get the user's minimum credit score
     user_min_score = credit_score_minimums.get(credit_score, 0)
-    
-    filtered_recommendations = []
-    
+    filtered = []
+
     for rec in recommendations:
-        # Find the card in the original data
-        card_title = rec["title"]
-        card_index = -1
-        for i, name in enumerate(card_names):
-            if name == card_title:
-                card_index = i
-                break
-        
-        if card_index == -1:
-            # If card not found, include it
-            filtered_recommendations.append(rec)
+        title = rec["title"]
+        idx = next((i for i,n in enumerate(card_names) if n == title), -1)
+        if idx == -1:
+            filtered.append(rec)
             continue
-        
-        # Get card's minimum required score
-        card_min_score = min_credit_scores[card_index]
-        
-        # Process the card's minimum score
+
+        card_req = min_credit_scores[idx]
         try:
-            if card_min_score == "N/A" or card_min_score is None:
-                # No specific requirement, include it
-                filtered_recommendations.append(rec)
+            if card_req in (None, "N/A"):
+                filtered.append(rec)
                 continue
-            
-            # Convert to integer if it's a string
-            if isinstance(card_min_score, str):
-                if card_min_score.isdigit():
-                    card_min_score = int(card_min_score)
-                else:
-                    # Not a valid number, include the card
-                    filtered_recommendations.append(rec)
-                    continue
-            
-            # Include the card if the user's credit score is sufficient
-            if user_min_score >= card_min_score:
-                filtered_recommendations.append(rec)
-                
-        except Exception as e:
-            print(f"Error processing card {card_title}: {e}")
-            filtered_recommendations.append(rec)
-    
-    return filtered_recommendations
+            if isinstance(card_req, str) and card_req.isdigit():
+                card_req = int(card_req)
+            if user_min_score >= card_req:
+                filtered.append(rec)
+        except:
+            filtered.append(rec)
+
+    return filtered
 
 def filter_by_annual_fee(recommendations, annual_fee_preference):
-    """
-    Filter recommendations based on user's annual fee preference.
-    """
     if not annual_fee_preference:
         return recommendations
-    
-    # Define annual fee thresholds based on dropdown options
+
     annual_fee_thresholds = {
-        "no": 0,            # No annual fee
-        "up-to-100": 100,   # Up to $100
-        "up-to-250": 250,   # Up to $250
-        "up-to-500": 500    # Up to $500
+        "no": 0,
+        "up-to-100": 100,
+        "up-to-250": 250,
+        "up-to-500": 500,
+        "up-to-700": 700
     }
-    
-    # Get the maximum annual fee the user is willing to pay
     max_fee = annual_fee_thresholds.get(annual_fee_preference, float('inf'))
-    
-    filtered_recommendations = []
-    
+    filtered = []
+
     for rec in recommendations:
-        # Find the card in the original data
-        card_title = rec["title"]
-        card_index = -1
-        for i, name in enumerate(card_names):
-            if name == card_title:
-                card_index = i
-                break
-        
-        if card_index == -1:
-            # If card not found, include it
-            filtered_recommendations.append(rec)
+        title = rec["title"]
+        idx = next((i for i,n in enumerate(card_names) if n == title), -1)
+        if idx == -1:
+            filtered.append(rec)
             continue
-        
-        # Get card's annual fee
-        annual_fee = annual_fees[card_index]
-        
-        # Process the annual fee
+
+        fee_raw = annual_fees[idx]
         try:
-            if annual_fee == "N/A" or annual_fee is None:
-                # If annual fee is not specified, include the card
-                filtered_recommendations.append(rec)
+            if fee_raw in (None, "N/A"):
+                filtered.append(rec)
                 continue
-            
-            # Extract numeric value from fee string
-            if isinstance(annual_fee, str):
-                # Remove $ and any other non-numeric characters
-                fee_value = annual_fee.replace('$', '').strip()
-                if fee_value == "0" or fee_value.lower() == "none":
-                    fee_value = 0
-                else:
-                    # Try to extract numeric value
-                    import re
-                    numeric_match = re.search(r'\d+', fee_value)
-                    if numeric_match:
-                        fee_value = int(numeric_match.group())
-                    else:
-                        # Couldn't extract a fee, assume it's free
-                        fee_value = 0
+
+            fee_str = str(fee_raw).replace('$', '').strip()
+            if fee_str.lower() in ("0", "none"):
+                fee_value = 0
             else:
-                fee_value = annual_fee
-            
-            # Convert to a number if it's still a string
-            if isinstance(fee_value, str) and fee_value.isdigit():
-                fee_value = int(fee_value)
-            elif not isinstance(fee_value, (int, float)):
-                # If not a valid number, include the card
-                filtered_recommendations.append(rec)
-                continue
-            
-            # Check if card's annual fee is within user's threshold
-            if annual_fee_preference == "no" and fee_value == 0:
-                # For "no annual fee" preference, only include cards with $0 fee
-                filtered_recommendations.append(rec)
-            elif annual_fee_preference != "no" and fee_value <= max_fee:
-                # For other preferences, include cards up to the max fee
-                filtered_recommendations.append(rec)
-                
-        except Exception as e:
-            print(f"Error processing annual fee for card {card_title}: {e}")
-            # In case of errors, include the card
-            filtered_recommendations.append(rec)
-    
-    return filtered_recommendations
+                m = re.search(r'\d+', fee_str)
+                fee_value = int(m.group()) if m else 0
+
+            if annual_fee_preference == "no":
+                if fee_value == 0:
+                    filtered.append(rec)
+            elif fee_value <= max_fee:
+                filtered.append(rec)
+        except:
+            filtered.append(rec)
+
+    return filtered
 
 def get_recommendations(user_input, filters=None, offset=0, limit=3):
-    """
-    Compute cosine similarity between user input and stored credit card reviews,
-    then apply filters based on user preferences.
-    """
     if filters is None:
         filters = {}
-        
-    # Transform user input for both vectorizers
-    desc_vec_raw = vectorizer.transform([user_input])
-    desc_vec = svd.transform(desc_vec_raw)
 
-    review_vec_raw = user_review_vectorizer.transform([user_input])
-    review_vec = user_svd.transform(review_vec_raw)
-
-
+    # similarity on description
+    desc_vec = svd.transform(vectorizer.transform([user_input]))
+    review_vec = user_svd.transform(user_review_vectorizer.transform([user_input]))
     desc_sim = cosine_similarity(desc_vec, tfidf_matrix).flatten()
     review_sim = cosine_similarity(review_vec, user_review_matrix).flatten()
+    final_sim = 0.7 * desc_sim + 0.3 * review_sim
 
-    # Define weights
-    w1 = 0.7  # weight for description match
-    w2 = 0.3  # weight for review match
+    sorted_idx = np.argsort(-final_sim)
+    matches = []
+    for i in sorted_idx:
+        sim = float(final_sim[i])
+        pct = int(min(sim * 100, 99))
+        top_raw_reviews = []
+        for rev in data[i].get("user_reviews", []):
+            try:
+                rv = user_review_vectorizer.transform([rev])
+                rv_svd = user_svd.transform(rv)
+                score = float(cosine_similarity(review_vec, rv_svd).flatten()[0])
+                top_raw_reviews.append((rev, score))
+            except:
+                continue
+        top_raw_reviews.sort(key=lambda x: x[1], reverse=True)
+        reviews_out = [{"text": r, "score": s} for r,s in top_raw_reviews[:3]]
 
-    # Compute final weighted similarity
-    final_sim = w1 * desc_sim + w2 * review_sim
-
-    # Sort by final score
-    sorted_indices = np.argsort(-final_sim)
-
-    all_matches = []
-    for i in sorted_indices:
-        similarity_score = float(final_sim[i])
-        raw_percentage = similarity_score * 100
-        match_percentage = int(min(raw_percentage, 99))
-
-        # Get the actual user reviews for this card
-        card_reviews_raw = data[i].get("user_reviews", [])
-        
-        # Get top contributing reviews (if any)
-        top_reviews = []
-        if card_reviews_raw and len(card_reviews_raw) > 0:
-            # Calculate similarity for individual reviews
-            if isinstance(card_reviews_raw, list):
-                # Vectorize each review individually to find top matches
-                review_scores = []
-                for review in card_reviews_raw:
-                    if review:  # Skip empty reviews
-                        try:
-                            # Calculate similarity between user input and this specific review
-                            review_vec_single_raw = user_review_vectorizer.transform([review])
-                            # Transform to SVD space for proper comparison
-                            review_vec_single = user_svd.transform(review_vec_single_raw)
-                            review_sim_single = cosine_similarity(review_vec, review_vec_single).flatten()[0]
-                            review_scores.append((review, float(review_sim_single)))
-                        except:
-                            # Skip reviews that cause issues with vectorization
-                            continue
-                
-                # Sort reviews by contribution score in descending order
-                review_scores.sort(key=lambda x: x[1], reverse=True)
-                
-                # Take top 3 reviews that contributed most to the match
-                for review, score in review_scores[:3]:
-                    top_reviews.append({"text": review, "score": score})
-
-        all_matches.append({
-            "title": card_names[i],
-            "category": categories[i],
-            "annual_fee": annual_fees[i],
+        matches.append({
+            "title":                     card_names[i],
+            "category":                  categories[i],
+            "annual_fee":                annual_fees[i],
             "foreign_transaction_fee_value": foreign_transaction_fees[i],
-            "similarity_score": similarity_score,
-            "match_percentage": match_percentage,
-            "reviews": top_reviews
+            # these two lines are new:
+            "reward_rate_string_2018":   data[i].get("reward_rate_string_2018", ""),
+            "intro_apr_check_value":     data[i].get("intro_apr_check_value", ""),
+
+            "similarity_score":          sim,
+            "match_percentage":          pct,
+            "reviews":                   reviews_out,
+            "bonus_offer_value":         bonus_offers[i]
         })
-        
-    filtered_matches = all_matches
-    
-    # Apply credit score filter if specified
-    credit_score = filters.get('creditScore')
-    if credit_score:
-        filtered_matches = filter_by_credit_score(filtered_matches, credit_score)
-    
-    # Apply annual fee filter if specified
-    annual_fee = filters.get('annualFee')
-    if annual_fee:
-        filtered_matches = filter_by_annual_fee(filtered_matches, annual_fee)
-    
-    # Apply pagination
-    total_matches = len(filtered_matches)
-    paginated_matches = filtered_matches[offset:offset+limit]
-    
-    return paginated_matches, total_matches
+
+    # apply filters
+    if filters.get("creditScore"):
+        matches = filter_by_credit_score(matches, filters["creditScore"])
+    if filters.get("annualFee"):
+        matches = filter_by_annual_fee(matches, filters["annualFee"])
+
+    total = len(matches)
+    return matches[offset:offset+limit], total
 
 @app.route("/")
 def home():
     return render_template('base2.html', title="Card Match - Credit Card Recommender")
 
-@app.route("/old")
-def old_ui():
-    return render_template('base.html', title="Card Match - Credit Card Recommender")
-
-@app.route("/new")
-def new_ui():
-    return render_template('base2.html', title="Card Match - Credit Card Recommender")
-
 @app.route("/filter-cards", methods=["POST"])
 def filter_cards():
-    """Handle the form submission for filtering cards."""
     credit_score = request.form.get('credit-score')
-    
-    # Log it to verify
-    print(f"Credit Score selected: {credit_score}")
-    
-    # For simplicity, we'll redirect to the main page after processing
-    # In a real app, you might want to pass this value to a template or return JSON
+    # you could store that in session or pass to template
     return render_template('base2.html', title="Card Match - Credit Card Recommender")
 
-@app.route("/recommend", methods=["POST", "GET"])
+@app.route("/recommend", methods=["POST"])
 def recommend():
-    """API endpoint to return credit card recommendations."""
-    print("got to recommend")
-    if request.method == "POST":
-        data = request.json
-        user_query = data.get("query", "")
-        filters = data.get("filters", {})
-        offset = data.get("offset", 0)
-        limit = data.get("limit", 3)
-    else:
-        user_query = request.args.get("title", "")
-        filters = {}
-        offset = int(request.args.get("offset", 0))
-        limit = int(request.args.get("limit", 3))
-    
-    if not user_query:
+    data_in = request.get_json()
+    query = data_in.get("query", "")
+    filters = data_in.get("filters", {})
+    offset = data_in.get("offset", 0)
+    limit = data_in.get("limit", 3)
+
+    if not query:
         return jsonify({"error": "No query provided"}), 400
-    
-    recommendations, total_matches = get_recommendations(
-        user_input=user_query, 
-        filters=filters,
-        offset=offset, 
-        limit=limit
-    )
-    
+
+    recs, total = get_recommendations(query, filters, offset, limit)
     return jsonify({
-        "recommendations": recommendations,
+        "recommendations": recs,
         "pagination": {
             "offset": offset,
             "limit": limit,
-            "total": total_matches,
-            "has_more": (offset + limit) < total_matches
+            "total": total,
+            "has_more": (offset + limit) < total
         }
     })
 
-if __name__ == "__main__":  # This is the correct way to run the app
+if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
