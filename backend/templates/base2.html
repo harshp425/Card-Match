@@ -365,7 +365,7 @@
             
             const rawBonus = card.bonus_offer_value;
             let welcomeBonus;
-            if (rawBonus !== undefined && rawBonus.trim() !== '' && rawBonus != "None." && rawBonus != "Nones." && rawBonus != "--MANUALLY FILL IN--.") {
+            if (rawBonus !== undefined && rawBonus.trim() !== '' && rawBonus != "None." && rawBonus != "Nones." && rawBonus != "---MANUALLY FILL IN---.") {
                 welcomeBonus = rawBonus;
             } else {
                 welcomeBonus = 'No bonus offer available';
