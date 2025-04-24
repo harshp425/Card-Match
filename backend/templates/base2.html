@@ -71,15 +71,14 @@
                 </div>
 
                 <div class="filter-item">
-                    <label for="annual-fee">Willing to Pay Annual Fee?</label>
-                    <select id="annual-fee" name="annual-fee" class="filter-select">
-                        <option value="no">No annual fee</option>
-                        <option value="up-to-100">Yes, up to $100</option>
-                        <option value="up-to-250">Yes, up to $250</option>
-                        <option value="up-to-500">Yes, up to $500</option>
-                        <option value="up-to-700">Yes, up to $700</option>
-                    </select>
-                </div>
+                    <label for="annual-fee-slider">Willing to Pay Annual Fee?</label>
+                    <input type="range" id="annual-fee-slider" name="annual-fee" min="0" max="1000" step="10" value="0" class="filter-slider">
+                    <div id="fee-slider-labels">
+                        <span>No</span>
+                        <span id="slider-value" style="font-weight: bold;">$0</span>
+                        <span>Don’t Care</span>
+                    </div>
+                </div>                
 
                 <div class="filter-item">
                     <label for="description">Tell us what you're looking for</label>
@@ -211,7 +210,7 @@
                 creditScore: document.getElementById('credit-score').value,
                 preferredAirline: document.getElementById('preferred-airline').value,
                 travelFrequency: document.getElementById('travel-frequency').value,
-                annualFee: document.getElementById('annual-fee').value,
+                annualFee: document.getElementById('annual-fee-slider').value,
                 description: document.getElementById('description').value
             };
         }
@@ -954,6 +953,15 @@
             document.getElementById('match-explanation-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+
+        const feeSlider = document.getElementById('annual-fee-slider');
+        const sliderValueDisplay = document.getElementById('slider-value');
+
+        feeSlider.addEventListener('input', () => {
+            const val = parseInt(feeSlider.value, 10);
+            sliderValueDisplay.textContent = val === 1000 ? "Don’t Care" : `$${val}`;
+        });
+
     </script>
 </body>
 </html>
