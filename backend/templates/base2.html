@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='particles.js') }}"></script>
 </head>
 <body>
     <div id="animation-container">
@@ -131,6 +132,25 @@
     </div>
 
     <script>
+        // Initialize animation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize card particles animation
+            window.cardParticles = new CardParticles('animation-container', {
+                particleCount: Math.floor(Math.random() * 12) + 10, // 10-22 particles
+                minSize: 40,
+                maxSize: 160,
+                minOpacity: 0.9,
+                maxOpacity: 1.0,
+                minSpeed: 0.8,
+                maxSpeed: 1.8,
+                cursorRepelRadius: 200,
+                cursorRepelForce: 2.0
+            });
+            
+            // Start typewriter animation
+            typeWriterAnimation();
+        });
+        
         function typeWriterAnimation() {
             const phrases = [
                 "Card Match", 
@@ -197,6 +217,11 @@
         function completeAnimation() {
             const animationContainer = document.getElementById('animation-container');
             const appContainer = document.getElementById('app-container');
+            
+            // Trigger card fly-off animation if cardParticles is available
+            if (window.cardParticles) {
+                window.cardParticles.flyOff();
+            }
             
             animationContainer.style.animation = 'fadeOut 1s forwards';
             
@@ -639,8 +664,6 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            typeWriterAnimation();
-            
             // Prevent the default form submission and use our custom logic
             document.querySelector('form').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent the default form submission

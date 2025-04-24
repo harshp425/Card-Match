@@ -386,7 +386,7 @@ def recommend():
 
     if not query:
         return jsonify({"error": "No query provided"}), 400
-
+    
     recs, total = get_recommendations(query, filters, offset, limit)
     return jsonify({
         "recommendations": recs,
