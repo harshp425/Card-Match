@@ -815,7 +815,10 @@
             // Add keyword matches as factors if not already present
             const userInput = document.getElementById('description').value.toLowerCase();
             const cardDesc = card.category + " " + (card.annual_fee || "") + " " + (card.reward_rate_string_2018 || "");
-            const userTokens = userInput.split(/\s+/).filter(token => token.length > 3);
+            const wordsToExclude = ["credit", "card", "want"];
+            const userTokens = userInput.split(/\s+/).filter(token => 
+                token.length > 3 && !wordsToExclude.includes(token.toLowerCase())
+            );
             
             let keywordMatches = [];
             userTokens.forEach(token => {
@@ -887,7 +890,10 @@
                 
                 // Get the user's query to highlight matching words
                 const userQuery = document.getElementById('description').value;
-                const significantWords = userQuery.toLowerCase().split(/\s+/).filter(word => word.length > 3);
+                const wordsToExclude = ["credit", "card", "want"];
+                const significantWords = userQuery.toLowerCase().split(/\s+/).filter(word => 
+                    word.length > 3 && !wordsToExclude.includes(word.toLowerCase())
+                );
                 
                 metrics.top_review_scores.forEach((review, index) => {
                     let highlightedText = review.text;

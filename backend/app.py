@@ -48,12 +48,17 @@ informed_description = [
     f"{rev} {pros_value[i]} issuer: {issuers[i]} card name: {card_names[i]}/{short_card_names[i]} card name: {card_names[i]}/{short_card_names[i]} card name: {card_names[i]}/{short_card_names[i]} category: {categories[i]} category: {categories[i]}"
     for i, rev in enumerate(reviews)
 ]
-vectorizer = TfidfVectorizer(stop_words="english")
+
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+custom_stop_words = set(ENGLISH_STOP_WORDS)
+custom_stop_words.update(["card", "want", "credit"])
+
+vectorizer = TfidfVectorizer(stop_words=list(custom_stop_words))
 tfidf_matrix_raw = vectorizer.fit_transform(informed_description)
 svd = TruncatedSVD(n_components=130, random_state=42)
 tfidf_matrix = svd.fit_transform(tfidf_matrix_raw)
 
-user_review_vectorizer = TfidfVectorizer(stop_words="english")
+user_review_vectorizer = TfidfVectorizer(stop_words=list(custom_stop_words))
 user_review_matrix_raw = user_review_vectorizer.fit_transform(user_reviews)
 user_svd = TruncatedSVD(n_components=130, random_state=42)
 user_review_matrix = user_svd.fit_transform(user_review_matrix_raw)
@@ -293,8 +298,9 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
             user_tokens = set(user_input.lower().split())
             card_desc = data[i].get("offer_details_value", "") + " " + data[i].get("rewards_rate_value", "")
             tokens_in_common = []
+            words_to_exclude = ["credit", "card", "want"]
             for token in user_tokens:
-                if token in card_desc.lower() and len(token) > 3:
+                if token in card_desc.lower() and len(token) > 3 and token not in words_to_exclude:
                     tokens_in_common.append(token)
             
             if tokens_in_common:
@@ -363,6 +369,9 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
     
     # Re-sort by adjusted similarity score
     matches.sort(key=lambda x: x["similarity_score"], reverse=True)
+    
+    # Filter out cards with match percentage less than 10%
+    matches = [match for match in matches if match["match_percentage"] >= 10]
     
     total = len(matches)
     return matches[offset:offset+limit], total

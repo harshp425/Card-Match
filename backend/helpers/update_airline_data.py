@@ -176,8 +176,12 @@ def update_dataset():
         
         # Find airline associations
         associated_airlines = []
+        words_to_exclude = ["credit", "card", "want"]  # Words to exclude from matching
         for airline, keywords in AIRLINES.items():
             for keyword in keywords:
+                # Skip matching on excluded words
+                if keyword in words_to_exclude:
+                    continue
                 if keyword in search_text:
                     associated_airlines.append(airline)
                     break  # Found one keyword for this airline
