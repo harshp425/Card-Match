@@ -14,8 +14,8 @@ class CardParticles {
             maxOpacity: 1.0,
             minSpeed: 0.7,
             maxSpeed: 1.5,
-            cursorRepelRadius: 180,
-            cursorRepelForce: 1.5,
+            cursorRepelRadius: 120,
+            cursorRepelForce: 1.2,
             collisionDamping: 0.85,
             defaultImages: []
         }, options);
@@ -198,10 +198,11 @@ class CardParticles {
             }
             this.particles = this.particles.filter(p => p !== particle);
             
-            // Add new particle to replace the removed one
-            if (this.isInitialized) {
-                this.addParticle();
-            }
+            // We're commenting this out for the Card Catch game
+            // to prevent automatic replacement of removed particles
+            // if (this.isInitialized) {
+            //    this.addParticle();
+            // }
         }, 500);
     }
     

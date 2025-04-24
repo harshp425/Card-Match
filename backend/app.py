@@ -398,5 +398,10 @@ def recommend():
         }
     })
 
+@app.route('/card-catch')
+def card_catch():
+    """Renders the Card Catch game page"""
+    return render_template('card_catch.html')
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)

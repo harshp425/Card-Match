@@ -1,0 +1,133 @@
+/* Card Catch Game Styles */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Return link styles */
+.return-link-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.return-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.return-link:hover {
+    text-decoration: underline;
+}
+
+/* Score container styles */
+.score-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.score-box {
+    background-color: rgba(63, 81, 181, 0.95);
+    border-radius: 12px;
+    padding: 30px 50px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+
+#score-value {
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 18px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Social component styles */
+.social-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 100;
+}
+
+.social-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3f51b5;
+}
+
+.social-box h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #3f51b5;
+    font-size: 16px;
+}
+
+.social-box p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* Point animation styles */
+.point-animation {
+    position: absolute;
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 24px;
+    pointer-events: none;
+    z-index: 200;
+    transform: translate(-50%, -50%);
+    animation: point-fade-up 1s forwards;
+}
+
+@keyframes point-fade-up {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150%) scale(1.2);
+    }
+}
+
+/* Card particle style override */
+.card-particle {
+    cursor: pointer;
+} 

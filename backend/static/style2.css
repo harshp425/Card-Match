@@ -135,9 +135,11 @@ header {
 }
 
 .header-content {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 header h1 {
@@ -150,6 +152,34 @@ header p {
     font-size: 18px;
     font-weight: 400;
     opacity: 0.9;
+}
+
+/* Header info styles */
+.header-info {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-align: right;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.header-info p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.play-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: border-color 0.2s;
+}
+
+.play-link:hover {
+    border-color: white;
 }
 
 /* Main content */
