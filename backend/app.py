@@ -9,6 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 from sklearn.decomposition import TruncatedSVD
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import random
 
 app = Flask(__name__)
@@ -49,7 +50,6 @@ informed_description = [
     for i, rev in enumerate(reviews)
 ]
 
-from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 custom_stop_words = set(ENGLISH_STOP_WORDS)
 custom_stop_words.update(["card", "want", "credit"])
 
@@ -101,7 +101,7 @@ def filter_by_annual_fee(recommendations, annual_fee_preference):
     try:
         max_fee = int(annual_fee_preference)
     except (TypeError, ValueError):
-        max_fee = 500  # default to "Don’t care" if invalid input
+        max_fee = 500  
 
     # Don't filter if user says "Don't care"
     if max_fee == 500:
@@ -119,7 +119,7 @@ def filter_by_annual_fee(recommendations, annual_fee_preference):
         fee_raw = annual_fees[idx]
         try:
             if fee_raw in (None, "N/A"):
-                continue  # skip cards with unclear fees
+                continue 
 
             fee_str = str(fee_raw).replace('$', '').strip().lower()
             if "none" in fee_str or fee_str == "0":
@@ -135,8 +135,7 @@ def filter_by_annual_fee(recommendations, annual_fee_preference):
                 filtered.append(rec)
 
         except Exception:
-            continue  # skip cards with unparseable fees
-
+            continue  
     return filtered
 
 def apply_airline_preference(recommendations, airline_preference):
@@ -334,7 +333,7 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
             "reward_rate_string_2018":   data[i].get("reward_rate_string_2018", ""),
             "intro_apr_check_value":     data[i].get("intro_apr_check_value", ""),
             "similarity_score":          sim,
-            "base_score":                sim,  # Store original score for explanation
+            "base_score":                sim,  
             "match_percentage":          pct,
             "reviews":                   reviews_out,
             "bonus_offer_value":         bonus_offers[i],
