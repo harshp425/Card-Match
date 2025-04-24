@@ -954,13 +954,23 @@
             document.body.style.overflow = 'auto';
         }
 
-        const feeSlider = document.getElementById('annual-fee-slider');
-        const sliderValueDisplay = document.getElementById('slider-value');
+        document.addEventListener('DOMContentLoaded', function () {
+            const feeSlider = document.getElementById('annual-fee-slider');
+            const sliderValueDisplay = document.getElementById('slider-value');
 
-        feeSlider.addEventListener('input', () => {
-            const val = parseInt(feeSlider.value, 10);
-            sliderValueDisplay.textContent = val === 500 ? "Don’t Care" : `$${val}`;
+            if (feeSlider && sliderValueDisplay) {
+                // Initialize value on page load
+                const initialVal = parseInt(feeSlider.value, 10);
+                sliderValueDisplay.textContent = initialVal === 500 ? "Don’t Care" : `$${initialVal}`;
+
+                // Update dynamically on slider input
+                feeSlider.addEventListener('input', () => {
+                    const val = parseInt(feeSlider.value, 10);
+                    sliderValueDisplay.textContent = val === 500 ? "Don’t Care" : `$${val}`;
+                });
+            }
         });
+
 
     </script>
 </body>
