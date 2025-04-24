@@ -36,6 +36,7 @@
                     <label for="credit-score">Credit Score Range</label>
                     <!-- Added name attribute to the select element -->
                     <select id="credit-score" name="credit-score" class="filter-select">
+                        <option value="not_relevant" selected>Prefer not to specify</option>
                         <option value="excellent">Excellent (750+)</option>
                         <option value="good">Good (700-749)</option>
                         <option value="fair">Fair (650-699)</option>
@@ -44,18 +45,9 @@
                 </div>
 
                 <div class="filter-item">
-                    <label for="annual-income">Annual Income</label>
-                    <select id="annual-income" class="filter-select">
-                        <option value="80-120">$80,001 - $120,000</option>
-                        <option value="40-80">$40,001 - $80,000</option>
-                        <option value="120-160">$120,001 - $160,000</option>
-                        <option value="160+">Over $160,000</option>
-                    </select>
-                </div>
-
-                <div class="filter-item">
                     <label for="preferred-airline">Preferred Airline (if any)</label>
                     <select id="preferred-airline" class="filter-select">
+                        <option value="not_relevant" selected>Not relevant</option>
                         <option value="delta">Delta</option>
                         <option value="united">United</option>
                         <option value="american">American</option>
@@ -67,6 +59,7 @@
                 <div class="filter-item">
                     <label for="travel-frequency">Travel Frequency</label>
                     <select id="travel-frequency" class="filter-select">
+                        <option value="not_relevant" selected>Prefer not to specify</option>
                         <option value="frequent">Frequently (3-5 times/year)</option>
                         <option value="occasional">Occasionally (1-2 times/year)</option>
                         <option value="rare">Rarely (Less than once/year)</option>
@@ -106,6 +99,32 @@
                 <span class="close-reviews" onclick="hideReviews()">&times;</span>
                 <h3 id="reviews-card-title">Card Reviews</h3>
                 <div id="reviews-container">
+                </div>
+            </div>
+        </div>
+        
+        <!-- New Match Explanation Modal -->
+        <div id="match-explanation-modal" class="reviews-modal">
+            <div class="reviews-content explanation-content">
+                <span class="close-reviews" onclick="hideExplanation()">&times;</span>
+                <h3 id="explanation-card-title">Match Explanation</h3>
+                <div id="explanation-container">
+                    <div class="explanation-section">
+                        <h4>Base Match Metrics</h4>
+                        <div id="base-metrics"></div>
+                    </div>
+                    <div class="explanation-section">
+                        <h4>Adjustment Factors</h4>
+                        <div id="adjustment-factors"></div>
+                    </div>
+                    <div class="explanation-section">
+                        <h4>Similarity Components</h4>
+                        <div id="similarity-components"></div>
+                    </div>
+                    <div class="explanation-section">
+                        <h4>Related Reviews</h4>
+                        <div id="related-reviews"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,7 +186,6 @@
         function collectFilterValues() {
             return {
                 creditScore: document.getElementById('credit-score').value,
-                annualIncome: document.getElementById('annual-income').value,
                 preferredAirline: document.getElementById('preferred-airline').value,
                 travelFrequency: document.getElementById('travel-frequency').value,
                 annualFee: document.getElementById('annual-fee').value,
@@ -380,6 +398,7 @@
                                 <a href="${offerLink}" target="_blank" class="card-link">${cardTitle}</a>
                             </h3>
                             <p class="card-issuer">${issuer}</p>
+                            <button class="view-explanation-btn" onclick="showExplanation(${JSON.stringify(card).replace(/"/g, '&quot;')})">See Why We Matched You!</button>
                         </div>
                         <div class="card-image-container">
                             <img src="${card.image_url || 'https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'}" 
@@ -505,7 +524,6 @@
             currentQuery = filterValues.description;
             currentFilters = {
                 creditScore: filterValues.creditScore,
-                annualIncome: filterValues.annualIncome,
                 preferredAirline: filterValues.preferredAirline,
                 travelFrequency: filterValues.travelFrequency,
                 annualFee: filterValues.annualFee
@@ -649,6 +667,12 @@
                 }
             });
             
+            document.getElementById('match-explanation-modal').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    hideExplanation();
+                }
+            });
+            
             document.addEventListener('keydown', function() {
                 const animationContainer = document.getElementById('animation-container');
                 if (animationContainer.style.display !== 'none') {
@@ -656,6 +680,248 @@
                 }
             });
         });
+        
+        // Function to show match explanation
+        function showExplanation(card) {
+            document.getElementById('explanation-card-title').textContent = `Match Explanation for ${card.title}`;
+            
+            // Base metrics
+            const baseMetrics = document.getElementById('base-metrics');
+            const matchPercentage = card.match_percentage;
+            const metrics = card.detailed_metrics;
+            
+            // Determine if any multipliers were applied
+            let multipliers = [];
+            const travelFrequency = document.getElementById('travel-frequency').value;
+            const preferredAirline = document.getElementById('preferred-airline').value;
+            
+            // Track if we've already added an airline multiplier to avoid duplicates
+            let airlineMultiplierAdded = false;
+            
+            if (card.match_factors && card.match_factors.length > 0) {
+                card.match_factors.forEach(factor => {
+                    // For factors with percentage impact values
+                    if (factor.impact && (factor.impact.startsWith('+') || factor.impact.startsWith('-'))) {
+                        // Handle travel frequency multipliers
+                        if (factor.factor.includes("travel") || factor.factor.includes("Travel")) {
+                            // Only add if travel frequency is selected
+                            if (travelFrequency !== "not_relevant") {
+                                let multiplierClass = "neutral-multiplier";
+                                if (factor.factor.includes("ideal")) {
+                                    multiplierClass = "positive-multiplier";
+                                }
+                                
+                                multipliers.push({
+                                    factor: factor.factor,
+                                    multiplier: ((parseFloat(factor.impact.replace('%', '').replace('+', '')) / 100) + 1).toFixed(2) + 'x',
+                                    impact: factor.impact,
+                                    cssClass: multiplierClass
+                                });
+                            }
+                        }
+                        // Handle airline multipliers
+                        else if (factor.factor.includes("airline") && !airlineMultiplierAdded) {
+                            airlineMultiplierAdded = true; // Prevent duplicates
+                            
+                            const isPreferredAirline = factor.factor.toLowerCase().includes(preferredAirline.toLowerCase()) &&
+                                                       preferredAirline !== "not_relevant" && 
+                                                       preferredAirline !== "none";
+                            
+                            // Set different classes for preferred vs general airline match
+                            const multiplierClass = isPreferredAirline ? "preferred-airline-multiplier" : "general-airline-multiplier";
+                            
+                            multipliers.push({
+                                factor: factor.factor,
+                                multiplier: ((parseFloat(factor.impact.replace('%', '').replace('+', '')) / 100) + 1).toFixed(2) + 'x',
+                                impact: factor.impact,
+                                cssClass: multiplierClass
+                            });
+                        }
+                        // Handle other percentage-based multipliers
+                        else {
+                            multipliers.push({
+                                factor: factor.factor,
+                                multiplier: ((parseFloat(factor.impact.replace('%', '').replace('+', '')) / 100) + 1).toFixed(2) + 'x',
+                                impact: factor.impact,
+                                cssClass: "neutral-multiplier"
+                            });
+                        }
+                    }
+                    // Skip handling text-based impacts to avoid duplicate multipliers
+                });
+            }
+            
+            // If no multipliers, add a base placeholder
+            if (multipliers.length === 0) {
+                multipliers.push({
+                    factor: "Base score - no adjustments applied",
+                    multiplier: "1.00x",
+                    impact: "0%",
+                    cssClass: "neutral-multiplier"
+                });
+            }
+            
+            // Create the multipliers HTML
+            let multipliersHTML = '<div class="multipliers-section">';
+            multipliers.forEach(m => {
+                multipliersHTML += `
+                    <div class="multiplier-item ${m.cssClass}">
+                        <div class="multiplier-value">${m.multiplier}</div>
+                        <div class="multiplier-factor">${m.factor}</div>
+                    </div>
+                `;
+            });
+            multipliersHTML += '</div>';
+            
+            baseMetrics.innerHTML = `
+                <div class="metric-grid">
+                    <div class="metric-item">
+                        <span class="metric-label">Final Match:</span>
+                        <span class="metric-value">${matchPercentage}%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Base Similarity:</span>
+                        <span class="metric-value">${(metrics.combined_similarity * 100).toFixed(4)}%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Description Similarity:</span>
+                        <span class="metric-value">${(metrics.description_similarity * 100).toFixed(4)}%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Review Similarity:</span>
+                        <span class="metric-value">${(metrics.review_similarity * 100).toFixed(4)}%</span>
+                    </div>
+                </div>
+                
+                <h4 class="multipliers-heading">Applied Multipliers</h4>
+                ${multipliersHTML}
+                
+                <div class="explanation-formula">
+                    <p>Base Score = (${metrics.description_weight} × Description Similarity) + (${metrics.review_weight} × Review Similarity)</p>
+                    <p>Base Score = (${metrics.description_weight} × ${(metrics.description_similarity * 100).toFixed(4)}%) + (${metrics.review_weight} × ${(metrics.review_similarity * 100).toFixed(4)}%)</p>
+                    <p>Base Score = ${(metrics.combined_similarity * 100).toFixed(4)}%</p>
+                </div>
+            `;
+            
+            // Adjustment factors - show the top 3 primary match factors
+            const adjustmentFactors = document.getElementById('adjustment-factors');
+            let allFactors = [];
+            
+            // Collect all match factors
+            if (card.match_factors && card.match_factors.length > 0) {
+                allFactors = [...card.match_factors];
+            }
+            
+            // Add keyword matches as factors if not already present
+            const userInput = document.getElementById('description').value.toLowerCase();
+            const cardDesc = card.category + " " + (card.annual_fee || "") + " " + (card.reward_rate_string_2018 || "");
+            const userTokens = userInput.split(/\s+/).filter(token => token.length > 3);
+            
+            let keywordMatches = [];
+            userTokens.forEach(token => {
+                if (cardDesc.toLowerCase().includes(token)) {
+                    keywordMatches.push(token);
+                }
+            });
+            
+            if (keywordMatches.length > 0 && !allFactors.some(f => f.factor.startsWith("Keyword match"))) {
+                allFactors.push({
+                    factor: "Keyword match: " + keywordMatches.slice(0, 3).join(", "),
+                    impact: "Primary match factor"
+                });
+            }
+            
+            // Sort factors by type (prioritize keyword and category matches)
+            allFactors.sort((a, b) => {
+                const aIsPrimary = a.factor.startsWith("Keyword") || a.factor.startsWith("Category");
+                const bIsPrimary = b.factor.startsWith("Keyword") || b.factor.startsWith("Category");
+                
+                if (aIsPrimary && !bIsPrimary) return -1;
+                if (!aIsPrimary && bIsPrimary) return 1;
+                return 0;
+            });
+            
+            // Take top 3 factors
+            const topFactors = allFactors.slice(0, 3);
+            
+            if (topFactors.length > 0) {
+                let factorsHtml = '<div class="factors-grid">';
+                topFactors.forEach((factor, index) => {
+                    factorsHtml += `
+                        <div class="factor-item ${index < 3 ? 'top-factor' : ''}">
+                            <span class="factor-name">${factor.factor}</span>
+                            <span class="factor-impact">${factor.impact}</span>
+                        </div>
+                    `;
+                });
+                factorsHtml += '</div>';
+                adjustmentFactors.innerHTML = factorsHtml;
+            } else {
+                adjustmentFactors.innerHTML = '<p class="no-factors">No adjustment factors applied</p>';
+            }
+            
+            // Similarity components
+            const similarityComponents = document.getElementById('similarity-components');
+            similarityComponents.innerHTML = `
+                <div class="components-info">
+                    <p><strong>SVD Dimensions:</strong> ${metrics.svd_dimensions}</p>
+                    <p><strong>Text Processing:</strong> TF-IDF Vectorization + SVD Dimensionality Reduction</p>
+                    <p><strong>Similarity Measure:</strong> Cosine Similarity</p>
+                </div>
+                <div class="weight-visualization">
+                    <div class="weight-bar">
+                        <div class="weight-segment description-weight" style="width: ${metrics.description_weight * 100}%">
+                            <span>Description (${metrics.description_weight * 100}%)</span>
+                        </div>
+                        <div class="weight-segment review-weight" style="width: ${metrics.review_weight * 100}%">
+                            <span>Reviews (${metrics.review_weight * 100}%)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Related reviews with highlighted matching words
+            const relatedReviews = document.getElementById('related-reviews');
+            if (metrics.top_review_scores && metrics.top_review_scores.length > 0) {
+                let reviewsHtml = '<div class="reviews-grid">';
+                
+                // Get the user's query to highlight matching words
+                const userQuery = document.getElementById('description').value;
+                const significantWords = userQuery.toLowerCase().split(/\s+/).filter(word => word.length > 3);
+                
+                metrics.top_review_scores.forEach((review, index) => {
+                    let highlightedText = review.text;
+                    
+                    // Highlight significant words in the review
+                    significantWords.forEach(word => {
+                        const regex = new RegExp('\\b(' + word + ')\\b', 'gi');
+                        highlightedText = highlightedText.replace(regex, '<strong>$1</strong>');
+                    });
+                    
+                    reviewsHtml += `
+                        <div class="review-score-item">
+                            <div class="review-header">
+                                <span class="review-number">Review #${index + 1}</span>
+                                <span class="review-score">Similarity: ${(review.score * 100).toFixed(4)}%</span>
+                            </div>
+                            <p class="review-text">"${highlightedText}"</p>
+                        </div>
+                    `;
+                });
+                reviewsHtml += '</div>';
+                relatedReviews.innerHTML = reviewsHtml;
+            } else {
+                relatedReviews.innerHTML = '<p class="no-reviews">No related reviews available</p>';
+            }
+            
+            document.getElementById('match-explanation-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideExplanation() {
+            document.getElementById('match-explanation-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
