@@ -98,22 +98,20 @@ def filter_by_credit_score(recommendations, credit_score):
     return filtered
 
 def filter_by_annual_fee(recommendations, annual_fee_preference):
-    if not annual_fee_preference:
+    try:
+        max_fee = int(annual_fee_preference)
+    except (TypeError, ValueError):
+        max_fee = 500  # default to "Don’t care" if invalid input
+
+    # Don't filter if user says "Don't care"
+    if max_fee == 500:
         return recommendations
 
-    annual_fee_thresholds = {
-        "no": 0,
-        "up-to-100": 100,
-        "up-to-250": 250,
-        "up-to-500": 500,
-        "up-to-700": 700
-    }
-    max_fee = annual_fee_thresholds.get(annual_fee_preference, float('inf'))
     filtered = []
 
     for rec in recommendations:
-        title = rec["title"]
-        idx = next((i for i,n in enumerate(card_names) if n == title), -1)
+        title = rec.get("title", "")
+        idx = next((i for i, n in enumerate(card_names) if n == title), -1)
         if idx == -1:
             filtered.append(rec)
             continue
@@ -121,23 +119,23 @@ def filter_by_annual_fee(recommendations, annual_fee_preference):
         fee_raw = annual_fees[idx]
         try:
             if fee_raw in (None, "N/A"):
-                filtered.append(rec)
-                continue
+                continue  # skip cards with unclear fees
 
-            fee_str = str(fee_raw).replace('$', '').strip()
-            if fee_str.lower() in ("0", "none"):
+            fee_str = str(fee_raw).replace('$', '').strip().lower()
+            if "none" in fee_str or fee_str == "0":
                 fee_value = 0
             else:
                 m = re.search(r'\d+', fee_str)
-                fee_value = int(m.group()) if m else 0
+                fee_value = int(m.group()) if m else float('inf')
 
-            if annual_fee_preference == "no":
+            if max_fee == 0:
                 if fee_value == 0:
                     filtered.append(rec)
             elif fee_value <= max_fee:
                 filtered.append(rec)
-        except:
-            filtered.append(rec)
+
+        except Exception:
+            continue  # skip cards with unparseable fees
 
     return filtered
 
