@@ -958,8 +958,8 @@
         const sliderValueDisplay = document.getElementById('slider-value');
 
         feeSlider.addEventListener('input', () => {
-            const val = parseInt(feeSlider.value, 10);
-            sliderValueDisplay.textContent = val === 1000 ? "Don’t Care" : `$${val}`;
+            const val = parseInt(feeSlider.value, 50);
+            sliderValueDisplay.textContent = val === 500 ? "Don’t Care" : `$${val}`;
         });
 
     </script>
