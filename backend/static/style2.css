@@ -19,14 +19,30 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
+    background-color: #f0f4fa; /* Slightly blue-tinted background */
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f5f7fa;
-    z-index: 1000;
+    overflow: hidden; /* Ensure particles don't cause scrollbars */
 }
 
+/* Card particle styles */
+.card-particle {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: none;
+    z-index: 1; /* Below the intro box */
+    pointer-events: none;
+    will-change: transform, left, top;
+    transition: opacity 0.5s;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border instead of shadow */
+}
+
+/* Intro box styles */
 .intro-box {
     width: 500px;
     border-radius: 16px;
@@ -40,6 +56,7 @@ body {
     text-align: center;
     position: relative;
     margin-bottom: 20px;
+    z-index: 2; /* Higher than card particles */
 }
 
 #typewriter {
@@ -64,6 +81,8 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0.2rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .dev-preview {
@@ -72,6 +91,8 @@ body {
     margin-top: 0;
     margin-bottom: 0.5rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .skip-hint {
@@ -79,6 +100,8 @@ body {
     color: #aaa;
     margin-top: 0.5rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes blink {
@@ -112,9 +135,11 @@ header {
 }
 
 .header-content {
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 header h1 {
@@ -127,6 +152,34 @@ header p {
     font-size: 18px;
     font-weight: 400;
     opacity: 0.9;
+}
+
+/* Header info styles */
+.header-info {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-align: right;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.header-info p {
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.play-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: border-color 0.2s;
+}
+
+.play-link:hover {
+    border-color: white;
 }
 
 /* Main content */

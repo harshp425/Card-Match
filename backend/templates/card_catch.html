@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Catch - Credit Card Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='card_catch.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='particles.js') }}"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div class="return-link-container">
+            <a href="/" class="return-link">← Return to Card Match</a>
+        </div>
+        
+        <div class="score-container">
+            <div class="score-box">
+                <span id="score-value">0</span>
+                <span class="score-label">Cards Caught</span>
+            </div>
+        </div>
+        
+        <div class="social-container">
+            <div class="social-box">
+                <h3>What is the social component of this?</h3>
+                <p>I got carried away with the animation and decided to add this. Games are fun and you can be social playing them so this counts. Remind me to remove this paragraph.</p>
+            </div>
+        </div>
+        
+        <div id="points-container"></div>
+    </div>
+
+    <script>
+        let score = 0;
+        let cardParticles;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            cardParticles = new CardParticles('game-container', {
+                particleCount: 10,
+                minSize: 60,
+                maxSize: 300,
+                minOpacity: 0.9,
+                maxOpacity: 1.0,
+                minSpeed: 0.5,
+                maxSpeed: 1.2,
+                cursorRepelRadius: 150,
+                cursorRepelForce: 0.5
+            });
+            
+            // Add click event listener to the game container
+            document.getElementById('game-container').addEventListener('click', handleClick);
+        });
+        
+        function handleClick(event) {
+            const cardElements = document.querySelectorAll('.card-particle');
+            let clickedCard = null;
+            
+            cardElements.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                
+                if (
+                    event.clientX >= rect.left &&
+                    event.clientX <= rect.right &&
+                    event.clientY >= rect.top &&
+                    event.clientY <= rect.bottom
+                ) {
+                    clickedCard = card;
+                }
+            });
+            
+            if (clickedCard) {
+                score++;
+                document.getElementById('score-value').textContent = score;
+                
+                createPointAnimation(event.clientX, event.clientY);
+                
+                removeCard(clickedCard);
+                
+                manageCardCount();
+            }
+        }
+        
+        function createPointAnimation(x, y) {
+            const pointEl = document.createElement('div');
+            pointEl.className = 'point-animation';
+            pointEl.textContent = '+1';
+            pointEl.style.left = `${x}px`;
+            pointEl.style.top = `${y}px`;
+            
+            document.getElementById('points-container').appendChild(pointEl);
+            
+            setTimeout(() => {
+                if (pointEl.parentNode) {
+                    pointEl.parentNode.removeChild(pointEl);
+                }
+            }, 1000);
+        }
+        
+        function removeCard(cardElement) {
+            const particles = cardParticles.particles;
+            let particleIndex = -1;
+            
+            for (let i = 0; i < particles.length; i++) {
+                if (particles[i].element === cardElement) {
+                    particleIndex = i;
+                    break;
+                }
+            }
+            
+            if (particleIndex >= 0) {
+                cardParticles.removeParticle(particles[particleIndex]);
+            }
+        }
+        
+        function manageCardCount() {
+            const currentCount = cardParticles.particles.length;
+            let targetCount = Math.min(Math.max(3, Math.floor(score / 5) + 3), 10);
+            
+            console.log(`Current cards: ${currentCount}, Target: ${targetCount}`);
+            
+            if (currentCount < targetCount) {
+                for (let i = currentCount; i < targetCount; i++) {
+                    cardParticles.addParticle();
+                }
+            }
+        }
+    </script>
+</body>
+</html> 

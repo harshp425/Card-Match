@@ -395,7 +395,7 @@ def recommend():
 
     if not query:
         return jsonify({"error": "No query provided"}), 400
-
+    
     recs, total = get_recommendations(query, filters, offset, limit)
     return jsonify({
         "recommendations": recs,
@@ -406,6 +406,11 @@ def recommend():
             "has_more": (offset + limit) < total
         }
     })
+
+@app.route('/card-catch')
+def card_catch():
+    """Renders the Card Catch game page"""
+    return render_template('card_catch.html')
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
