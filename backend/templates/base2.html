@@ -242,88 +242,118 @@
         const maxResults = 20;
         
         // Function to show reviews modal with specific card data
+// Replace the showReviews function with this updated version
+        // Updated showReviews function with consistent sentiment indicators
+        // Final updated showReviews function with fixed sentiment display
+        // Updated showReviews function with simplified sentiment display
         function showReviews(cardTitle, reviews) {
             document.getElementById('reviews-card-title').textContent = `Top Reviews for ${cardTitle}`;
             
             const reviewsContainer = document.getElementById('reviews-container');
             reviewsContainer.innerHTML = '';
             
-            reviews.forEach(review => {
+            reviews.forEach((review, index) => {
+                // Default sentiment if not provided
+                const sentiment = review.sentiment || {
+                    compound: 0,
+                    sentiment: "neutral",
+                    emoji: "😐"
+                };
+                
+                // Determine sentiment class based on compound score
+                let sentimentClass, sentimentLabel;
+                
+                if (sentiment.compound >= 0.05) {
+                    sentimentClass = "positive";
+                    sentimentLabel = "Positive";
+                } else if (sentiment.compound <= -0.05) {
+                    sentimentClass = "negative";
+                    sentimentLabel = "Negative";
+                } else {
+                    sentimentClass = "neutral";
+                    sentimentLabel = "Neutral";
+                }
+                
+                // Calculate percentage for display, but don't show the bar
+                const sentimentScore = Math.round(Math.abs(sentiment.compound) * 100);
+                
                 const reviewElement = document.createElement('div');
-                reviewElement.className = 'review-item';
+                reviewElement.className = `review-item review-${index + 1}`;
+                
+                // Create the review content
                 reviewElement.innerHTML = `
-                    <p>"${review.text}"</p>
-                    <p class="review-author">- ${review.author}</p>
+                    <div class="review-header">
+                        <h3 class="review-title">Review #${index + 1}</h3>
+                        <div class="sentiment-indicator ${sentimentClass}">
+                            <span class="sentiment-percentage">${sentimentScore}% ${sentimentLabel}</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p class="review-text">"${review.text}"</p>
+                        <p class="review-author">- ${review.author || "Card User"}</p>
+                    </div>
                 `;
+                
                 reviewsContainer.appendChild(reviewElement);
             });
             
             document.getElementById('global-reviews-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-        
+
         function hideReviews() {
             document.getElementById('global-reviews-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
         
         // Function to render a card result
-        function renderCardResult(card, matchPercentage) {
-            const cardTitle = card.title || 'Credit Card';
-            const annualFee = card.annual_fee || 'N/A';
-            const category = card.category || '';
-            const foreignFee = card.foreign_transaction_fee_value || 'N/A';
-            const offerLink = card.offer_link || '#';
-            
-            // Inside renderCardResult(card, matchPercentage), replace your existing pointsBadges logic with this:
+        // Update the renderCardResult function to remove emojis from the testimonial display
+    function renderCardResult(card, matchPercentage) {
+        const cardTitle = card.title || 'Credit Card';
+        const annualFee = card.annual_fee || 'N/A';
+        const category = card.category || '';
+        const foreignFee = card.foreign_transaction_fee_value || 'N/A';
+        const offerLink = card.offer_link || '#';
+        
+        // Dynamically build badges from card fields
+        const pointsBadges = [];
 
-// dynamically build badges from card fields
-            const pointsBadges = [];
+        // 1) Reward rate badge
+        if (card.reward_rate_string_2018 && card.reward_rate_string_2018 !== "-1") {
+            pointsBadges.push(card.reward_rate_string_2018);
+        }
 
-            // 1) Reward rate badge
-            if (card.reward_rate_string_2018 && card.reward_rate_string_2018 !== "-1") {
-                pointsBadges.push(card.reward_rate_string_2018);
-            }
+        // 2) Annual fee badge
+        if (card.annual_fee === "$0") {
+            pointsBadges.push("No Annual Fee");
+        } else if (card.annual_fee && card.annual_fee !== "N/A") {
+            pointsBadges.push(`Annual Fee: ${card.annual_fee}`);
+        }
 
-            // 2) Annual fee badge
-            if (card.annual_fee === "$0") {
-                pointsBadges.push("No Annual Fee");
-            } else if (card.annual_fee && card.annual_fee !== "N/A") {
-                pointsBadges.push(`Annual Fee: ${card.annual_fee}`);
-            }
+        // 3) Foreign‐transaction fee badge
+        if (card.foreign_transaction_fee_value === "0%" || card.foreign_transaction_fee_value === "0.0") {
+            pointsBadges.push("No Foreign Transaction Fees");
+        } else if (card.foreign_transaction_fee_value && card.foreign_transaction_fee_value !== "-1") {
+            pointsBadges.push(`Foreign Transaction Fee: ${card.foreign_transaction_fee_value}`);
+        }
 
-            // 3) Foreign‐transaction fee badge
-            if (card.foreign_transaction_fee_value === "0%" || card.foreign_transaction_fee_value === "0.0") {
-                pointsBadges.push("No Foreign Transaction Fees");
-            } else if (card.foreign_transaction_fee_value && card.foreign_transaction_fee_value !== "-1") {
-                pointsBadges.push(`Foreign Transaction Fee: ${card.foreign_transaction_fee_value}`);
-            }
+        // 4) Intro APR badge
+        if (card.intro_apr_check_value && card.intro_apr_check_value !== "None" && card.intro_apr_check_value !== "-1") {
+            pointsBadges.push(`Intro APR: ${card.intro_apr_check_value}`);
+        }
 
-            // 4) Intro APR badge
-            if (card.intro_apr_check_value && card.intro_apr_check_value !== "None" && card.intro_apr_check_value !== "-1") {
-                pointsBadges.push(`Intro APR: ${card.intro_apr_check_value}`);
-            }
+        // 5) Category‐specific perks
+        if (card.category && card.category.includes("travel")) {
+            pointsBadges.push("Travel Benefits");
+        } else if (card.category && card.category.includes("miles")) {
+            pointsBadges.push("Earn Miles");
+        } else if (card.category && card.category.includes("cash_back")) {
+            pointsBadges.push("Cash Back Rewards");
+        }
 
-            if (card.reward_rate_string_2018 && card.reward_rate_string_2018 !== "-1") {
-                pointsBadges.push(card.reward_rate_string_2018);
-            }
-            if (card.intro_apr_check_value && card.intro_apr_check_value!=="None") {
-                pointsBadges.push(`Intro APR: ${card.intro_apr_check_value}`);
-            }
-
-            // 5) Category‐specific perks
-            if (card.category && card.category.includes("travel")) {
-                pointsBadges.push("Travel Benefits");
-            } else if (card.category && card.category.includes("miles")) {
-                pointsBadges.push("Earn Miles");
-            } else if (card.category && card.category.includes("cash_back")) {
-                pointsBadges.push("Cash Back Rewards");
-            }
-
-            // render badges into HTML
-            // 1) filter out placeholders and zero‐percent
-            // 1) filter out placeholders, zero-percent, and "No Annual Fee"
-            let filteredBadges = pointsBadges.filter(badge => {
+        // render badges into HTML
+        // filter out placeholders, zero-percent, and "No Annual Fee"
+        let filteredBadges = pointsBadges.filter(badge => {
             if (!badge) return false;
             const t = badge.trim();
             if (
@@ -337,126 +367,205 @@
                 return false;
             }
             return true;
-            });
+        });
 
-            // 2) dedupe
-            filteredBadges = [...new Set(filteredBadges)];
+        // dedupe
+        filteredBadges = [...new Set(filteredBadges)];
 
-            // 3) append " back" to pure-percent badges
-            const finalBadges = filteredBadges.map(badge => {
+        // append " back" to pure-percent badges
+        const finalBadges = filteredBadges.map(badge => {
             const m = badge.match(/^(\d+(\.\d+)?)%$/);
             return m ? `${m[1]}% back` : badge;
-            });
+        });
 
-            // now render
-            const badgesHTML = finalBadges
+        // now render
+        const badgesHTML = finalBadges
             .map(b => `<span class="benefit-badge">${b}</span>`)
             .join('');
-
-
-
+        
+        // Get user testimonial from actual reviews if available
+        let userTestimonial = "This card has great benefits for everyday use.";
+        const cardReviews = [];
+        
+        if (card.reviews && card.reviews.length > 0) {
+            // Use the first review as testimonial
+            userTestimonial = card.reviews[0].text;
             
-            // Get user testimonial from actual reviews if available
-            let userTestimonial = "This card has great benefits for everyday use.";
-            const cardReviews = [];
-            
-            if (card.reviews && card.reviews.length > 0) {
-                // Use the first review as testimonial
-                userTestimonial = card.reviews[0].text;
-                
-                // Convert reviews to the format expected by showReviews
-                card.reviews.forEach(review => {
-                    cardReviews.push({
-                        text: review.text,
-                        author: "Card User"
-                    });
+            // Store sentiment data for reviews modal but don't display in main card
+            card.reviews.forEach(review => {
+                cardReviews.push({
+                    text: review.text,
+                    author: "Card User",
+                    sentiment: review.sentiment
                 });
-            } else {
-                // Fallback to default reviews if none are available
-                if (cardTitle.includes('Chase') && cardTitle.includes('Sapphire')) {
-                    userTestimonial = "This card is perfect for travelers who don't want to pay a premium annual fee. The points are flexible and the travel insurance is excellent.";
-                } else if (cardTitle.includes('American Express') && cardTitle.includes('Gold')) {
-                    userTestimonial = "Great for foodies and anyone who spends a lot on groceries. The dining credits make the annual fee easier to justify.";
-                }
-                
-                cardReviews.push(
-                    {
-                        text: userTestimonial,
-                        author: "Credit Card Enthusiast"
-                    },
-                    {
-                        text: "This card offers exceptional value for its category. The rewards structure aligns perfectly with my spending habits.",
-                        author: "Financial Advisor"
-                    },
-                    {
-                        text: "I've had this card for two years and the customer service has been outstanding. The mobile app makes tracking rewards easy.",
-                        author: "Loyal Cardholder"
+            });
+        } else {
+            // Fallback to default reviews if none are available
+            if (cardTitle.includes('Chase') && cardTitle.includes('Sapphire')) {
+                userTestimonial = "This card is perfect for travelers who don't want to pay a premium annual fee. The points are flexible and the travel insurance is excellent.";
+            } else if (cardTitle.includes('American Express') && cardTitle.includes('Gold')) {
+                userTestimonial = "Great for foodies and anyone who spends a lot on groceries. The dining credits make the annual fee easier to justify.";
+            }
+            
+            cardReviews.push(
+                {
+                    text: userTestimonial,
+                    author: "Credit Card Enthusiast",
+                    sentiment: {
+                        compound: 0.7,
+                        sentiment: "positive",
+                        emoji: "😁"
                     }
-                );
-            }
-            
-            let issuer = 'Major Bank';
-            if (cardTitle.includes('Chase')) {
-                issuer = 'Chase Bank';
-            } else if (cardTitle.includes('American Express')) {
-                issuer = 'American Express';
-            } else if (cardTitle.includes('Capital One')) {
-                issuer = 'Capital One';
-            } else if (cardTitle.includes('Citi')) {
-                issuer = 'Citibank';
-            } else if (cardTitle.includes('Discover')) {
-                issuer = 'Discover';
-            }
-            
-            const rawBonus = card.bonus_offer_value;
-            let welcomeBonus;
-            if (rawBonus !== undefined && rawBonus.trim() !== '' && rawBonus != "None." && rawBonus != "Nones." && rawBonus != "---MANUALLY FILL IN---." && rawBonus != "--MANUALLY FILL IN--.") {
-                welcomeBonus = rawBonus;
-            } else {
-                welcomeBonus = 'No bonus offer available';
-            }
-
-            
-            return `
-                <div class="card-result">
-                    <div class="card-header">
-                        <div class="card-info">
-                            <h3 class="card-title">
-                                <a href="${offerLink}" target="_blank" class="card-link">${cardTitle}</a>
-                            </h3>
-                            <p class="card-issuer">${issuer}</p>
-                            <button class="view-explanation-btn" onclick="showExplanation(${JSON.stringify(card).replace(/"/g, '&quot;')})">See Why We Matched You!</button>
-                        </div>
-                        <div class="card-image-container">
-                            <img src="${card.image_url || 'https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'}" 
-                                alt="${cardTitle}" 
-                                class="card-image"
-                                onerror="this.src='https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'">
-                            <div class="image-match-percentage">${matchPercentage}% Match</div>
-                        </div>
-                    </div>
-                    
-                    <div class="card-details">
-                        <p class="annual-fee">Annual Fee: ${annualFee}</p>
-                        
-                        <div class="benefits-badges">
-                            ${badgesHTML}
-                        </div>
-                        
-                        <div class="welcome-bonus">
-                            <h4>Welcome Bonus:</h4>
-                            <p>${welcomeBonus}</p>
-                        </div>
-                        
-                        <div class="user-testimonial">
-                            <p><em>What Users Say: "${userTestimonial}"</em></p>
-                            <button class="view-reviews-btn" onclick="showReviews('${cardTitle}', ${JSON.stringify(cardReviews).replace(/"/g, '&quot;')})">View All Reviews</button>
-                        </div>
-                    </div>
-                </div>
-            `;
+                },
+                {
+                    text: "This card offers exceptional value for its category. The rewards structure aligns perfectly with my spending habits.",
+                    author: "Financial Advisor",
+                    sentiment: {
+                        compound: 0.7,
+                        sentiment: "positive",
+                        emoji: "😁"
+                    }
+                },
+                {
+                    text: "I've had this card for two years and the customer service has been outstanding. The mobile app makes tracking rewards easy.",
+                    author: "Loyal Cardholder",
+                    sentiment: {
+                        compound: 0.75,
+                        sentiment: "positive",
+                        emoji: "😍"
+                    }
+                }
+            );
         }
         
+        let issuer = 'Major Bank';
+        if (cardTitle.includes('Chase')) {
+            issuer = 'Chase Bank';
+        } else if (cardTitle.includes('American Express')) {
+            issuer = 'American Express';
+        } else if (cardTitle.includes('Capital One')) {
+            issuer = 'Capital One';
+        } else if (cardTitle.includes('Citi')) {
+            issuer = 'Citibank';
+        } else if (cardTitle.includes('Discover')) {
+            issuer = 'Discover';
+        } else if (cardTitle.includes('Bank of America')) {
+            issuer = 'Bank of America';
+        }
+        
+        const rawBonus = card.bonus_offer_value;
+        let welcomeBonus;
+        if (rawBonus !== undefined && rawBonus.trim() !== '' && rawBonus != "None." && rawBonus != "Nones." && rawBonus != "---MANUALLY FILL IN---." && rawBonus != "--MANUALLY FILL IN--.") {
+            welcomeBonus = rawBonus;
+        } else {
+            welcomeBonus = 'No bonus offer available';
+        }
+        
+        return `
+            <div class="card-result">
+                <div class="card-header">
+                    <div class="card-info">
+                        <h3 class="card-title">
+                            <a href="${offerLink}" target="_blank" class="card-link">${cardTitle}</a>
+                        </h3>
+                        <p class="card-issuer">${issuer}</p>
+                        <button class="view-explanation-btn" onclick="showExplanation(${JSON.stringify(card).replace(/"/g, '&quot;')})">See Why We Matched You!</button>
+                    </div>
+                    <div class="card-image-container">
+                        <img src="${card.image_url || 'https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'}" 
+                            alt="${cardTitle}" 
+                            class="card-image"
+                            onerror="this.src='https://via.placeholder.com/200x125/e8f0fe/1a73e8?text=Card+Image'">
+                        <div class="image-match-percentage">${matchPercentage}% Match</div>
+                    </div>
+                </div>
+                
+                <div class="card-details">
+                    <p class="annual-fee">Annual Fee: ${annualFee}</p>
+                    
+                    <div class="benefits-badges">
+                        ${badgesHTML}
+                    </div>
+                    
+                    <div class="welcome-bonus">
+                        <h4>Welcome Bonus:</h4>
+                        <p>${welcomeBonus}</p>
+                    </div>
+                    
+                    <div class="user-testimonial">
+                        <p><em>What Users Say: "${userTestimonial}"</em></p>
+                        <button class="view-reviews-btn" onclick="showReviews('${cardTitle}', ${JSON.stringify(cardReviews).replace(/"/g, '&quot;')})">View All Reviews</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+// Updated showReviews function to display sentiment indicators within the reviews modal
+function showReviews(cardTitle, reviews) {
+    document.getElementById('reviews-card-title').textContent = `Top Reviews for ${cardTitle}`;
+    
+    const reviewsContainer = document.getElementById('reviews-container');
+    reviewsContainer.innerHTML = '';
+    
+    reviews.forEach(review => {
+        // Default sentiment if not provided
+        const sentiment = review.sentiment || {
+            compound: 0,
+            sentiment: "neutral",
+            emoji: "😐"
+        };
+        
+        // Determine sentiment class based on compound score
+        let sentimentClass = "neutral";
+        if (sentiment.compound >= 0.05) {
+            if (sentiment.compound >= 0.75) {
+                sentimentClass = "extremely-positive";
+            } else if (sentiment.compound >= 0.5) {
+                sentimentClass = "very-positive";
+            } else {
+                sentimentClass = "positive";
+            }
+        } else if (sentiment.compound <= -0.05) {
+            if (sentiment.compound <= -0.75) {
+                sentimentClass = "extremely-negative";
+            } else if (sentiment.compound <= -0.5) {
+                sentimentClass = "very-negative";
+            } else {
+                sentimentClass = "negative";
+            }
+        }
+        
+        // Format sentiment label
+        let sentimentLabel = "Neutral";
+        if (sentimentClass.includes("positive")) {
+            sentimentLabel = sentimentClass.includes("extremely") ? "Very Positive" : 
+                            sentimentClass.includes("very") ? "Positive" : "Somewhat Positive";
+        } else if (sentimentClass.includes("negative")) {
+            sentimentLabel = sentimentClass.includes("extremely") ? "Very Negative" : 
+                            sentimentClass.includes("very") ? "Negative" : "Somewhat Negative";
+        }
+        
+        const reviewElement = document.createElement('div');
+        reviewElement.className = `review-item ${sentimentClass}`;
+        reviewElement.innerHTML = `
+            <div class="sentiment-indicator">${sentiment.emoji}</div>
+            <p>"${review.text}"</p>
+            <div class="review-footer">
+                <p class="review-author">- ${review.author || "Card User"}</p>
+                <div class="sentiment-label ${sentimentClass.split('-')[0]}">${sentimentLabel}</div>
+            </div>
+            <div class="sentiment-bar">
+                <div class="sentiment-fill ${sentimentClass.split('-')[0]}" 
+                     style="width: ${Math.abs(sentiment.compound) * 100}%"></div>
+            </div>
+        `;
+        reviewsContainer.appendChild(reviewElement);
+    });
+    
+    document.getElementById('global-reviews-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}      
         // Function to load more results
         function loadMoreResults() {
             const loadMoreBtn = document.getElementById('load-more-btn');
@@ -707,6 +816,8 @@
         });
         
         // Function to show match explanation
+        // Function to show match explanation with sentiment analysis
+        // Updated showExplanation function with improved sentiment display
         function showExplanation(card) {
             document.getElementById('explanation-card-title').textContent = `Match Explanation for ${card.title}`;
             
@@ -749,8 +860,8 @@
                             airlineMultiplierAdded = true; // Prevent duplicates
                             
                             const isPreferredAirline = factor.factor.toLowerCase().includes(preferredAirline.toLowerCase()) &&
-                                                       preferredAirline !== "not_relevant" && 
-                                                       preferredAirline !== "none";
+                                                    preferredAirline !== "not_relevant" && 
+                                                    preferredAirline !== "none";
                             
                             // Set different classes for preferred vs general airline match
                             const multiplierClass = isPreferredAirline ? "preferred-airline-multiplier" : "general-airline-multiplier";
@@ -908,7 +1019,7 @@
                 </div>
             `;
             
-            // Related reviews with highlighted matching words
+            // Related reviews with improved formatting for sentiment
             const relatedReviews = document.getElementById('related-reviews');
             if (metrics.top_review_scores && metrics.top_review_scores.length > 0) {
                 let reviewsHtml = '<div class="reviews-grid">';
@@ -929,13 +1040,48 @@
                         highlightedText = highlightedText.replace(regex, '<strong>$1</strong>');
                     });
                     
+                    // Add sentiment analysis display
+                    const sentiment = review.sentiment || {
+                        compound: 0,
+                        sentiment: "neutral",
+                        emoji: "😐"
+                    };
+                    
+                    // Calculate sentiment percentage for display
+                    const sentimentPercent = Math.round(Math.abs(sentiment.compound) * 100);
+                    
+                    // Determine sentiment type for styling
+                    let sentimentType = "neutral";
+                    if (sentiment.compound >= 0.05) {
+                        sentimentType = "positive";
+                    } else if (sentiment.compound <= -0.05) {
+                        sentimentType = "negative";
+                    }
+                    
+                    // Create a cleaner sentiment label
+                    let sentimentLabel = sentimentType.charAt(0).toUpperCase() + sentimentType.slice(1);
+                    if (sentimentPercent >= 75) {
+                        sentimentLabel = "Strongly " + sentimentLabel;
+                    } else if (sentimentPercent >= 50) {
+                        sentimentLabel = "Very " + sentimentLabel;
+                    } else if (sentimentPercent >= 25) {
+                        sentimentLabel = "Moderately " + sentimentLabel;
+                    } else {
+                        sentimentLabel = "Slightly " + sentimentLabel;
+                    }
+                    
                     reviewsHtml += `
                         <div class="review-score-item">
                             <div class="review-header">
                                 <span class="review-number">Review #${index + 1}</span>
-                                <span class="review-score">Similarity: ${(review.score * 100).toFixed(4)}%</span>
+                                <span class="review-score">Similarity: ${(review.score * 100).toFixed(1)}%</span>
+                                <span class="sentiment-badge ${sentimentType}">${sentimentPercent}% ${sentimentLabel}</span>
                             </div>
                             <p class="review-text">"${highlightedText}"</p>
+                            <div class="sentiment-bar">
+                                <div class="sentiment-fill ${sentimentType}" 
+                                    style="width: ${sentimentPercent}%"></div>
+                            </div>
                         </div>
                     `;
                 });
@@ -948,12 +1094,11 @@
             document.getElementById('match-explanation-modal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-        
+
         function hideExplanation() {
             document.getElementById('match-explanation-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
         document.addEventListener('DOMContentLoaded', function () {
             const feeSlider = document.getElementById('annual-fee-slider');
             const sliderValueDisplay = document.getElementById('slider-value');

@@ -971,3 +971,350 @@ header p {
     font-size: 14px;
     color: #333;
 }
+
+/* Add these styles to style2.css */
+
+/* Sentiment styles for reviews */
+.review-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+.review-item.positive {
+    border-left-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.05);
+}
+
+.review-item.very-positive {
+    border-left-color: #2E7D32;
+    background-color: rgba(46, 125, 50, 0.08);
+}
+
+.review-item.extremely-positive {
+    border-left-color: #1B5E20;
+    background-color: rgba(27, 94, 32, 0.1);
+    box-shadow: 0 2px 5px rgba(27, 94, 32, 0.1);
+}
+
+.review-item.negative {
+    border-left-color: #F44336;
+    background-color: rgba(244, 67, 54, 0.05);
+}
+
+.review-item.very-negative {
+    border-left-color: #C62828;
+    background-color: rgba(198, 40, 40, 0.08);
+}
+
+.review-item.extremely-negative {
+    border-left-color: #B71C1C;
+    background-color: rgba(183, 28, 28, 0.1);
+    box-shadow: 0 2px 5px rgba(183, 28, 28, 0.1);
+}
+
+.review-item.neutral {
+    border-left-color: #9E9E9E;
+    background-color: rgba(158, 158, 158, 0.05);
+}
+
+.sentiment-indicator {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 24px;
+    background: white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.sentiment-score {
+    display: inline-block;
+    padding: 2px 6px;
+    margin-left: 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+}
+
+.sentiment-score.positive {
+    background-color: #4CAF50;
+}
+
+.sentiment-score.very-positive {
+    background-color: #2E7D32;
+}
+
+.sentiment-score.extremely-positive {
+    background-color: #1B5E20;
+}
+
+.sentiment-score.negative {
+    background-color: #F44336;
+}
+
+.sentiment-score.very-negative {
+    background-color: #C62828;
+}
+
+.sentiment-score.extremely-negative {
+    background-color: #B71C1C;
+}
+
+.sentiment-score.neutral {
+    background-color: #9E9E9E;
+}
+
+/* For the user testimonial section in card results */
+.user-testimonial {
+    position: relative;
+    padding-top: 0.5rem;
+}
+
+.testimonial-sentiment {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+}
+
+.sentiment-emoji {
+    font-size: 1.25rem;
+}
+
+/* Styles for explanation modal */
+.review-score-item {
+    position: relative;
+}
+
+.review-sentiment {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Sentiment in reviews modal */
+.sentiment-label {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.sentiment-label.positive {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #2E7D32;
+    border: 1px solid #4CAF50;
+}
+
+.sentiment-label.negative {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #C62828;
+    border: 1px solid #F44336;
+}
+
+.sentiment-label.neutral {
+    background-color: rgba(158, 158, 158, 0.1);
+    color: #616161;
+    border: 1px solid #9E9E9E;
+}
+
+/* Sentiment bar visualization */
+.sentiment-bar {
+    height: 6px;
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 5px 0;
+}
+
+.sentiment-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.sentiment-fill.positive {
+    background-color: #4CAF50;
+}
+
+.sentiment-fill.negative {
+    background-color: #F44336;
+}
+
+.sentiment-fill.neutral {
+    background-color: #9E9E9E;
+}
+
+/* Hover effects */
+.review-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Add these styles to remove the sentiment bar and fix display issues */
+
+/* Main review container */
+#reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px;
+}
+
+/* Clean up review item styling */
+.review-item {
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 0;
+    border-left: 4px solid #ddd;
+}
+
+/* Color-code reviews by sentiment */
+.review-item.review-1 {
+    border-left-color: #4CAF50;
+}
+
+.review-item.review-2 {
+    border-left-color: #FFC107;
+}
+
+.review-item.review-3 {
+    border-left-color: #9E9E9E;
+}
+
+/* Review header with title and sentiment */
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.review-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+/* Simplified sentiment indicator */
+.sentiment-indicator {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.sentiment-indicator.positive {
+    background-color: rgba(76, 175, 80, 0.1);
+    border: 1px solid #4CAF50;
+    color: #2E7D32;
+}
+
+.sentiment-indicator.negative {
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid #F44336;
+    color: #C62828;
+}
+
+.sentiment-indicator.neutral {
+    background-color: rgba(158, 158, 158, 0.1);
+    border: 1px solid #9E9E9E;
+    color: #616161;
+}
+
+/* Hide all problematic elements */
+.sentiment-bar,
+.sentiment-fill,
+.sentiment-emoji,
+.testimonial-sentiment,
+.sentiment-score,
+.sentiment-label {
+    display: none !important;
+}
+
+/* Review content styling */
+.review-content {
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: 15px;
+    line-height: 1.5;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.review-author {
+    text-align: right;
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Modal styling adjustments */
+.reviews-modal .review-item {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.reviews-modal .review-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+#reviews-card-title {
+    color: #1a73e8;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Hover effect */
+.review-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .sentiment-indicator {
+        margin-top: 8px;
+    }
+}

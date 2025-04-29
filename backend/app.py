@@ -1,4 +1,4 @@
-# app.py
+# app.py (updated with sentiment analysis)
 
 import json
 import os
@@ -11,6 +11,37 @@ import numpy as np
 from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 import random
+# Import NLTK for sentiment analysis
+import nltk
+import sys
+import ssl
+
+# Fix SSL issues for NLTK download
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+# Force download of vader_lexicon regardless of previous attempts
+print("Downloading VADER lexicon...")
+nltk.download('vader_lexicon', quiet=False)
+print("VADER lexicon download attempt completed.")
+
+# Now import the sentiment analyzer
+try:
+    from nltk.sentiment.vader import SentimentIntensityAnalyzer
+    sentiment_analyzer = SentimentIntensityAnalyzer()
+    print("Sentiment analyzer initialized successfully!")
+except Exception as e:
+    print(f"Error initializing sentiment analyzer: {e}", file=sys.stderr)
+    print("The application will use a fallback sentiment function.")
+    
+    # Define a fallback sentiment analyzer function
+    def sentiment_analyzer(text):
+        # This is a very basic fallback that just returns neutral values
+        return {'compound': 0, 'neg': 0, 'neu': 1, 'pos': 0}
 
 app = Flask(__name__)
 CORS(app)
@@ -43,6 +74,65 @@ travel_value_scores = [entry.get("travel_value_score", 5.0) for entry in data]
 print(f"Loaded {len(data)} cards.")
 print(f"Sample card: {card_names[0]}/{short_card_names[0]} category: {categories[0]} category: {categories[0]}")
 print(f"Enhanced fields sample: Airlines: {associated_airlines[0] if associated_airlines[0] else 'None'}, Income tier: {income_tiers[0]}, Travel value: {travel_value_scores[0]}")
+
+# Function to analyze sentiment of a text
+def analyze_sentiment(text):
+    if not text or text.strip() == "":
+        return {
+            "compound": 0,
+            "pos": 0.5,
+            "neu": 0.5,
+            "neg": 0,
+            "sentiment": "neutral",
+            "emoji": "😐"
+        }
+    
+    try:
+        scores = sentiment_analyzer.polarity_scores(text)
+        compound = scores['compound']
+        
+        # Determine sentiment based on compound score
+        if compound >= 0.05:
+            sentiment = "positive"
+            # Gradation of positive emojis
+            if compound >= 0.75:
+                emoji = "😍"  # Extremely positive
+            elif compound >= 0.5:
+                emoji = "😁"  # Very positive
+            else:
+                emoji = "🙂"  # Moderately positive
+        elif compound <= -0.05:
+            sentiment = "negative"
+            # Gradation of negative emojis
+            if compound <= -0.75:
+                emoji = "😡"  # Extremely negative
+            elif compound <= -0.5:
+                emoji = "😞"  # Very negative
+            else:
+                emoji = "😕"  # Moderately negative
+        else:
+            sentiment = "neutral"
+            emoji = "😐"  # Neutral
+        
+        return {
+            "compound": compound,
+            "pos": scores["pos"],
+            "neu": scores["neu"],
+            "neg": scores["neg"],
+            "sentiment": sentiment,
+            "emoji": emoji
+        }
+    except Exception as e:
+        # If there's any error with sentiment analysis, return a neutral sentiment
+        print(f"Error in sentiment analysis: {e}", file=sys.stderr)
+        return {
+            "compound": 0,
+            "pos": 0.5,
+            "neu": 0.5,
+            "neg": 0,
+            "sentiment": "neutral",
+            "emoji": "😐"
+        }
 
 # Build TF-IDF + SVD matrices
 informed_description = [
@@ -283,11 +373,15 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
                 rv = user_review_vectorizer.transform([rev])
                 rv_svd = user_svd.transform(rv)
                 score = float(cosine_similarity(review_vec, rv_svd).flatten()[0])
-                top_raw_reviews.append((rev, score))
+                
+                # Add sentiment analysis to each review
+                sentiment_data = analyze_sentiment(rev)
+                
+                top_raw_reviews.append((rev, score, sentiment_data))
             except:
                 continue
         top_raw_reviews.sort(key=lambda x: x[1], reverse=True)
-        reviews_out = [{"text": r, "score": s} for r,s in top_raw_reviews[:3]]
+        reviews_out = [{"text": r, "score": s, "sentiment": sent} for r, s, sent in top_raw_reviews[:3]]
 
         match_factors = []
         
@@ -349,8 +443,8 @@ def get_recommendations(user_input, filters=None, offset=0, limit=3):
                 "description_weight": 0.7,
                 "review_weight": 0.3,
                 "svd_dimensions": 130,
-                "top_review_scores": [{"score": float(s), "text": r} 
-                                     for r, s in top_raw_reviews[:3]]
+                "top_review_scores": [{"score": float(s), "text": r, "sentiment": sent} 
+                                     for r, s, sent in top_raw_reviews[:3]]
             }
         })
 
