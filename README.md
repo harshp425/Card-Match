@@ -105,7 +105,7 @@ The app uses a curated dataset of credit cards with:
 - Structured metadata (e.g., annual fee, type, issuer)
 - User reviews (scraped or sourced via API)
 
-All data is stored in `data/cards.csv` and `data/reviews.csv`.
+All data is stored in `dataset/dataset.csv`.
 
 ---
 
